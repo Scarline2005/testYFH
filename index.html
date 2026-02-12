@@ -72,7 +72,6 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__grid">
         <div class="hero__content">
-          <p class="eyebrow">Fondation creee le 10 mai 2019</p>
           <h1 id="hero-title">Transformer la vulnerabilite en opportunite pour les enfants d'Haiti</h1>
           <p class="lead">Youth Foundation Haiti agit pour les orphelins et les enfants en situation de vulnerabilite a travers l'education, l'alimentation, la protection, l'accompagnement psychosocial et des espaces d'epanouissement.</p>
           <div class="hero__actions">
@@ -96,7 +95,7 @@
         </div>
 
         <div class="hero__media">
-          <div class="hero__image" role="presentation"></div>
+          <div class="hero__image" role="img" aria-label="Volontaires Youth Foundation Haiti sur le terrain" data-hero-image></div>
           <div class="hero__card">
             <p class="hero__card-title">Mois en cours</p>
             <p class="hero__card-body">Nos actions prioritaires de <strong data-current-month-fr>fevrier 2026</strong> mobilisent volontaires, partenaires et communautes.</p>
@@ -268,6 +267,10 @@
               <span class="stat__number" data-target="1000" data-suffix="+">0</span>
               <span class="stat__label">Enfants accompagnes chaque annee</span>
             </div>
+            <div class="stat stat--card">
+              <span class="stat__number" data-target="7" data-suffix="">0</span>
+              <span class="stat__label">Initiatives terrain recurrentes</span>
+            </div>
           </div>
         </div>
         <div class="impact__media">
@@ -289,37 +292,33 @@
         </div>
       </div>
 
-      <div class="container cards cards--three">
-        <article class="card" id="profil">
-          <h3>Profil organisationnel</h3>
-          <ul class="card__list">
-            <li><strong>Nom:</strong> Youth Foundation Haiti</li>
-            <li><strong>Date de creation:</strong> 10 mai 2019</li>
-            <li><strong>Fondateur:</strong> Jean Sebastien</li>
-            <li><strong>Domaine:</strong> protection de l'enfance, education, social, culture, humanitaire</li>
-            <li><strong>Public cible:</strong> orphelins, enfants et jeunes vulnerables</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Pourquoi soutenir Youth Foundation Haiti</h3>
-          <ul class="card__list">
-            <li>Action directe et continue sur le terrain</li>
-            <li>Connaissance reelle des communautes</li>
-            <li>Transparence dans la gestion des ressources</li>
-            <li>Impact mesurable sur la vie des enfants</li>
-            <li>Developpement de projets durables comme FestiKids Haiti</li>
-          </ul>
-        </article>
-
-        <article class="card" id="documents">
-          <h3>Documents et ressources</h3>
-          <p>Consultez nos documents d'information et de programme.</p>
-          <div class="resource-links">
-            <a class="btn btn--ghost" href="assets/docs/Information.pdf" target="_blank" rel="noopener noreferrer">Information.pdf</a>
-            <a class="btn btn--ghost" href="assets/docs/Programme.pdf" target="_blank" rel="noopener noreferrer">Programme.pdf</a>
-            <a class="btn btn--ghost" href="assets/docs/YFH.pdf" target="_blank" rel="noopener noreferrer">YFH.pdf</a>
+      <div class="container cards cards--report" id="documents">
+        <article class="card report-card report-card--profile" id="profil">
+          <div class="report-card__header">
+            <span class="report-card__icon" aria-hidden="true"><i class="ri-building-2-line"></i></span>
+            <h3>Profil organisationnel</h3>
           </div>
+          <ul class="report-list">
+            <li><i class="ri-community-line" aria-hidden="true"></i><span><strong>Nom:</strong> Youth Foundation Haiti</span></li>
+            <li><i class="ri-calendar-event-line" aria-hidden="true"></i><span><strong>Date de creation:</strong> 10 mai 2019</span></li>
+            <li><i class="ri-user-star-line" aria-hidden="true"></i><span><strong>Fondateur:</strong> Jean Sebastien</span></li>
+            <li><i class="ri-briefcase-4-line" aria-hidden="true"></i><span><strong>Domaine:</strong> protection de l'enfance, education, social, culture, humanitaire</span></li>
+            <li><i class="ri-team-line" aria-hidden="true"></i><span><strong>Public cible:</strong> orphelins, enfants et jeunes vulnerables</span></li>
+          </ul>
+        </article>
+
+        <article class="card report-card report-card--support">
+          <div class="report-card__header">
+            <span class="report-card__icon" aria-hidden="true"><i class="ri-hand-heart-line"></i></span>
+            <h3>Pourquoi soutenir Youth Foundation Haiti</h3>
+          </div>
+          <ul class="report-list">
+            <li><i class="ri-check-line" aria-hidden="true"></i><span>Action directe et continue sur le terrain</span></li>
+            <li><i class="ri-check-line" aria-hidden="true"></i><span>Connaissance reelle des communautes</span></li>
+            <li><i class="ri-check-line" aria-hidden="true"></i><span>Transparence dans la gestion des ressources</span></li>
+            <li><i class="ri-check-line" aria-hidden="true"></i><span>Impact mesurable sur la vie des enfants</span></li>
+            <li><i class="ri-check-line" aria-hidden="true"></i><span>Developpement de projets durables comme FestiKids Haiti</span></li>
+          </ul>
         </article>
       </div>
     </section>

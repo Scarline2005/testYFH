@@ -170,6 +170,71 @@ ready(() => {
     element.textContent = formattedMonth;
   });
 
+  // Hero image autoplay
+  const heroImage = document.querySelector('[data-hero-image]');
+  const heroSlides = [
+    {
+      src: '../assets/images/community-health.jpg',
+      alt: 'Volontaires Youth Foundation Haiti en activite communautaire',
+    },
+    {
+      src: '../assets/images/youth-engagement.jpg',
+      alt: 'Jeunes engages dans une activite de groupe',
+    },
+    {
+      src: '../assets/images/hero-community.jpg',
+      alt: 'Communaute mobilisee autour des actions de la fondation',
+    },
+    {
+      src: '../assets/images/program-education.jpg',
+      alt: 'Distribution de soutien educatif aux enfants',
+    },
+  ];
+
+  let heroSlideIndex = 0;
+  let heroAutoplayTimer = null;
+  const heroAutoplayDelay = 4500;
+
+  const renderHeroSlide = () => {
+    if (!heroImage || !heroSlides.length) return;
+    const currentSlide = heroSlides[heroSlideIndex];
+    heroImage.style.setProperty('--hero-image-url', `url('${currentSlide.src}')`);
+    heroImage.setAttribute('aria-label', currentSlide.alt);
+  };
+
+  const showNextHeroSlide = () => {
+    if (!heroSlides.length) return;
+    heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+    renderHeroSlide();
+  };
+
+  const stopHeroAutoplay = () => {
+    if (heroAutoplayTimer) {
+      clearInterval(heroAutoplayTimer);
+      heroAutoplayTimer = null;
+    }
+  };
+
+  const startHeroAutoplay = () => {
+    if (!heroImage || heroSlides.length < 2) return;
+    if (heroAutoplayTimer) return;
+    heroAutoplayTimer = setInterval(showNextHeroSlide, heroAutoplayDelay);
+  };
+
+  if (heroImage && heroSlides.length) {
+    renderHeroSlide();
+    startHeroAutoplay();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopHeroAutoplay();
+      return;
+    }
+
+    startHeroAutoplay();
+  });
+
   // Contact form handling
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');

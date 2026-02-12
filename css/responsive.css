@@ -162,6 +162,11 @@
     padding-top: 4.4rem;
   }
 
+  .hero__content,
+  .hero__media {
+    margin-top: 0;
+  }
+
   .btn {
     width: 100%;
     justify-content: center;
