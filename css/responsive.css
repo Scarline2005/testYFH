@@ -130,6 +130,16 @@
     padding: 4.2rem 0;
   }
 
+  .partners__track {
+    gap: 1.6rem;
+    animation-duration: 24s;
+  }
+
+  .partner img {
+    max-height: 70px;
+    max-width: 170px;
+  }
+
   .hero__stats {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
@@ -147,6 +157,20 @@
 @media (max-width: 560px) {
   .values__grid {
     grid-template-columns: 1fr;
+  }
+
+  .partners__logos {
+    mask-image: none;
+  }
+
+  .partners__track {
+    gap: 1.1rem;
+    animation-duration: 20s;
+  }
+
+  .partner img {
+    max-height: 56px;
+    max-width: 130px;
   }
 
   .hero__grid,

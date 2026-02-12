@@ -170,6 +170,27 @@ ready(() => {
     element.textContent = formattedMonth;
   });
 
+  // Seamless partners marquee
+  const partnersTrack = document.querySelector('.partners__track');
+  if (partnersTrack && partnersTrack.dataset.cloned !== 'true') {
+    const partnerItems = Array.from(partnersTrack.querySelectorAll('.partner'));
+
+    partnerItems.forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.removeAttribute('role');
+
+      const cloneImg = clone.querySelector('img');
+      if (cloneImg) {
+        cloneImg.alt = '';
+      }
+
+      partnersTrack.appendChild(clone);
+    });
+
+    partnersTrack.dataset.cloned = 'true';
+  }
+
   // Hero image autoplay
   const heroImage = document.querySelector('[data-hero-image]');
   const heroSlides = [
