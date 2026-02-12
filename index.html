@@ -1,2642 +1,568 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youth Foundation Haiti - Transformer des vies, Construire l'avenir</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1e88e5;
-            --secondary: #0d47a1;
-            --accent: #ff9800;
-            --light: #f5f7fa;
-            --dark: #263238;
-            --success: #4caf50;
-            --text: #333333;
-            --text-light: #666666;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
-            --radius: 16px;
-            --radius-large: 24px;
-            --radius-small: 10px;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --gradient-primary: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
-            --gradient-accent: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--light);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        h1 {
-            font-size: 3.2rem;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 5px;
-            background: var(--gradient-accent);
-            border-radius: 3px;
-        }
-
-        .section-title h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        h3 {
-            font-size: 1.6rem;
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--secondary);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: var(--radius);
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover:before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(30, 136, 229, 0.4);
-        }
-
-        .btn-accent {
-            background: var(--gradient-accent);
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
-        }
-
-        .btn-accent:hover {
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 25px rgba(30, 136, 229, 0.3);
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
-        }
-
-        .logo-text {
-            font-size: 1.6rem;
-            font-weight: 800;
-            --primary: #0d1b97;  
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav li {
-            margin-left: 35px;
-            position: relative;
-        }
-
-        nav a {
-            font-weight: 600;
-            color: var(--dark);
-            position: relative;
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 5px 0;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a.active {
-            color: var(--primary);
-        }
-
-        nav a.active:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 3px;
-        }
-
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 3px;
-            transition: var(--transition);
-        }
-
-        nav a:hover:after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--dark);
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)), url('Image verticale Youth Foundation Haiti/WhatsApp Image 2026-01-31 at 2.33.55 PM (1).jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            text-align: center;
-            padding: 180px 0 100px;
-            margin-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(30, 136, 229, 0.3) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        .tagline {
-            font-style: italic;
-            font-size: 1.5rem !important;
-            color: #ffd54f !important;
-            margin-top: 20px !important;
-            font-weight: 600;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        /* Impact Section */
-        .impact-section {
-            background: white;
-            position: relative;
-        }
-
-        .impact-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, var(--light), white);
-        }
-
-        .impact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .impact-card {
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 50px 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .impact-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient-primary);
-        }
-
-        .impact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .impact-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 2.5rem;
-            box-shadow: 0 10px 20px rgba(30, 136, 229, 0.3);
-        }
-
-        .impact-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 10px;
-            line-height: 1;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Featured Programs Section */
-        .featured-programs {
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-            position: relative;
-        }
-
-        .programs-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .program-card-featured {
-            background: white;
-            border-radius: var(--radius-large);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .program-card-featured:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .program-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: -40px auto 20px;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 10px 20px rgba(30, 136, 229, 0.3);
-        }
-
-        .program-icon i {
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .program-content {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .program-content h3 {
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .program-stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 5px;
-        }
-
-        .view-all-programs {
-            text-align: center;
-            margin-top: 60px;
-            position: relative;
-        }
-
-        .view-all-programs .btn {
-            padding: 18px 45px;
-            font-size: 1.1rem;
-        }
-
-        .arrow-icon {
-            display: inline-block;
-            margin-left: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .view-all-programs .btn:hover .arrow-icon {
-            transform: translateX(10px);
-        }
-
-        /* Founder Section */
-        .founder-section {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .founder-section:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(30, 136, 229, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .founder-container {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .founder-photo {
-            flex: 0 0 350px;
-            border-radius: var(--radius-large);
-            overflow: hidden;
-            box-shadow: var(--shadow-hover);
-            transform: rotate(-3deg);
-            transition: var(--transition);
-        }
-
-        .founder-photo:hover {
-            transform: rotate(0deg);
-        }
-
-        .founder-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .founder-photo:hover img {
-            transform: scale(1.05);
-        }
-
-        .founder-quote {
-            flex: 1;
-            font-style: italic;
-            font-size: 1.3rem;
-            position: relative;
-            padding-left: 40px;
-            color: var(--dark);
-        }
-
-        .founder-quote:before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -30px;
-            font-size: 6rem;
-            color: var(--primary);
-            opacity: 0.2;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .founder-info {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid rgba(30, 136, 229, 0.2);
-        }
-
-        .founder-info strong {
-            font-size: 1.2rem;
-            color: var(--secondary);
-        }
-
-        /* Mission Page */
-        .page-hero {
-            background: linear-gradient(135deg, rgba(30, 136, 229, 0.9) 0%, rgba(13, 71, 161, 0.95) 100%), url('Image verticale Youth Foundation Haiti/WhatsApp Image 2026-01-31 at 2.33.54 PM (2).jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            text-align: center;
-            padding: 150px 0 70px;
-            margin-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-hero h1 {
-            color: white;
-            font-size: 3rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .page-hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .mission-section {
-            background-color: white;
-        }
-
-        .mission-card {
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-            border-radius: var(--radius-large);
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(30, 136, 229, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mission-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--gradient-primary);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .value-card {
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            border-top: 5px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .value-card i {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        /* Programs Page - Horizontal Design */
-        .programs-section {
-            background: white;
-        }
-
-        .programs-horizontal-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .program-row {
-            display: flex;
-            align-items: stretch;
-            gap: 30px;
-        }
-
-        .program-row:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .program-number {
-            flex: 0 0 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .program-number-circle {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
-        }
-
-        .program-content-horizontal {
-            flex: 1;
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 35px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .program-content-horizontal:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .program-content-horizontal:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--gradient-primary);
-        }
-
-        .program-icon-horizontal {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
-        }
-
-        .program-impact-badge {
-            display: inline-block;
-            background: var(--gradient-accent);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
-        }
-
-        /* Team Page */
-        .team-section {
-            background: white;
-        }
-
-        .team-hero {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            padding: 40px;
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-            border-radius: var(--radius-large);
-            box-shadow: var(--shadow);
-        }
-
-        .team-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .team-member-card {
-            background: white;
-            border-radius: var(--radius-large);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .team-member-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .member-header {
-            height: 180px;
-            background: var(--gradient-primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .member-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid white;
-            position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .member-info {
-            padding: 80px 30px 30px;
-            text-align: center;
-        }
-
-        .member-role {
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .member-bio {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .team-volunteers {
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-            border-radius: var(--radius-large);
-            padding: 50px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .volunteer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .volunteer-item {
-            background: white;
-            padding: 25px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .volunteer-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .volunteer-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        /* Partners Page */
-        .partners-section {
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-        }
-
-        .partner-logos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin: 50px 0;
-        }
-
-        .partner-logo-item {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 150px;
-        }
-
-        .partner-logo-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .partner-logo-img {
-            max-width: 100%;
-            max-height: 90px;
-            filter: grayscale(100%);
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-
-        .partner-logo-item:hover .partner-logo-img {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 30px 25px;
-            border-radius: var(--radius-large);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Join Page */
-        .join-section {
-            background: white;
-        }
-
-        .join-hero {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-            padding: 40px;
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-            border-radius: var(--radius-large);
-            box-shadow: var(--shadow);
-        }
-
-        .join-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px;
-        }
-
-        .join-card {
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .join-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .join-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient-primary);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #e0e0e0;
-            border-radius: var(--radius-small);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: #f9f9f9;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
-            outline: none;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .donation-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .donation-option {
-            background: #f9f9f9;
-            border: 2px solid #e0e0e0;
-            border-radius: var(--radius);
-            padding: 18px 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .donation-option:hover,
-        .donation-option.active {
-            background: var(--gradient-primary);
-            border-color: transparent;
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(30, 136, 229, 0.2);
-        }
-
-        .donation-amount {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-
-        .donation-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .custom-donation {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .custom-donation input {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* Contact Page */
-        .contact-section {
-            background: linear-gradient(135deg, #f8fdff 0%, #f0f7ff 100%);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info {
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .contact-detail:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
-        }
-
-        .social-icon:hover {
-            background: var(--gradient-accent);
-            transform: translateY(-8px) rotate(5deg);
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
-        }
-
-        .contact-form-container {
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 20px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form select,
-        .contact-form textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #e0e0e0;
-            border-radius: var(--radius-small);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: #f9f9f9;
-        }
-
-        .contact-form input:focus,
-        .contact-form select:focus,
-        .contact-form textarea:focus {
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
-            outline: none;
-        }
-
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #1a237e 100%);
-            color: white;
-            padding: 70px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient-accent);
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-column h3 {
-            color: white;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #bbb;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 10px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            margin-top: 20px;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: var(--radius-small) 0 0 var(--radius-small);
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .newsletter-form button {
-            background: var(--gradient-accent);
-            color: white;
-            border: none;
-            padding: 0 25px;
-            border-radius: 0 var(--radius-small) var(--radius-small) 0;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .newsletter-form button:hover {
-            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.4rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .founder-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-            
-            .founder-quote:before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .programs-showcase {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-                margin: 30px auto;
-            }
-            
-            .program-row {
-                flex-direction: column !important;
-                gap: 20px;
-            }
-            
-            .program-number {
-                flex: 0 0 auto;
-                justify-content: flex-start;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                padding: 100px 20px;
-                transform: translateX(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            nav.active {
-                transform: translateX(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 0 0 25px 0;
-            }
-            
-            nav a {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .tagline {
-                font-size: 1.3rem !important;
-            }
-            
-            section {
-                padding: 70px 0;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 10px;
-            }
-            
-            .mission-card,
-            .join-card,
-            .contact-info,
-            .contact-form-container {
-                padding: 30px;
-            }
-            
-            .join-options {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .program-content-horizontal {
-                padding: 25px;
-            }
-            
-            .team-hero {
-                padding: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.9rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem !important;
-            }
-            
-            .program-card-featured,
-            .program-content-horizontal,
-            .team-member-card {
-                border-radius: var(--radius);
-            }
-            
-            .impact-card,
-            .value-card,
-            .benefit-card {
-                padding: 30px 20px;
-            }
-            
-            .logo-text {
-                font-size: 1.3rem;
-            }
-            
-            .page-hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .page-hero p {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-
-        /* Multilanguage selector */
-        .language-selector {
-            display: flex;
-            align-items: center;
-            margin-left: 20px;
-        }
-
-        .language-selector select {
-            padding: 10px 15px;
-            border-radius: var(--radius-small);
-            border: 2px solid #e0e0e0;
-            background-color: white;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .language-selector select:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-
-        .logo-img {
-            width: 70px;
-            height: 50px;
-            border-radius: 50%; /* Rond */
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(30, 136, 229, 0.3);
-        }
-
-        .logo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Pour que l'image remplisse bien le cercle */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Youth Foundation Haiti accompagne les enfants et jeunes vulnerables a travers des actions educatives, sociales, culturelles et humanitaires." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <title>Youth Foundation Haiti | Organisation</title>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container header-container">
-            <div class="container header-container">
-            <div class="logo-container" id="home-link">
-                <div class="logo-img">
-                    <!-- Placeholder temporaire - remplacez par votre logo -->
-                    <img src="Logo Youth Foundation Haiti/WhatsApp Image 2026-01-31 at 1.08.47 PM.jpeg" alt="Logo Youth Foundation Haiti">
-                </div>
-                <div class="logo-text">Youth Foundation Haiti</div>
-            </div>
-            
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+  <header class="site-header" id="top">
+    <div class="container header__content">
+      <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="#mission">Qui nous sommes</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="#activites">Ce que nous faisons</a>
+          </li>
+
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
             </button>
-            
-            <nav>
-                <ul>
-                    <li><a class="nav-link" data-page="index.html">Accueil</a></li>
-                    <li><a class="nav-link" data-page="mission.html">Notre Mission</a></li>
-                    <li><a class="nav-link" data-page="programmes.html">Nos Programmes</a></li>
-                    <li><a class="nav-link" data-page="equipe.html">Notre Équipe</a></li>
-                    <li><a class="nav-link" data-page="partenaires.html">Partenaires</a></li>
-                    <li><a class="nav-link" data-page="rejoindre.html">Rejoignez-nous</a></li>
-                    <li><a class="nav-link" data-page="contact.html">Contact</a></li>
-                    <li class="language-selector">
-                        <select id="language-select">
-                            <option value="fr">FR</option>
-                            <option value="ht">HT</option>
-                            <option value="en">EN</option>
-                        </select>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="#documents">Documents PDF</a></li>
+            </ul>
+          </li>
 
-    <!-- Main content area -->
-    <main id="main-content">
-        <!-- Content will be loaded here dynamically -->
-    </main>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="#temps-forts">Temps forts annuels</a></li>
+              <li><a class="nav__sublink" href="#fondateur">Mot du fondateur</a></li>
+              <li><a class="nav__sublink" href="#communaute">Actualites communautaires</a></li>
+              <li><a class="nav__sublink" href="#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
-                        <li><a class="footer-nav-link" data-page="index.html">Accueil</a></li>
-                        <li><a class="footer-nav-link" data-page="mission.html">Notre Mission</a></li>
-                        <li><a class="footer-nav-link" data-page="programmes.html">Nos Programmes</a></li>
-                        <li><a class="footer-nav-link" data-page="equipe.html">Notre Équipe</a></li>
-                        <li><a class="footer-nav-link" data-page="partenaires.html">Partenaires</a></li>
-                        <li><a class="footer-nav-link" data-page="rejoindre.html">Rejoignez-nous</a></li>
-                        <li><a class="footer-nav-link" data-page="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Informations légales</h3>
-                    <ul class="footer-links">
-                        <li>Youth Foundation Haiti</li>
-                        <li>Fondée le 10 mai 2019</li>
-                        <li>Organisation à but non lucratif</li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Mentions légales</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p>Restez informé de nos actions</p>
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Votre email" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contacts</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> contact@youthfoundationhaiti.org</li>
-                        <li><i class="fas fa-phone"></i> +509 1234 5678</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/p/14S2yQSVKZX" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/youth_foundation_haiti" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://x.com/youth54270" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.tiktok.com/@youth_foundation_haiti" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://whatsapp.com/channel/0029Vb7UY8WJuyAFtt5CdY01" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
+      <div class="header__actions">
+        <a class="btn btn--donate" href="donate.html">Faire un don</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow">Fondation creee le 10 mai 2019</p>
+          <h1 id="hero-title">Transformer la vulnerabilite en opportunite pour les enfants d'Haiti</h1>
+          <p class="lead">Youth Foundation Haiti agit pour les orphelins et les enfants en situation de vulnerabilite a travers l'education, l'alimentation, la protection, l'accompagnement psychosocial et des espaces d'epanouissement.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#activites">Decouvrir nos activites</a>
+            <a class="btn btn--ghost" href="#partenaires">Devenir partenaire</a>
+          </div>
+          <div class="hero__stats" aria-label="Indicateurs clefs">
+            <div class="stat">
+              <span class="stat__number" data-target="650" data-suffix="+">0</span>
+              <span class="stat__label">Enfants appuyes pour la rentree scolaire</span>
             </div>
-            
-            <div class="copyright">
-                &copy; 2024 Youth Foundation Haiti. Tous droits réservés.
+            <div class="stat">
+              <span class="stat__number" data-target="400" data-suffix="">0</span>
+              <span class="stat__label">Beneficiaires du repas de Paques</span>
             </div>
+            <div class="stat">
+              <span class="stat__number" data-target="300" data-suffix="">0</span>
+              <span class="stat__label">Enfants touches par edition de Noel</span>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Définir les pages du site
-        const pages = {
-            'index.html': `
-                <!-- Hero Section -->
-                <section class="hero">
-                    <div class="container">
-                        <h1 class="fade-in">Youth Foundation Haiti - Transformer des vies, Construire l'avenir</h1>
-                        <p class="fade-in delay-1">Depuis 2019, nous œuvrons pour les enfants vulnérables d'Haïti</p>
-                        <p class="tagline fade-in delay-2">"Transformer la vulnérabilité en opportunité, et la souffrance en avenir"</p>
-                        <div class="hero-buttons">
-                            <a href="#" class="btn fade-in delay-1" id="donate-hero-btn">Faire un don</a>
-                            <a href="#" class="btn btn-accent fade-in delay-2" id="volunteer-hero-btn">Devenir volontaire</a>
-                            <a href="#" class="btn btn-outline fade-in delay-3" id="programs-hero-btn">Voir nos programmes</a>
-                        </div>
-                    </div>
-                </section>
+        <div class="hero__media">
+          <div class="hero__image" role="presentation"></div>
+          <div class="hero__card">
+            <p class="hero__card-title">Mois en cours</p>
+            <p class="hero__card-body">Nos actions prioritaires de <strong data-current-month-fr>fevrier 2026</strong> mobilisent volontaires, partenaires et communautes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <!-- Impact Section -->
-                <section class="impact-section">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Notre Impact en Chiffres</h2>
-                            <p>Des résultats tangibles depuis notre création en 2019</p>
-                        </div>
-                        
-                        <div class="impact-cards">
-                            <div class="impact-card fade-in">
-                                <div class="impact-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div class="impact-number">650+</div>
-                                <p>Enfants scolarisés annuellement</p>
-                            </div>
-                            
-                            <div class="impact-card fade-in delay-1">
-                                <div class="impact-icon">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <div class="impact-number">400+</div>
-                                <p>Repas de Pâques distribués</p>
-                            </div>
-                            
-                            <div class="impact-card fade-in delay-2">
-                                <div class="impact-icon">
-                                    <i class="fas fa-gift"></i>
-                                </div>
-                                <div class="impact-number">250-300</div>
-                                <p>Enfants par événement de Noël</p>
-                            </div>
-                            
-                            <div class="impact-card fade-in delay-3">
-                                <div class="impact-icon">
-                                    <i class="fas fa-child"></i>
-                                </div>
-                                <div class="impact-number">Milliers</div>
-                                <p>D'enfants accompagnés chaque année</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    <section class="section about" id="mission">
+      <div class="container about__grid">
+        <div class="about__media">
+          <img src="assets/images/youth-engagement.jpg" alt="Jeunes engages dans une activite de Youth Foundation Haiti" />
+        </div>
+        <div class="about__content">
+          <p class="eyebrow">Qui nous sommes</p>
+          <h2>Une fondation haitienne engagee pour les enfants vulnerables</h2>
+          <p>La mission de Youth Foundation Haiti est d'ameliorer durablement les conditions de vie des enfants et des jeunes en situation de vulnerabilite, en particulier les orphelins et les enfants issus de milieux defavorises.</p>
+          <p>Notre vision est de construire une Haiti ou chaque enfant a acces a la dignite, a l'education et aux opportunites necessaires pour un avenir meilleur.</p>
+          <ul class="list list--checks">
+            <li>Approche communautaire basee sur la participation et la collaboration</li>
+            <li>Actions educatives, sociales, culturelles et humanitaires sur le terrain</li>
+            <li>Mobilisation permanente des volontaires, partenaires et sponsors</li>
+          </ul>
+          <div class="about__highlights">
+            <div class="chip">Date de creation: 10 mai 2019</div>
+            <div class="chip">Fondateur: Jean Sebastien</div>
+            <div class="chip">Public cible: Orphelins et jeunes vulnerables</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <!-- Featured Programs Section -->
-                <section class="featured-programs">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Nos Programmes Phares</h2>
-                            <p>Découvrez nos trois principaux programmes qui transforment la vie des enfants vulnérables en Haïti</p>
-                        </div>
-                        
-                        <div class="programs-showcase">
-                            <div class="program-card-featured fade-in">
-                                <div class="program-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div class="program-content">
-                                    <h3>Orphans Back to School</h3>
-                                    <p>Distribution de sacs scolaires complets avec fournitures, uniformes et matériels éducatifs pour soutenir la scolarisation des enfants vulnérables.</p>
-                                    <div class="program-stats">
-                                        <div class="stat">
-                                            <div class="stat-number">650+</div>
-                                            <div class="stat-label">Enfants aidés</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="program-card-featured fade-in delay-1">
-                                <div class="program-icon">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <div class="program-content">
-                                    <h3>Orphans Easter Lunch</h3>
-                                    <p>Organisation d'un repas spécial de Pâques pour les orphelins avec activités récréatives et animations éducatives pour promouvoir leur bien-être.</p>
-                                    <div class="program-stats">
-                                        <div class="stat">
-                                            <div class="stat-number">400+</div>
-                                            <div class="stat-label">Repas distribués</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="program-card-featured fade-in delay-2">
-                                <div class="program-icon">
-                                    <i class="fas fa-gift"></i>
-                                </div>
-                                <div class="program-content">
-                                    <h3>Christmas Orphans</h3>
-                                    <p>Célébrations de Noël dans les orphelinats avec distribution de repas, jouets, cadeaux et activités culturelles pour apporter de la joie aux enfants.</p>
-                                    <div class="program-stats">
-                                        <div class="stat">
-                                            <div class="stat-number">300</div>
-                                            <div class="stat-label">Enfants par édition</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="view-all-programs fade-in delay-3">
-                            <a href="#" class="btn" id="view-all-programs-btn">
-                                Voir tous nos programmes
-                                <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
-                            </a>
-                        </div>
-                    </div>
-                </section>
+    <section class="section values" id="valeurs">
+      <div class="container section__header">
+        <p class="eyebrow">Nos valeurs</p>
+        <div class="section__title-group">
+          <h2>Les principes qui guident chaque intervention</h2>
+          <p>Nous travaillons avec une culture de responsabilite, de respect et de resultats mesurables.</p>
+        </div>
+      </div>
+      <div class="container values__grid">
+        <article class="value-card">
+          <span class="value-card__icon" aria-hidden="true"><i class="ri-team-line"></i></span>
+          <h3>Solidarite</h3>
+          <p>Nous croyons au pouvoir de l'entraide et du partage pour transformer des vies.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-card__icon" aria-hidden="true"><i class="ri-award-line"></i></span>
+          <h3>Engagement</h3>
+          <p>Nous agissons avec responsabilite, transparence et determination sur le terrain.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-card__icon" aria-hidden="true"><i class="ri-heart-3-line"></i></span>
+          <h3>Respect de la dignite humaine</h3>
+          <p>Chaque enfant est accompagne avec amour, consideration et protection.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-card__icon" aria-hidden="true"><i class="ri-scales-3-line"></i></span>
+          <h3>Equite</h3>
+          <p>Nous travaillons sans discrimination pour offrir une chance egale a tous.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-card__icon" aria-hidden="true"><i class="ri-search-eye-line"></i></span>
+          <h3>Transparence</h3>
+          <p>Nos actions et ressources sont gerees avec integrite et redevabilite.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-card__icon" aria-hidden="true"><i class="ri-links-line"></i></span>
+          <h3>Collaboration</h3>
+          <p>Nous avancons avec les communautes, partenaires et volontaires engages.</p>
+        </article>
+      </div>
+    </section>
 
-                <!-- Founder Section -->
-                <section class="founder-section">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Témoignage du Fondateur</h2>
-                            <p>La passion et l'engagement derrière notre mission</p>
-                        </div>
-                        
-                        <div class="founder-container">
-                            <div class="founder-photo fade-in">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Jean Sébastien - Fondateur">
-                            </div>
-                            
-                            <div class="founder-quote fade-in delay-1">
-                                <p>"Je suis moi-même issu d'un parcours difficile. En tant qu'orphelin, j'ai connu la douleur, l'abandon, l'insécurité et le manque d'opportunités... Chaque enfant que nous soutenons représente pour moi une part de mon propre passé que je tente de réparer par l'action."</p>
-                                <div class="founder-info">
-                                    <p><strong>Jean Sébastien</strong><br>Fondateur et Directeur Général</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
-            'mission.html': `
-                <!-- Page Hero -->
-                <section class="page-hero">
-                    <div class="container">
-                        <h1 class="fade-in">Notre Mission</h1>
-                        <p class="fade-in delay-1">Découvrez les valeurs et la vision qui guident notre action</p>
-                    </div>
-                </section>
+    <section class="section programs" id="activites">
+      <div class="container section__header">
+        <p class="eyebrow">Ce que nous faisons</p>
+        <div class="section__title-group">
+          <h2>Activites realisees par Youth Foundation Haiti</h2>
+          <p>Des programmes concrets, repetes chaque annee, pour soutenir l'education, le bien-etre et la protection des enfants.</p>
+        </div>
+      </div>
 
-                <!-- Mission Section -->
-                <section class="mission-section">
-                    <div class="container">
-                        <div class="mission-card fade-in">
-                            <h2>Mission Officielle</h2>
-                            <p>La mission de Youth Foundation Haiti est d'améliorer durablement les conditions de vie des enfants et des jeunes en situation de vulnérabilité en Haïti, en particulier les orphelins et les enfants issus de milieux défavorisés.</p>
-                            <p>À travers des actions éducatives, sociales, culturelles et humanitaires, la fondation œuvre pour offrir aux enfants un accès à l'éducation, à l'alimentation, à la protection, à l'accompagnement psychosocial et à des espaces d'épanouissement.</p>
-                            <p>Youth Foundation Haiti s'engage à bâtir un environnement où chaque enfant peut grandir dans la dignité, la sécurité et l'espoir, tout en mobilisant la communauté, les volontaires, les partenaires et les sponsors autour d'une vision commune de solidarité et de responsabilité sociale.</p>
-                        </div>
-                        
-                        <div class="mission-card fade-in delay-1">
-                            <h2>Notre Vision</h2>
-                            <p style="font-size: 1.2rem; font-style: italic; text-align: center; padding: 15px; background: rgba(30, 136, 229, 0.05); border-radius: var(--radius); margin: 20px 0;">"Construire une Haïti où chaque enfant a accès à la dignité, à l'éducation et aux opportunités nécessaires pour un avenir meilleur."</p>
-                        </div>
-                        
-                        <div class="mission-card fade-in delay-2">
-                            <h2>Nos Valeurs</h2>
-                            <div class="values-grid">
-                                <div class="value-card">
-                                    <i class="fas fa-hands-helping"></i>
-                                    <h3>Solidarité</h3>
-                                    <p>Nous croyons au pouvoir de l'entraide et du partage pour transformer des vies.</p>
-                                </div>
-                                
-                                <div class="value-card">
-                                    <i class="fas fa-bullseye"></i>
-                                    <h3>Engagement</h3>
-                                    <p>Nous travaillons avec responsabilité, transparence et détermination.</p>
-                                </div>
-                                
-                                <div class="value-card">
-                                    <i class="fas fa-heart"></i>
-                                    <h3>Respect de la dignité humaine</h3>
-                                    <p>Chaque enfant mérite d'être traité avec amour, considération et protection.</p>
-                                </div>
-                                
-                                <div class="value-card">
-                                    <i class="fas fa-balance-scale"></i>
-                                    <h3>Équité</h3>
-                                    <p>Nous agissons sans discrimination, en donnant une chance égale à tous.</p>
-                                </div>
-                                
-                                <div class="value-card">
-                                    <i class="fas fa-eye"></i>
-                                    <h3>Transparence</h3>
-                                    <p>Nous gérons nos actions et ressources avec intégrité.</p>
-                                </div>
-                                
-                                <div class="value-card">
-                                    <i class="fas fa-users"></i>
-                                    <h3>Collaboration</h3>
-                                    <p>Nous avançons avec les communautés, partenaires et volontaires.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
-            'programmes.html': `
-                <!-- Page Hero -->
-                <section class="page-hero">
-                    <div class="container">
-                        <h1 class="fade-in">Nos Programmes</h1>
-                        <p class="fade-in delay-1">Découvrez nos actions concrètes pour transformer la vie des enfants</p>
-                    </div>
-                </section>
+      <div class="container cards cards--three">
+        <article class="card program-card">
+          <h3>1. Orphans Back to School</h3>
+          <ul class="card__list">
+            <li>Distribution de sacs scolaires complets</li>
+            <li>Fourniture de cahiers, stylos, uniformes et materiels educatifs</li>
+            <li>Appui a la scolarisation des enfants vulnerables</li>
+            <li><strong>Impact: plus de 650 enfants beneficiaires</strong></li>
+          </ul>
+        </article>
 
-                <!-- Programs Section -->
-                <section class="programs-section">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Tous Nos Programmes</h2>
-                            <p>Des initiatives concrètes pour répondre aux besoins essentiels des enfants vulnérables</p>
-                        </div>
-                        
-                        <div class="programs-horizontal-container">
-                            <div class="program-row fade-in">
-                                <div class="program-number">
-                                    <div class="program-number-circle">01</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
-                                    <h3>Orphans Back to School</h3>
-                                    <p>Distribution de sacs scolaires complets avec fournitures, uniformes et matériels éducatifs. Appui à la scolarisation des enfants en situation vulnérable.</p>
-                                    <div class="program-impact-badge">Impact : plus de 650 enfants bénéficiaires</div>
-                                </div>
-                            </div>
-                            
-                            <div class="program-row fade-in delay-1">
-                                <div class="program-number">
-                                    <div class="program-number-circle">02</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-utensils"></i>
-                                    </div>
-                                    <h3>Orphans Easter Lunch</h3>
-                                    <p>Organisation d'un repas spécial de Pâques pour les orphelins avec activités récréatives et animations éducatives. Promotion du bien-être et de la dignité des enfants.</p>
-                                    <div class="program-impact-badge">Impact : environ 400 enfants bénéficiaires</div>
-                                </div>
-                            </div>
-                            
-                            <div class="program-row fade-in delay-2">
-                                <div class="program-number">
-                                    <div class="program-number-circle">03</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-gift"></i>
-                                    </div>
-                                    <h3>Christmas Orphans</h3>
-                                    <p>Célébrations de Noël dans les orphelinats avec distribution de repas, jouets et cadeaux. Activités culturelles et sociales pour apporter de la joie aux enfants.</p>
-                                    <div class="program-impact-badge">Impact : 250-300 enfants par édition</div>
-                                </div>
-                            </div>
-                            
-                            <div class="program-row fade-in delay-3">
-                                <div class="program-number">
-                                    <div class="program-number-circle">04</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-music"></i>
-                                    </div>
-                                    <h3>FestiKids Haiti (à partir de 2025)</h3>
-                                    <p>Événement public de collecte de fonds avec activités culturelles, musicales et éducatives pour enfants. Mobilisation communautaire autour de la protection de l'enfance.</p>
-                                    <div class="program-impact-badge">Objectif : soutenir durablement les projets</div>
-                                </div>
-                            </div>
-                            
-                            <div class="program-row fade-in">
-                                <div class="program-number">
-                                    <div class="program-number-circle">05</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-hands-helping"></i>
-                                    </div>
-                                    <h3>Assistance sociale et humanitaire</h3>
-                                    <p>Visites régulières dans les orphelinats. Soutien moral et psychosocial aux enfants. Organisation d'activités éducatives, culturelles et sportives.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="program-row fade-in delay-1">
-                                <div class="program-number">
-                                    <div class="program-number-circle">06</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-handshake"></i>
-                                    </div>
-                                    <h3>Collaboration avec d'autres organisations</h3>
-                                    <p>Partenariats avec Save Us, Eco Life Club, The Better Haiti Club et Poujenyo. Mutualisation des ressources pour élargir l'impact social.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="program-row fade-in delay-2">
-                                <div class="program-number">
-                                    <div class="program-number-circle">07</div>
-                                </div>
-                                <div class="program-content-horizontal">
-                                    <div class="program-icon-horizontal">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <h3>Mobilisation et gestion des volontaires</h3>
-                                    <p>Recrutement, formation et encadrement des volontaires. Développement d'un réseau de bénévoles engagés pour nos actions sur le terrain.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
-            'equipe.html': `
-                <!-- Page Hero -->
-                <section class="page-hero">
-                    <div class="container">
-                        <h1 class="fade-in">Notre Équipe</h1>
-                        <p class="fade-in delay-1">Découvrez les personnes engagées derrière notre action</p>
-                    </div>
-                </section>
+        <article class="card program-card">
+          <h3>2. Orphans Easter Lunch</h3>
+          <ul class="card__list">
+            <li>Organisation d'un repas special de Paques pour les orphelins</li>
+            <li>Activites recreatives et animations educatives</li>
+            <li>Promotion du bien-etre et de la dignite des enfants</li>
+            <li><strong>Impact: environ 400 enfants beneficiaires</strong></li>
+          </ul>
+        </article>
 
-                <!-- Team Section -->
-                <section class="team-section">
-                    <div class="container">
-                        <div class="team-hero fade-in">
-                            <h2>Présentation de l'Équipe</h2>
-                            <p>"Youth Foundation Haiti repose sur une équipe jeune, dynamique et engagée, composée de volontaires, de coordinateurs et de partenaires communautaires qui partagent une même vision : servir les enfants vulnérables d'Haïti avec respect et responsabilité."</p>
-                        </div>
-                        
-                        <div class="team-members">
-                            <div class="team-member-card fade-in">
-                                <div class="member-header"></div>
-                                <div class="member-avatar"></div>
-                                <div class="member-info">
-                                    <h3>Jean Sébastien</h3>
-                                    <div class="member-role">Fondateur et Directeur Général</div>
-                                    <p class="member-bio">Assure la vision stratégique, la coordination globale et la représentation de la fondation. Son parcours personnel d'orphelin lui donne une compréhension profonde des besoins des enfants vulnérables.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="team-member-card fade-in delay-1">
-                                <div class="member-header" style="background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);"></div>
-                                <div class="member-avatar" style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);"></div>
-                                <div class="member-info">
-                                    <h3>Alexa Jean</h3>
-                                    <div class="member-role">Coordinatrice des programmes sociaux</div>
-                                    <p class="member-bio">Rejointe en 2020, elle participe activement à toutes les activités dans les orphelinats, à l'encadrement des enfants et à l'organisation logistique des projets. Son engagement est un pilier essentiel de notre action.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="team-volunteers fade-in delay-2">
-                            <h2>Notre Équipe Terrain</h2>
-                            <p>"Notre équipe travaille directement avec les communautés, les orphelinats et les partenaires pour garantir un impact réel, transparent et durable."</p>
-                            
-                            <div class="volunteer-grid">
-                                <div class="volunteer-item">
-                                    <i class="fas fa-users"></i>
-                                    <h4>Volontaires communautaires</h4>
-                                    <p>Engagés localement</p>
-                                </div>
-                                
-                                <div class="volunteer-item">
-                                    <i class="fas fa-gamepad"></i>
-                                    <h4>Animateurs d'activités</h4>
-                                    <p>Éducatifs et culturels</p>
-                                </div>
-                                
-                                <div class="volunteer-item">
-                                    <i class="fas fa-truck"></i>
-                                    <h4>Responsables logistiques</h4>
-                                    <p>Organisation et distribution</p>
-                                </div>
-                                
-                                <div class="volunteer-item">
-                                    <i class="fas fa-bullhorn"></i>
-                                    <h4>Agents de mobilisation</h4>
-                                    <p>Sensibilisation communautaire</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
-            'partenaires.html': `
-                <!-- Page Hero -->
-                <section class="page-hero">
-                    <div class="container">
-                        <h1 class="fade-in">Partenaires et Sponsors</h1>
-                        <p class="fade-in delay-1">Rejoignez notre mouvement pour transformer la vie des enfants vulnérables</p>
-                    </div>
-                </section>
+        <article class="card program-card">
+          <h3>3. Christmas Orphans</h3>
+          <ul class="card__list">
+            <li>Celebrations de Noel dans les orphelinats</li>
+            <li>Distribution de repas, jouets et cadeaux</li>
+            <li>Activites culturelles et sociales</li>
+            <li><strong>Impact: entre 250 et 300 enfants par edition</strong></li>
+          </ul>
+        </article>
 
-                <!-- Partners Section -->
-                <section class="partners-section">
-                    <div class="container">
-                        <div class="mission-card fade-in">
-                            <h2>Devenez Partenaire</h2>
-                            <p>"Youth Foundation Haiti invite les entreprises, institutions, organisations internationales et personnes de bonne volonté à devenir partenaires d'un mouvement qui transforme la vie des enfants vulnérables en Haïti.</p>
-                            <p>Depuis 2019, nous avons accompagné des milliers d'enfants à travers des projets éducatifs, alimentaires, culturels et sociaux tels que Orphans Back to School, Orphans Easter Lunch, Christmas Orphans et FestiKids Haiti."</p>
-                        </div>
-                        
-                        <div class="mission-card fade-in delay-1">
-                            <h2>Ce que votre soutien permet</h2>
-                            <div class="benefits-grid">
-                                <div class="benefit-card">
-                                    <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>Accès à l'éducation</h4>
-                                    <p>d'offrir un accès à l'éducation à des centaines d'enfants chaque année</p>
-                                </div>
-                                
-                                <div class="benefit-card">
-                                    <i class="fas fa-utensils" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>Alimentation digne</h4>
-                                    <p>d'assurer une alimentation digne et régulière dans les orphelinats</p>
-                                </div>
-                                
-                                <div class="benefit-card">
-                                    <i class="fas fa-home" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>Espaces sécurisés</h4>
-                                    <p>de créer des espaces sécurisés pour l'épanouissement des enfants</p>
-                                </div>
-                                
-                                <div class="benefit-card">
-                                    <i class="fas fa-seedling" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>Programmes durables</h4>
-                                    <p>de bâtir des programmes durables pour l'avenir des enfants</p>
-                                </div>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(30, 136, 229, 0.05) 0%, rgba(13, 71, 161, 0.05) 100%); border-radius: var(--radius-large); border-left: 5px solid var(--accent);" class="fade-in delay-2">
-                                <h3>Message d'appel</h3>
-                                <p style="font-size: 1.1rem; font-style: italic; margin-top: 15px;">"En devenant partenaire de Youth Foundation Haiti, vous investissez dans une génération capable de transformer Haïti. Ensemble, nous pouvons donner plus qu'une aide : nous donnons une chance, une direction et un espoir."</p>
-                            </div>
-                        </div>
-                        
-                        <div class="mission-card fade-in delay-3">
-                            <h2>Nos Partenaires</h2>
-                            <div class="partner-logos-grid">
-                                <div class="partner-logo-item">
-                                    <img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Save Us" class="partner-logo-img">
-                                </div>
-                                <div class="partner-logo-item">
-                                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Eco Life Club" class="partner-logo-img">
-                                </div>
-                                <div class="partner-logo-item">
-                                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="The Better Haiti Club" class="partner-logo-img">
-                                </div>
-                                <div class="partner-logo-item">
-                                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Poujenyo" class="partner-logo-img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
-            'rejoindre.html': `
-                <!-- Page Hero -->
-                <section class="page-hero">
-                    <div class="container">
-                        <h1 class="fade-in">Rejoignez-nous</h1>
-                        <p class="fade-in delay-1">Devenez acteur du changement pour les enfants d'Haïti</p>
-                    </div>
-                </section>
+        <article class="card program-card" id="festikids">
+          <h3>4. FestiKids Haiti (depuis 2025)</h3>
+          <ul class="card__list">
+            <li>Evenement public de collecte de fonds</li>
+            <li>Activites culturelles, musicales et educatives</li>
+            <li>Mobilisation communautaire autour de la protection de l'enfance</li>
+            <li><strong>Objectif: soutien durable des projets pour les orphelins</strong></li>
+          </ul>
+        </article>
 
-                <!-- Join Section -->
-                <section class="join-section">
-                    <div class="container">
-                        <div class="join-hero fade-in">
-                            <h2>Comment nous soutenir ?</h2>
-                            <p>Que vous souhaitiez donner de votre temps ou faire un don financier, chaque contribution compte pour transformer la vie des enfants vulnérables en Haïti.</p>
-                        </div>
-                        
-                        <div class="join-options">
-                            <!-- Volunteer Section -->
-                            <div class="join-card fade-in" id="volunteer-section">
-                                <h2>Devenez Volontaire</h2>
-                                <p>"Chers volontaires, pour rester connectés à la vie de Youth Foundation Haiti et mieux vous familiariser avec nos activités, nos projets et le quotidien à la fondation..."</p>
-                                
-                                <form id="volunteer-form" style="margin-top: 25px;">
-                                    <div class="form-group">
-                                        <label for="fullname">Nom complet *</label>
-                                        <input type="text" id="fullname" required placeholder="Votre nom et prénom">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="email">Adresse email *</label>
-                                        <input type="email" id="email" required placeholder="exemple@email.com">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="phone">Téléphone *</label>
-                                        <input type="tel" id="phone" required placeholder="+509 1234 5678">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="skills">Compétences et expériences</label>
-                                        <textarea id="skills" rows="3" placeholder="Vos compétences, expériences, domaines d'expertise..."></textarea>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="availability">Disponibilités *</label>
-                                        <select id="availability">
-                                            <option value="">Sélectionnez vos disponibilités</option>
-                                            <option value="weekends">Weekends uniquement</option>
-                                            <option value="weekdays">En semaine uniquement</option>
-                                            <option value="both">Weekends et semaine</option>
-                                            <option value="variable">Disponibilités variables</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="motivation">Motivation *</label>
-                                        <textarea id="motivation" rows="4" required placeholder="Pourquoi souhaitez-vous rejoindre Youth Foundation Haiti? Qu'est-ce qui vous motive?"></textarea>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn" style="width: 100%;">
-                                        <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
-                                        Soumettre ma candidature
-                                    </button>
-                                </form>
-                            </div>
-                            
-                            <!-- Donation Section -->
-                            <div class="join-card fade-in delay-1" id="donation-section">
-                                <h2>Faire un Don</h2>
-                                <p>Votre contribution directe permet de soutenir nos programmes sur le terrain. Chaque don, quel que soit son montant, fait la différence.</p>
-                                
-                                <div class="donation-options">
-                                    <div class="donation-option" data-amount="25">
-                                        <div class="donation-amount">25$</div>
-                                        <div class="donation-label">Kit scolaire</div>
-                                    </div>
-                                    
-                                    <div class="donation-option active" data-amount="50">
-                                        <div class="donation-amount">50$</div>
-                                        <div class="donation-label">Repas pour 10 enfants</div>
-                                    </div>
-                                    
-                                    <div class="donation-option" data-amount="100">
-                                        <div class="donation-amount">100$</div>
-                                        <div class="donation-label">Soutien mensuel</div>
-                                    </div>
-                                    
-                                    <div class="donation-option" data-amount="250">
-                                        <div class="donation-amount">250$</div>
-                                        <div class="donation-label">Équipement éducatif</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="custom-donation">
-                                    <div class="form-group">
-                                        <label for="custom-amount">Montant personnalisé (USD)</label>
-                                        <input type="number" id="custom-amount" min="1" value="50" step="1">
-                                    </div>
-                                </div>
-                                
-                                <div style="margin: 30px 0; text-align: center;">
-                                    <div style="font-size: 2rem; font-weight: 800; color: var(--primary);" id="selected-amount">50 $</div>
-                                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 5px;">Montant de votre don</p>
-                                </div>
-                                
-                                <button id="donate-btn" class="btn btn-accent" style="width: 100%; padding: 16px;">
-                                    <i class="fas fa-heart" style="margin-right: 10px;"></i>
-                                    Faire un don maintenant
-                                </button>
-                                
-                                <div style="margin-top: 40px; padding-top: 25px; border-top: 1px solid #eee;">
-                                    <h3>Plateformes de collecte</h3>
-                                    <p>Vous pouvez également contribuer via nos campagnes GoFundMe :</p>
-                                    <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px;">
-                                        <a href="https://gofund.me/872320537" class="btn" style="width: 100%;" target="_blank">
-                                            <i class="fas fa-hand-holding-heart" style="margin-right: 10px;"></i>
-                                            GoFundMe - Campagne 1
-                                        </a>
-                                        <a href="https://gofund.me/48adcac65" class="btn btn-outline" style="width: 100%;" target="_blank">
-                                            <i class="fas fa-hand-holding-usd" style="margin-right: 10px;"></i>
-                                            GoFundMe - Campagne 2
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `,
-            
-            'contact.html': `
-                <!-- Page Hero -->
-                <section class="page-hero">
-                    <div class="container">
-                        <h1 class="fade-in">Contact et Réseaux</h1>
-                        <p class="fade-in delay-1">Restons connectés pour transformer ensemble l'avenir des enfants</p>
-                    </div>
-                </section>
+        <article class="card program-card">
+          <h3>5. Collaboration avec d'autres organisations</h3>
+          <ul class="card__list">
+            <li>Partenariats avec Save Us, Eco Life Club, The Better Haiti Club et Poujenyo</li>
+            <li>Mutualisation des ressources pour elargir l'impact social</li>
+          </ul>
+        </article>
 
-                <!-- Contact Section -->
-                <section class="contact-section">
-                    <div class="container">
-                        <div class="contact-container">
-                            <div class="fade-in">
-                                <div class="contact-info">
-                                    <h2>Informations de contact</h2>
-                                    
-                                    <div class="contact-detail">
-                                        <div class="contact-icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div>
-                                            <h4>Email</h4>
-                                            <p>contact@youthfoundationhaiti.org</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="contact-detail">
-                                        <div class="contact-icon">
-                                            <i class="fas fa-phone"></i>
-                                        </div>
-                                        <div>
-                                            <h4>Téléphone</h4>
-                                            <p>+509 1234 5678</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="contact-detail">
-                                        <div class="contact-icon">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                        </div>
-                                        <div>
-                                            <h4>Adresse</h4>
-                                            <p>Port-au-Prince, Haïti</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div style="margin-top: 40px;">
-                                        <h3>Nos Réseaux Sociaux</h3>
-                                        <p>Suivez-nous pour rester informé de nos actions</p>
-                                        
-                                        <div class="social-links">
-                                            <a href="https://www.instagram.com/youth_foundation_haiti" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                                            <a href="https://www.facebook.com/share/p/14S2yQSVKZX" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="https://x.com/youth54270" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
-                                            <a href="https://www.tiktok.com/@youth_foundation_haiti" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
-                                            <a href="https://whatsapp.com/channel/0029Vb7UY8WJuyAFtt5CdY01" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div style="margin-top: 40px; padding: 20px; background: rgba(30, 136, 229, 0.05); border-radius: var(--radius);">
-                                        <h4>Autres comptes</h4>
-                                        <ul style="margin-top: 10px; list-style: none;">
-                                            <li style="margin-bottom: 10px;"><i class="fas fa-arrow-right" style="color: var(--accent); margin-right: 10px;"></i><a href="https://www.instagram.com/youth_foundation_member_2026" target="_blank" style="font-weight: 600;">Instagram Membres</a></li>
-                                            <li><i class="fas fa-arrow-right" style="color: var(--accent); margin-right: 10px;"></i><a href="https://www.instagram.com/festikids_haiti" target="_blank" style="font-weight: 600;">Instagram FestiKids</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="fade-in delay-1">
-                                <div class="contact-form-container">
-                                    <h2>Formulaire de contact</h2>
-                                    <p>Envoyez-nous un message, nous vous répondrons dans les plus brefs délais.</p>
-                                    
-                                    <form id="contact-form" class="contact-form">
-                                        <div class="form-group">
-                                            <label for="contact-name">Nom complet *</label>
-                                            <input type="text" id="contact-name" required placeholder="Votre nom et prénom">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="contact-email">Adresse email *</label>
-                                            <input type="email" id="contact-email" required placeholder="exemple@email.com">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="contact-subject">Sujet *</label>
-                                            <select id="contact-subject" required>
-                                                <option value="">Sélectionnez un sujet</option>
-                                                <option value="info">Demande d'information</option>
-                                                <option value="partnership">Partenariat</option>
-                                                <option value="volunteer">Bénévolat</option>
-                                                <option value="donation">Don</option>
-                                                <option value="other">Autre</option>
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="contact-message">Message *</label>
-                                            <textarea id="contact-message" rows="6" required placeholder="Votre message..."></textarea>
-                                        </div>
-                                        
-                                        <button type="submit" class="btn" style="width: 100%; padding: 16px;">
-                                            <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
-                                            Envoyer le message
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `
-        };
+        <article class="card program-card" id="humanitaire">
+          <h3>6. Assistance sociale et humanitaire</h3>
+          <ul class="card__list">
+            <li>Visites regulieres dans les orphelinats</li>
+            <li>Soutien moral et psychosocial aux enfants</li>
+            <li>Organisation d'activites educatives, culturelles et sportives</li>
+          </ul>
+        </article>
 
-        // Fonction pour charger une page
-        function loadPage(pageName) {
-            const mainContent = document.getElementById('main-content');
-            
-            // Mettre à jour le titre de la page
-            const pageTitles = {
-                'index.html': 'Accueil - Youth Foundation Haiti',
-                'mission.html': 'Notre Mission - Youth Foundation Haiti',
-                'programmes.html': 'Nos Programmes - Youth Foundation Haiti',
-                'equipe.html': 'Notre Équipe - Youth Foundation Haiti',
-                'partenaires.html': 'Partenaires - Youth Foundation Haiti',
-                'rejoindre.html': 'Rejoignez-nous - Youth Foundation Haiti',
-                'contact.html': 'Contact - Youth Foundation Haiti'
-            };
-            
-            document.title = pageTitles[pageName] || 'Youth Foundation Haiti';
-            
-            // Charger le contenu de la page
-            mainContent.innerHTML = pages[pageName] || pages['index.html'];
-            
-            // Mettre à jour l'historique du navigateur
-            window.history.pushState({ page: pageName }, '', pageName);
-            
-            // Mettre à jour le lien actif dans la navigation
-            updateActiveNavLink(pageName);
-            
-            // Faire défiler vers le haut
-            window.scrollTo(0, 0);
-            
-            // Fermer le menu mobile si ouvert
-            document.querySelector('nav').classList.remove('active');
-            
-            // Initialiser les scripts spécifiques à la page
-            initPageScripts(pageName);
-            
-            // Ajouter des animations aux éléments
-            setTimeout(() => {
-                const fadeElements = document.querySelectorAll('.fade-in');
-                fadeElements.forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(30px)';
-                });
-                
-                // Déclencher les animations après un court délai
-                setTimeout(() => {
-                    fadeElements.forEach(el => {
-                        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    });
-                }, 100);
-            }, 100);
-        }
+        <article class="card program-card" id="volontaires">
+          <h3>7. Mobilisation et gestion des volontaires</h3>
+          <ul class="card__list">
+            <li>Recrutement de volontaires engages</li>
+            <li>Formation et encadrement des equipes terrain</li>
+            <li>Developpement d'un reseau de benevoles actifs</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-        // Mettre à jour le lien actif dans la navigation
-        function updateActiveNavLink(pageName) {
-            document.querySelectorAll('.nav-link, .footer-nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('data-page') === pageName) {
-                    link.classList.add('active');
-                }
-            });
-        }
+    <section class="section impact" id="impact">
+      <div class="container impact__grid">
+        <div class="impact__content">
+          <p class="eyebrow">Impact global</p>
+          <h2>Des milliers d'enfants accompagnes chaque annee</h2>
+          <p>Youth Foundation Haiti accompagne chaque annee des milliers d'enfants a travers des actions educatives, alimentaires, sociales et culturelles dans plusieurs communautes d'Haiti.</p>
+          <div class="impact__stats">
+            <div class="stat stat--card">
+              <span class="stat__number" data-target="2019" data-suffix="">0</span>
+              <span class="stat__label">Annee de lancement</span>
+            </div>
+            <div class="stat stat--card">
+              <span class="stat__number" data-target="4" data-suffix="">0</span>
+              <span class="stat__label">Programmes phares</span>
+            </div>
+            <div class="stat stat--card">
+              <span class="stat__number" data-target="1000" data-suffix="+">0</span>
+              <span class="stat__label">Enfants accompagnes chaque annee</span>
+            </div>
+          </div>
+        </div>
+        <div class="impact__media">
+          <img src="assets/images/program-education.jpg" alt="Distribution de kits educatifs pour les enfants" />
+          <div class="note">
+            <p class="note__title">Approche communautaire</p>
+            <p class="note__body">Nos equipes interviennent directement dans les orphelinats et les communautes, avec une logique de transparence, de responsabilite sociale et de durabilite.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Initialiser les scripts spécifiques à la page
-        function initPageScripts(pageName) {
-            // Fonctionnalité de don
-            const donationOptions = document.querySelectorAll('.donation-option');
-            const customAmountInput = document.getElementById('custom-amount');
-            const selectedAmount = document.getElementById('selected-amount');
-            
-            if (donationOptions && selectedAmount) {
-                donationOptions.forEach(option => {
-                    option.addEventListener('click', function() {
-                        const amount = this.getAttribute('data-amount');
-                        if (customAmountInput) customAmountInput.value = amount;
-                        selectedAmount.textContent = amount + ' $';
-                        
-                        // Mettre à jour l'état actif
-                        donationOptions.forEach(o => o.classList.remove('active'));
-                        this.classList.add('active');
-                    });
-                });
-                
-                if (customAmountInput) {
-                    customAmountInput.addEventListener('input', function() {
-                        selectedAmount.textContent = this.value + ' $';
-                        
-                        // Mettre à jour l'état des options
-                        donationOptions.forEach(o => {
-                            if (o.getAttribute('data-amount') === this.value) {
-                                o.classList.add('active');
-                            } else {
-                                o.classList.remove('active');
-                            }
-                        });
-                    });
-                }
-            }
-            
-            // Soumissions de formulaires
-            const volunteerForm = document.getElementById('volunteer-form');
-            if (volunteerForm) {
-                volunteerForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Merci pour votre candidature! Nous vous contacterons bientôt.');
-                    this.reset();
-                });
-            }
-            
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Merci pour votre message! Nous vous répondrons dans les plus brefs délais.');
-                    this.reset();
-                });
-            }
-            
-            const donateBtn = document.getElementById('donate-btn');
-            if (donateBtn) {
-                donateBtn.addEventListener('click', function() {
-                    const amount = customAmountInput ? customAmountInput.value : '50';
-                    alert(`Merci pour votre don de ${amount}$! Vous serez redirigé vers notre page de paiement sécurisée.`);
-                    // Dans une implémentation réelle, rediriger vers une page de paiement
-                    // window.location.href = `https://payment-page.com?amount=${amount}`;
-                });
-            }
-            
-            // Boutons spéciaux de la page d'accueil
-            if (pageName === 'index.html') {
-                const donateHeroBtn = document.getElementById('donate-hero-btn');
-                const volunteerHeroBtn = document.getElementById('volunteer-hero-btn');
-                const programsHeroBtn = document.getElementById('programs-hero-btn');
-                const viewAllProgramsBtn = document.getElementById('view-all-programs-btn');
-                
-                if (donateHeroBtn) {
-                    donateHeroBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        loadPage('rejoindre.html');
-                        // Faire défiler vers la section des dons après un court délai
-                        setTimeout(() => {
-                            document.getElementById('donation-section').scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    });
-                }
-                
-                if (volunteerHeroBtn) {
-                    volunteerHeroBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        loadPage('rejoindre.html');
-                        // Faire défiler vers la section des volontaires après un court délai
-                        setTimeout(() => {
-                            document.getElementById('volunteer-section').scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                    });
-                }
-                
-                if (programsHeroBtn) {
-                    programsHeroBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        loadPage('programmes.html');
-                    });
-                }
-                
-                if (viewAllProgramsBtn) {
-                    viewAllProgramsBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        loadPage('programmes.html');
-                    });
-                }
-            }
-            
-            // Formulaire de newsletter
-            const newsletterForm = document.getElementById('newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('input[type="email"]').value;
-                    alert(`Merci de vous être abonné à notre newsletter avec l'adresse: ${email}`);
-                    this.reset();
-                });
-            }
-        }
+    <section class="section" id="rapports">
+      <div class="container section__header">
+        <p class="eyebrow">Recherche et rapports</p>
+        <div class="section__title-group">
+          <h2>Profil organisationnel et transparence</h2>
+          <p>Nous structurons nos actions autour de l'evidence terrain, de la gestion responsable et de la collaboration avec des partenaires locaux solides.</p>
+        </div>
+      </div>
 
-        // Gérer la navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Déterminer la page actuelle
-            const path = window.location.pathname;
-            const currentPage = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-            
-            // Charger la page
-            loadPage(currentPage);
-            
-            // Gérer les clics sur les liens de navigation
-            document.querySelectorAll('.nav-link, .footer-nav-link, .logo-container').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const page = this.getAttribute('data-page') || 'index.html';
-                    loadPage(page);
-                });
-            });
-            
-            // Gérer les boutons de navigation avant/arrière du navigateur
-            window.addEventListener('popstate', function(event) {
-                const path = window.location.pathname;
-                const page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-                loadPage(page);
-            });
-            
-            // Bouton du menu mobile
-            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-                document.querySelector('nav').classList.toggle('active');
-            });
-            
-            // Fermer le menu mobile en cliquant sur un lien
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function() {
-                    document.querySelector('nav').classList.remove('active');
-                });
-            });
-            
-            // Sélecteur de langue
-            document.getElementById('language-select').addEventListener('change', function() {
-                alert('Fonctionnalité multilingue à implémenter - Langue sélectionnée: ' + this.value);
-                // Dans une implémentation réelle, cela chargerait des traductions
-            });
-        });
-    </script>
+      <div class="container cards cards--three">
+        <article class="card" id="profil">
+          <h3>Profil organisationnel</h3>
+          <ul class="card__list">
+            <li><strong>Nom:</strong> Youth Foundation Haiti</li>
+            <li><strong>Date de creation:</strong> 10 mai 2019</li>
+            <li><strong>Fondateur:</strong> Jean Sebastien</li>
+            <li><strong>Domaine:</strong> protection de l'enfance, education, social, culture, humanitaire</li>
+            <li><strong>Public cible:</strong> orphelins, enfants et jeunes vulnerables</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Pourquoi soutenir Youth Foundation Haiti</h3>
+          <ul class="card__list">
+            <li>Action directe et continue sur le terrain</li>
+            <li>Connaissance reelle des communautes</li>
+            <li>Transparence dans la gestion des ressources</li>
+            <li>Impact mesurable sur la vie des enfants</li>
+            <li>Developpement de projets durables comme FestiKids Haiti</li>
+          </ul>
+        </article>
+
+        <article class="card" id="documents">
+          <h3>Documents et ressources</h3>
+          <p>Consultez nos documents d'information et de programme.</p>
+          <div class="resource-links">
+            <a class="btn btn--ghost" href="assets/docs/Information.pdf" target="_blank" rel="noopener noreferrer">Information.pdf</a>
+            <a class="btn btn--ghost" href="assets/docs/Programme.pdf" target="_blank" rel="noopener noreferrer">Programme.pdf</a>
+            <a class="btn btn--ghost" href="assets/docs/YFH.pdf" target="_blank" rel="noopener noreferrer">YFH.pdf</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="temps-forts">
+      <div class="container section__header">
+        <p class="eyebrow">Recits et temps forts</p>
+        <div class="section__title-group">
+          <h2>Calendrier des actions marquantes</h2>
+          <p>Repere du moment: <strong data-current-month-fr>fevrier 2026</strong>. La fondation maintient un cycle annuel d'activites en faveur des enfants.</p>
+        </div>
+      </div>
+
+      <div class="container timeline">
+        <article class="timeline__item">
+          <span class="timeline__date">Mai 2019</span>
+          <h3>Creation de Youth Foundation Haiti</h3>
+          <p>Lancement officiel de la fondation avec une vision communautaire de long terme.</p>
+        </article>
+        <article class="timeline__item">
+          <span class="timeline__date">Rentrée scolaire</span>
+          <h3>Orphans Back to School</h3>
+          <p>Distribution de kits scolaires et appui a la scolarisation de centaines d'enfants.</p>
+        </article>
+        <article class="timeline__item">
+          <span class="timeline__date">Paques</span>
+          <h3>Orphans Easter Lunch</h3>
+          <p>Repas special, animations educatives et activites recreatives dans les orphelinats.</p>
+        </article>
+        <article class="timeline__item">
+          <span class="timeline__date">Decembre</span>
+          <h3>Christmas Orphans</h3>
+          <p>Celebrations de Noel, distribution de repas, jouets et cadeaux dans plusieurs structures.</p>
+        </article>
+        <article class="timeline__item">
+          <span class="timeline__date">Depuis 2025</span>
+          <h3>FestiKids Haiti</h3>
+          <p>Evenement de collecte de fonds et de mobilisation communautaire pour la protection de l'enfance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="equipe">
+      <div class="container section__header">
+        <p class="eyebrow">Equipe et gouvernance</p>
+        <div class="section__title-group">
+          <h2>Une equipe jeune, dynamique et engagee</h2>
+          <p>Youth Foundation Haiti repose sur des volontaires, coordinateurs et partenaires communautaires unis autour de la meme vision.</p>
+        </div>
+      </div>
+
+      <div class="container cards cards--three">
+        <article class="card" id="fondateur">
+          <h3>Direction</h3>
+          <p><strong>Jean Sebastien - Fondateur et Directeur General</strong></p>
+          <p>"En tant qu'orphelin, j'ai connu la douleur, l'abandon et l'insecurite. Chaque enfant que nous soutenons represente une part de mon propre passe que je tente de reparer par l'action."</p>
+        </article>
+
+        <article class="card">
+          <h3>Coordination des activites</h3>
+          <p><strong>Alexa Jean - Coordinatrice des programmes sociaux</strong></p>
+          <p>Rejointe en 2020, elle participe activement aux activites dans les orphelinats, a l'encadrement des enfants et a l'organisation logistique des projets.</p>
+        </article>
+
+        <article class="card">
+          <h3>Equipe terrain</h3>
+          <ul class="card__list">
+            <li>Volontaires communautaires</li>
+            <li>Animateurs d'activites educatives et culturelles</li>
+            <li>Responsables logistiques</li>
+            <li>Agents de mobilisation</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section partners" id="partenaires">
+      <div class="container section__header">
+        <p class="eyebrow">Sponsors et partenaires</p>
+        <div class="section__title-group">
+          <h2>Un reseau actif pour renforcer l'impact social</h2>
+          <p>Nous invitons les entreprises, institutions et organisations a devenir partenaires d'un mouvement qui transforme la vie des enfants vulnerables en Haiti.</p>
+        </div>
+      </div>
+
+      <div class="container partners__logos" role="list" aria-label="Logos partenaires">
+        <div class="partner" role="listitem"><img src="assets/images/sponsor-01.jpg" alt="Logo partenaire" /></div>
+        <div class="partner" role="listitem"><img src="assets/images/sponsor-02.jpg" alt="Logo partenaire" /></div>
+        <div class="partner" role="listitem"><img src="assets/images/sponsor-03.jpg" alt="Logo partenaire" /></div>
+      </div>
+
+      <div class="container cards cards--three">
+        <article class="card">
+          <h3>Nos partenaires cites</h3>
+          <ul class="card__list">
+            <li>Save Us</li>
+            <li>Eco Life Club</li>
+            <li>The Better Haiti Club</li>
+            <li>Poujenyo</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Votre soutien permet</h3>
+          <ul class="card__list">
+            <li>D'offrir un acces durable a l'education</li>
+            <li>D'assurer une alimentation digne</li>
+            <li>De creer des espaces securises pour l'epanouissement</li>
+            <li>De developper des programmes de long terme</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Notre valeur ajoutee</h3>
+          <ul class="card__list">
+            <li>Action directe sur le terrain</li>
+            <li>Reseau local solide</li>
+            <li>Gestion intègre et transparente</li>
+            <li>Resultats concrets pour les enfants</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="communaute">
+      <div class="container section__header">
+        <p class="eyebrow">Volontaires et communaute</p>
+        <div class="section__title-group">
+          <h2>Restez connectes a la vie de la fondation</h2>
+          <p>Suivez nos plateformes officielles pour recevoir les actualites, annonces et appels a volontaires.</p>
+        </div>
+      </div>
+
+      <div class="container cards cards--three">
+        <article class="card">
+          <h3>Instagram officiel</h3>
+          <a class="link-strong" href="https://www.instagram.com/youth_foundation_haiti?igsh=NWlrYjgzenR0d2gw" target="_blank" rel="noopener noreferrer">youth_foundation_haiti</a>
+        </article>
+        <article class="card">
+          <h3>Facebook officiel</h3>
+          <a class="link-strong" href="https://www.facebook.com/share/p/14S2yQSVKZX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Page Facebook Youth Foundation Haiti</a>
+        </article>
+        <article class="card">
+          <h3>Canal WhatsApp</h3>
+          <a class="link-strong" href="https://whatsapp.com/channel/0029Vb7UY8WJuyAFtt5CdY01" target="_blank" rel="noopener noreferrer">Newsletter et annonces</a>
+        </article>
+        <article class="card">
+          <h3>Page des membres</h3>
+          <a class="link-strong" href="https://www.instagram.com/youth_foundation_member_2026?igsh=MmIwZmhoZTl3N3Rz" target="_blank" rel="noopener noreferrer">youth_foundation_member_2026</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container cta__card">
+        <div>
+          <p class="eyebrow">Soutenir Youth Foundation Haiti</p>
+          <h2>Ensemble, donnons plus qu'une aide: une chance, une direction et un espoir</h2>
+          <p>Votre contribution investit dans une generation capable de transformer Haiti.</p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="donate.html">Contribuer maintenant</a>
+          <a class="btn btn--ghost" href="#contact">Parler a notre equipe</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__info">
+          <p class="eyebrow">Contact</p>
+          <h2>Construisons ensemble des solutions durables</h2>
+          <p>Vous etes sponsor, partenaire, volontaire ou media? Ecrivez-nous. Notre equipe repond dans les plus brefs delais.</p>
+          <ul class="contact__details">
+            <li>
+              <span class="contact__label">Email</span>
+              <a href="mailto:youthfoundationhaiti@gmail.com">youthfoundationhaiti@gmail.com</a>
+            </li>
+            <li>
+              <span class="contact__label">Telephone</span>
+              <a href="tel:+50941000000">+509 41 00 00 00</a>
+            </li>
+            <li>
+              <span class="contact__label">Adresse</span>
+              <span>Haiti</span>
+            </li>
+          </ul>
+          <div class="contact__pill">Disponibilite: lundi au vendredi, 9h00 - 17h00</div>
+        </div>
+
+        <div class="contact__form-card">
+          <form id="contact-form" novalidate>
+            <div class="form__group">
+              <label for="name">Nom complet</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="form__group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form__group">
+              <label for="topic">Objet</label>
+              <select id="topic" name="topic" required>
+                <option value="">Selectionnez un sujet</option>
+                <option value="partenariat">Partenariat</option>
+                <option value="don">Don</option>
+                <option value="volontariat">Volontariat</option>
+                <option value="media">Demande media</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Envoyer</button>
+            <p class="form__feedback" id="form-feedback" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <span class="brand__name">Youth Foundation Haiti</span>
+        <p>Organisation haitienne dediee a l'education, a la protection et a l'epanouissement des enfants vulnerables.</p>
+      </div>
+      <div class="footer__links">
+        <a href="#mission">Mission</a>
+        <a href="#activites">Activites</a>
+        <a href="#rapports">Rapports</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer__meta">
+        <p>© 2026 Youth Foundation Haiti. Tous droits reserves.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/youth_foundation_haiti?igsh=NWlrYjgzenR0d2gw" target="_blank" rel="noopener noreferrer" aria-label="Instagram officiel">Instagram</a>
+          <a href="https://www.facebook.com/share/p/14S2yQSVKZX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook officiel">Facebook</a>
+          <a href="https://whatsapp.com/channel/0029Vb7UY8WJuyAFtt5CdY01" target="_blank" rel="noopener noreferrer" aria-label="Canal WhatsApp">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programmes | Youth Foundation Haiti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header__content">
+      <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="index.html#mission">Qui nous sommes</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#programme-detail">Ce que nous faisons</a>
+          </li>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#temps-forts">Temps forts annuels</a></li>
+              <li><a class="nav__sublink" href="index.html#fondateur">Mot du fondateur</a></li>
+              <li><a class="nav__sublink" href="index.html#communaute">Actualites communautaires</a></li>
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--donate" href="donate.html">Faire un don</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero" aria-labelledby="programs-hero-title">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow">Ce que nous faisons</p>
+          <h1 id="programs-hero-title">Programmes concrets pour les orphelins et enfants vulnerables</h1>
+          <p class="lead">Nos interventions sont construites avec les communautes pour apporter education, alimentation, protection et accompagnement durable.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#programme-detail">Voir les activites</a>
+            <a class="btn btn--ghost" href="donate.html">Soutenir un programme</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <div class="hero__image" role="presentation"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programme-detail">
+      <div class="container section__header">
+        <p class="eyebrow">Programmes phares</p>
+        <div class="section__title-group">
+          <h2>Des actions regulieres dans les orphelinats et communautes</h2>
+          <p>Chaque programme repond a des besoins essentiels avec des resultats mesurables.</p>
+        </div>
+      </div>
+
+      <div class="container cards cards--three">
+        <article class="card">
+          <h3>Orphans Back to School</h3>
+          <p>Distribution de sacs scolaires complets, fournitures et materiels educatifs.</p>
+          <p><strong>Impact:</strong> plus de 650 enfants beneficiaires.</p>
+        </article>
+        <article class="card">
+          <h3>Orphans Easter Lunch</h3>
+          <p>Repas de Paques, activites recreatives et animations educatives.</p>
+          <p><strong>Impact:</strong> environ 400 enfants beneficiaires.</p>
+        </article>
+        <article class="card">
+          <h3>Christmas Orphans</h3>
+          <p>Celebrations de Noel, distribution de repas, jouets et cadeaux.</p>
+          <p><strong>Impact:</strong> entre 250 et 300 enfants par edition.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="festikids-program">
+      <div class="container cards cards--three">
+        <article class="card">
+          <h3>FestiKids Haiti (depuis 2025)</h3>
+          <p>Evenement public de collecte de fonds, activites culturelles, musicales et educatives.</p>
+        </article>
+        <article class="card" id="assistance">
+          <h3>Assistance sociale et humanitaire</h3>
+          <p>Visites regulieres dans les orphelinats, soutien moral et psychosocial, activites sportives et culturelles.</p>
+        </article>
+        <article class="card" id="volunteer-network">
+          <h3>Mobilisation et gestion des volontaires</h3>
+          <p>Recrutement, formation et encadrement des equipes terrain dans plusieurs communautes.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <span class="brand__name">Youth Foundation Haiti</span>
+        <p>Actions educatives, alimentaires, sociales et culturelles pour les enfants d'Haiti.</p>
+      </div>
+      <div class="footer__links">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">A propos</a>
+        <a href="donate.html">Soutenir</a>
+      </div>
+      <div class="footer__meta">
+        <p>© 2026 Youth Foundation Haiti. Tous droits reserves.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

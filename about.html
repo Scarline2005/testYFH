@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A propos | Youth Foundation Haiti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header__content">
+      <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="index.html#mission">Qui nous sommes</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="index.html#activites">Ce que nous faisons</a>
+          </li>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#temps-forts">Temps forts annuels</a></li>
+              <li><a class="nav__sublink" href="index.html#fondateur">Mot du fondateur</a></li>
+              <li><a class="nav__sublink" href="index.html#communaute">Actualites communautaires</a></li>
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--donate" href="donate.html">Faire un don</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero" aria-labelledby="about-hero-title">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow">Qui nous sommes</p>
+          <h1 id="about-hero-title">Une fondation nee de l'experience vecue et de la solidarite</h1>
+          <p class="lead">Youth Foundation Haiti a ete creee le 10 mai 2019 pour accompagner les orphelins et les enfants vulnerables a travers des solutions educatives, sociales et humanitaires.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="index.html#mission">Lire notre mission</a>
+            <a class="btn btn--ghost" href="index.html#equipe">Rencontrer l'equipe</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <div class="hero__image" role="presentation"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cards cards--three">
+        <article class="card">
+          <h3>Mission</h3>
+          <p>Ameliorer durablement les conditions de vie des enfants et jeunes vulnerables d'Haiti, en particulier les orphelins et les enfants issus de milieux defavorises.</p>
+        </article>
+        <article class="card">
+          <h3>Vision</h3>
+          <p>Construire une Haiti ou chaque enfant a acces a la dignite, a l'education et aux opportunites necessaires pour un avenir meilleur.</p>
+        </article>
+        <article class="card">
+          <h3>Approche</h3>
+          <p>Participation communautaire, transparence, collaboration et durabilite pour un impact local reel.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container section__header">
+        <p class="eyebrow">Mot du fondateur</p>
+        <div class="section__title-group">
+          <h2>Jean Sebastien</h2>
+          <p>"Chaque enfant que nous soutenons represente une part de mon propre passe que je tente de reparer par l'action. Youth Foundation Haiti n'est pas seulement une organisation, c'est une famille engagee."</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container section__header">
+        <p class="eyebrow">Leadership</p>
+        <div class="section__title-group">
+          <h2>Presentation de l'equipe</h2>
+          <p>Une equipe jeune, dynamique et engagee composee de volontaires, coordinateurs et partenaires communautaires.</p>
+        </div>
+      </div>
+      <div class="container cards cards--three">
+        <article class="card">
+          <h3>Direction</h3>
+          <p><strong>Jean Sebastien</strong> - Fondateur et Directeur General</p>
+        </article>
+        <article class="card">
+          <h3>Coordination des activites</h3>
+          <p><strong>Alexa Jean</strong> - Coordinatrice des programmes sociaux (depuis 2020)</p>
+        </article>
+        <article class="card">
+          <h3>Equipe terrain</h3>
+          <ul class="card__list">
+            <li>Volontaires communautaires</li>
+            <li>Animateurs educatifs et culturels</li>
+            <li>Responsables logistiques</li>
+            <li>Agents de mobilisation</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <span class="brand__name">Youth Foundation Haiti</span>
+        <p>Organisation haitienne dediee a la protection de l'enfance et au developpement de la jeunesse.</p>
+      </div>
+      <div class="footer__links">
+        <a href="index.html">Accueil</a>
+        <a href="programs.html">Programmes</a>
+        <a href="donate.html">Soutenir</a>
+      </div>
+      <div class="footer__meta">
+        <p>© 2026 Youth Foundation Haiti. Tous droits reserves.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
