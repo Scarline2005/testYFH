@@ -126,6 +126,14 @@
 }
 
 @media (max-width: 768px) {
+  .program-card__media {
+    height: 170px;
+  }
+
+  .support-highlights {
+    grid-template-columns: 1fr;
+  }
+
   .section {
     padding: 4.2rem 0;
   }
