@@ -170,6 +170,11 @@ ready(() => {
     element.textContent = formattedMonth;
   });
 
+  const currentYear = String(new Date().getFullYear());
+  document.querySelectorAll('[data-current-year]').forEach((element) => {
+    element.textContent = currentYear;
+  });
+
   // Seamless partners marquee
   const partnersTrack = document.querySelector('.partners__track');
   if (partnersTrack && partnersTrack.dataset.cloned !== 'true') {

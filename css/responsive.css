@@ -123,6 +123,11 @@
   .header__content {
     gap: 0.6rem;
   }
+
+  .footer-pro__main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem 1.6rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -154,6 +159,15 @@
 
   .footer__content {
     grid-template-columns: 1fr;
+  }
+
+  .footer-pro__main {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-pro__bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .brand__logo {
@@ -199,9 +213,19 @@
     margin-top: 0;
   }
 
+  .footer-pro__legal {
+    width: 100%;
+    display: grid;
+    gap: 0.35rem;
+  }
+
   .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .btn--footer-pro {
+    width: fit-content;
   }
 
   .card,
