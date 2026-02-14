@@ -1,160 +1,796 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>À propos | Youth Foundation Haiti</title>
+  <meta name="description" content="Qui sommes-nous - Youth Foundation Haiti. Notre histoire, nos engagements sur le terrain, nos valeurs en action et les temoignages de la communaute." />
+  <title>Qui sommes-nous | Youth Foundation Haiti</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-900: #0f2b5b;
+      --blue-800: #163c78;
+      --blue-700: #1f539a;
+      --sky-100: #eff5ff;
+      --white: #ffffff;
+      --ink: #1b2940;
+      --muted: #5c6a80;
+      --warm: #f09a4a;
+      --warm-soft: #fff1e5;
+      --line: #dce5f2;
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow: 0 20px 40px rgba(18, 49, 96, 0.14);
+      --shadow-soft: 0 12px 24px rgba(18, 49, 96, 0.08);
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f8fbff 0%, #fdfefe 40%, #ffffff 100%);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(21, 64, 128, 0.1);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 800;
+      color: var(--blue-900);
+      letter-spacing: 0.02em;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--blue-800);
+      opacity: 0.9;
+    }
+
+    .nav a:hover {
+      color: var(--blue-700);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 0;
+      padding: 0.8rem 1.2rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-700), var(--blue-900));
+      color: var(--white);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-warm {
+      background: linear-gradient(135deg, #ef8e3b, #f8b661);
+      color: #2e1d0e;
+      box-shadow: 0 12px 24px rgba(240, 154, 74, 0.35);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding: 4.5rem 0 4rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(115deg, rgba(15, 43, 91, 0.9) 0%, rgba(15, 43, 91, 0.64) 45%, rgba(15, 43, 91, 0.28) 100%),
+        url("assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%282%29.jpeg") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 80px;
+      background: radial-gradient(120% 90px at 50% 0%, transparent 35%, #fff 36%);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.8rem;
+      align-items: end;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(2rem, 4.8vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.92);
+      margin: 1rem 0 1.2rem;
+      max-width: 52ch;
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.2rem;
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-panel strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+    }
+
+    .section {
+      padding: 4.6rem 0;
+    }
+
+    .section-header {
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-weight: 800;
+      color: var(--blue-700);
+      font-size: 0.78rem;
+      margin: 0 0 0.6rem;
+    }
+
+    h2 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--blue-900);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .story-media {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .story-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    .story-body p + p {
+      margin-top: 1rem;
+    }
+
+    .founder {
+      background: linear-gradient(180deg, #f7faff 0%, #fff 100%);
+    }
+
+    .founder-card {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 1.6rem;
+      background: #fff;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 360px;
+    }
+
+    .founder-body {
+      padding: 2rem;
+    }
+
+    .founder-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--blue-900);
+      margin-bottom: 0.35rem;
+    }
+
+    blockquote {
+      margin: 1.1rem 0 0;
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--blue-800);
+      background: var(--sky-100);
+      border-left: 4px solid var(--warm);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+    }
+
+    .engagement {
+      position: relative;
+    }
+
+    .engagement::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      top: -40px;
+      background: radial-gradient(circle at center, rgba(240, 154, 74, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+
+    .engagement-card {
+      padding: 1.3rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .engagement-card h3 {
+      margin: 0 0 0.35rem;
+      color: var(--blue-900);
+    }
+
+    .values {
+      background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .value-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .value-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      background: var(--warm-soft);
+      color: #af5e1d;
+      margin-bottom: 0.8rem;
+    }
+
+    .value-card h3 {
+      margin: 0 0 0.45rem;
+      color: var(--blue-900);
+      font-size: 1.04rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.8rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      min-height: 190px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-item::after {
+      content: "Voir l'action";
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.65rem 0.8rem;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      background: linear-gradient(180deg, rgba(15, 43, 91, 0) 0%, rgba(15, 43, 91, 0.82) 100%);
+      transform: translateY(100%);
+      transition: transform 0.28s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item:hover::after {
+      transform: translateY(0);
+    }
+
+    .g1, .g2, .g3, .g4, .g5, .g6, .g7, .g8 { grid-column: span 3; }
+
+    .testimonials {
+      background: linear-gradient(180deg, #f6faff 0%, #ffffff 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .quote-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .quote-card p {
+      margin-bottom: 0.8rem;
+      color: #45566f;
+    }
+
+    .quote-author {
+      font-weight: 800;
+      color: var(--blue-900);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      padding-bottom: 5.4rem;
+    }
+
+    .cta-box {
+      background:
+        linear-gradient(125deg, rgba(15, 43, 91, 0.95), rgba(24, 74, 140, 0.86)),
+        url("assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%281%29.jpeg") center/cover no-repeat;
+      border-radius: var(--radius-xl);
+      padding: clamp(1.4rem, 4vw, 2.4rem);
+      color: #fff;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cta h2 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 60ch;
+    }
+
+    .footer {
+      background: #0d2348;
+      color: rgba(255, 255, 255, 0.86);
+      padding: 1.25rem 0;
+      font-size: 0.94rem;
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1020px) {
+      .hero-grid,
+      .story-grid,
+      .engagement-grid,
+      .founder-card,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .founder-photo img {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        padding: 0.55rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .section {
+        padding: 3.5rem 0;
+      }
+
+      .values-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .g1, .g2, .g3, .g4, .g5, .g6, .g7, .g8 {
+        grid-column: span 6;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .g1, .g2, .g3, .g4, .g5, .g6, .g7, .g8 {
+        grid-column: span 12;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container header__content">
+    <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
-        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+        <img src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+        <span>Youth Foundation Haiti</span>
       </a>
-
       <nav class="nav" aria-label="Navigation principale">
-        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
-          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
-          <span class="sr-only">Basculer la navigation</span>
-        </button>
-        <ul id="nav-menu" class="nav__list">
-          <li class="nav__item">
-            <a class="nav__link" href="index.html#mission">Qui nous sommes</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="index.html#activites">Ce que nous faisons</a>
-          </li>
-          <li class="nav__item nav__item--has-submenu">
-            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
-              Recherche et rapports
-              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
-            </button>
-            <ul class="nav__submenu">
-              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
-              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
-              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
-              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
-            </ul>
-          </li>
-          <li class="nav__item nav__item--has-submenu">
-            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
-              Récits et temps forts
-              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
-            </button>
-            <ul class="nav__submenu">
-              <li><a class="nav__sublink" href="index.html#temps-forts">Temps forts annuels</a></li>
-              <li><a class="nav__sublink" href="index.html#fondateur">Mot du fondateur</a></li>
-              <li><a class="nav__sublink" href="index.html#communaute">Actualités communautaires</a></li>
-              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
-            </ul>
-          </li>
-        </ul>
+        <a href="index.html">Accueil</a>
+        <a href="programs.html">Programmes</a>
+        <a href="#galerie">Galerie</a>
+        <a class="btn btn-primary" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Soutenir</a>
       </nav>
-
-      <div class="header__actions">
-        <a class="btn btn--donate" href="donate.html">Faire un don</a>
-      </div>
     </div>
   </header>
 
   <main>
-    <section class="section hero" aria-labelledby="about-hero-title">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <p class="eyebrow">Qui nous sommes</p>
-          <h1 id="about-hero-title">Une fondation née de l'expérience vécue et de la solidarité</h1>
-          <p class="lead">Youth Foundation Haiti a été créée le 10 mai 2019 pour accompagner les orphelins et les enfants vulnérables à travers des solutions éducatives, sociales et humanitaires.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="index.html#mission">Lire notre mission</a>
-            <a class="btn btn--ghost" href="index.html#equipe">Rencontrer l'équipe</a>
+    <section class="hero">
+      <div class="container hero-grid reveal">
+        <div>
+          <p class="eyebrow" style="color: rgba(255,255,255,0.9);">Qui sommes-nous</p>
+          <h1>Une jeunesse qui se releve quand une communaute se mobilise</h1>
+          <p>
+            Youth Foundation Haiti est nee d'une realite vecue au plus pres des enfants vulnerables. Chaque activite est un acte de presence, de protection et d'espoir concret pour celles et ceux qui grandissent dans des contextes fragiles.
+          </p>
+          <a class="btn btn-warm" href="#histoire">Decouvrir notre histoire</a>
+        </div>
+        <aside class="hero-panel">
+          <strong>Ce qui nous guide</strong>
+          Nous ne promettons pas de changer le monde en un jour. Nous choisissons d'etre la, sur le terrain, avec constance et dignite, pour que chaque enfant sente qu'il compte.
+        </aside>
+      </div>
+    </section>
+
+    <section id="histoire" class="section">
+      <div class="container story-grid reveal">
+        <figure class="story-media">
+          <img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.16.11%20PM%20%282%29.jpeg" alt="Volontaires et enfants reunis lors d'une activite communautaire" loading="lazy" />
+        </figure>
+        <div class="story-body">
+          <p class="eyebrow">Notre Histoire</p>
+          <h2>Un parcours construit avec les enfants, pas seulement pour eux</h2>
+          <p>
+            L'histoire de Youth Foundation Haiti commence avec des jeunes qui ont connu l'absence de soutien, puis ont choisi de transformer cette douleur en action collective. De rencontre en rencontre, un reseau de volontaires, d'educateurs et de familles s'est forme autour d'un meme engagement.
+          </p>
+          <p>
+            Depuis, chaque intervention raconte la meme conviction: offrir un cadre sur, une ecoute sincere et des opportunites reelles change la trajectoire d'un enfant. Notre force n'est pas dans les discours, elle est dans la continuite du lien humain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section founder">
+      <div class="container reveal">
+        <div class="section-header">
+          <p class="eyebrow">Portrait du fondateur</p>
+          <h2>Une voix issue du terrain</h2>
+        </div>
+        <article class="founder-card">
+          <div class="founder-photo">
+            <img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%201.08.47%20PM.jpeg" alt="Portrait du fondateur de Youth Foundation Haiti" loading="lazy" />
           </div>
-        </div>
-        <div class="hero__media">
-          <div class="hero__image" role="presentation"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container cards cards--three">
-        <article class="card">
-          <h3>Mission</h3>
-          <p>Améliorer durablement les conditions de vie des enfants et jeunes vulnérables d'Haiti, en particulier les orphelins et les enfants issus de milieux défavorisés.</p>
-        </article>
-        <article class="card">
-          <h3>Vision</h3>
-          <p>Construire une Haiti où chaque enfant a accès à la dignité, à l'éducation et aux opportunités nécessaires pour un avenir meilleur.</p>
-        </article>
-        <article class="card">
-          <h3>Approche</h3>
-          <p>Participation communautaire, transparence, collaboration et durabilité pour un impact local réel.</p>
+          <div class="founder-body">
+            <p class="founder-name">Jean Sebastien</p>
+            <p>Fondateur et directeur de Youth Foundation Haiti</p>
+            <blockquote>
+              "Quand un enfant retrouve confiance, c'est toute une communaute qui recommence a croire en l'avenir. Notre role est d'ouvrir ce chemin, avec humilite et determination."
+            </blockquote>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container section__header">
-        <p class="eyebrow">Mot du fondateur</p>
-        <div class="section__title-group">
-          <h2>Jean Sebastien</h2>
-          <p>"Chaque enfant que nous soutenons représente une part de mon propre passé que je tente de réparer par l'action. Youth Foundation Haiti n'est pas seulement une organisation, c'est une famille engagée."</p>
+    <section class="section engagement">
+      <div class="container reveal">
+        <div class="section-header">
+          <p class="eyebrow">Notre engagement sur le terrain</p>
+          <h2>Des actions regulieres, visibles et proches des besoins reels</h2>
+        </div>
+        <div class="engagement-grid">
+          <article class="engagement-card">
+            <h3>Presence communautaire</h3>
+            <p>Nous intervenons dans des quartiers et orphelinats avec des activites educatives, recreatives et de soutien psychosocial, en collaboration directe avec les acteurs locaux.</p>
+          </article>
+          <article class="engagement-card">
+            <h3>Accompagnement concret</h3>
+            <p>Au-dela des evenements, nous suivons les enfants dans la duree: kits scolaires, repas solidaires, orientation et appui humain pour limiter les ruptures.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container section__header">
-        <p class="eyebrow">Leadership</p>
-        <div class="section__title-group">
-          <h2>Présentation de l'équipe</h2>
-          <p>Une équipe jeune, dynamique et engagée composée de volontaires, coordinateurs et partenaires communautaires.</p>
+    <section class="section values">
+      <div class="container reveal">
+        <div class="section-header">
+          <p class="eyebrow">Nos valeurs en action</p>
+          <h2>Ce que nous incarnons au quotidien</h2>
+        </div>
+        <div class="values-grid">
+          <article class="value-card">
+            <div class="value-icon">&#9829;</div>
+            <h3>Solidarite active</h3>
+            <p>Chaque programme est construit pour reduire l'isolement et renforcer les liens de proximite.</p>
+          </article>
+          <article class="value-card">
+            <div class="value-icon">&#10045;</div>
+            <h3>Dignite humaine</h3>
+            <p>Nous placons le respect, la protection et l'ecoute de l'enfant au centre de chaque decision.</p>
+          </article>
+          <article class="value-card">
+            <div class="value-icon">&#128161;</div>
+            <h3>Responsabilite</h3>
+            <p>Nous agissons avec transparence, methodes claires et suivi continu des actions menees.</p>
+          </article>
+          <article class="value-card">
+            <div class="value-icon">&#128737;</div>
+            <h3>Protection</h3>
+            <p>Nos activites visent des espaces plus surs pour grandir, apprendre et se reconstruire.</p>
+          </article>
+          <article class="value-card">
+            <div class="value-icon">&#128101;</div>
+            <h3>Co-construction</h3>
+            <p>Familles, volontaires et partenaires participent a la conception des interventions locales.</p>
+          </article>
+          <article class="value-card">
+            <div class="value-icon">&#127919;</div>
+            <h3>Impact reel</h3>
+            <p>Notre priorite: des resultats utiles, mesurables, qui ameliorent concretement le quotidien.</p>
+          </article>
         </div>
       </div>
-      <div class="container cards cards--three">
-        <article class="card">
-          <h3>Direction</h3>
-          <p><strong>Jean Sebastien</strong> - Fondateur et Directeur Général</p>
-        </article>
-        <article class="card">
-          <h3>Coordination des activités</h3>
-          <p><strong>Alexa Jean</strong> - Coordinatrice des programmes sociaux (depuis 2020)</p>
-        </article>
-        <article class="card">
-          <h3>Équipe terrain</h3>
-          <ul class="card__list">
-            <li>Volontaires communautaires</li>
-            <li>Animateurs éducatifs et culturels</li>
-            <li>Responsables logistiques</li>
-            <li>Agents de mobilisation</li>
-          </ul>
-        </article>
+    </section>
+
+    <section id="galerie" class="section">
+      <div class="container reveal">
+        <div class="section-header">
+          <p class="eyebrow">Notre action en images</p>
+          <h2>Galerie photo du terrain</h2>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item g1"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM.jpeg" alt="Activite avec les enfants" loading="lazy" /></figure>
+          <figure class="gallery-item g2"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM%20%281%29.jpeg" alt="Distribution communautaire" loading="lazy" /></figure>
+          <figure class="gallery-item g3"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM%20%282%29.jpeg" alt="Moment de partage" loading="lazy" /></figure>
+          <figure class="gallery-item g4"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.53%20PM%20%281%29.jpeg" alt="Jeunes engages" loading="lazy" /></figure>
+          <figure class="gallery-item g5"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%283%29.jpeg" alt="Activite educative" loading="lazy" /></figure>
+          <figure class="gallery-item g6"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%284%29.jpeg" alt="Volontaires sur le terrain" loading="lazy" /></figure>
+          <figure class="gallery-item g7"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.55%20PM%20%281%29.jpeg" alt="Enfants et equipe YFH" loading="lazy" /></figure>
+          <figure class="gallery-item g8"><img src="assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.55%20PM%20%282%29.jpeg" alt="Scene de mobilisation" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container reveal">
+        <div class="section-header">
+          <p class="eyebrow">Temoignages</p>
+          <h2>Des paroles qui confirment l'impact humain</h2>
+        </div>
+        <div class="testimonials-grid">
+          <article class="quote-card">
+            <p>"Avec YFH, mon fils se sent valorise. Il ne parle plus seulement de ses difficultes, il parle maintenant de ses reves."</p>
+            <div class="quote-author">Mere beneficiaire - Port-au-Prince</div>
+          </article>
+          <article class="quote-card">
+            <p>"Je suis volontaire depuis deux ans. Ce qui me frappe, c'est la regularite des actions et la qualite du lien avec les enfants."</p>
+            <div class="quote-author">Volontaire terrain - Carrefour</div>
+          </article>
+          <article class="quote-card">
+            <p>"Notre collaboration avec la fondation est serieuse et constructive. Les interventions sont utiles et adaptees aux realites locales."</p>
+            <div class="quote-author">Partenaire communautaire</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container reveal">
+        <div class="cta-box">
+          <div>
+            <p class="eyebrow" style="color: #ffd5b0;">Rejoindre le mouvement</p>
+            <h2>Ensemble, faisons grandir une generation plus forte</h2>
+            <p>Votre soutien permet d'etendre les actions de proximite et d'accompagner davantage d'enfants vers un avenir plus stable et digne.</p>
+          </div>
+          <a class="btn btn-warm" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Je rejoins Youth Foundation Haiti</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer__content">
-      <div class="footer__brand">
-        <span class="brand__name">Youth Foundation Haiti</span>
-        <p>Organisation haïtienne dédiée à la protection de l'enfance et au développement de la jeunesse.</p>
-      </div>
-      <div class="footer__links">
-        <a href="index.html">Accueil</a>
-        <a href="programs.html">Programmes</a>
-        <a href="donate.html">Soutenir</a>
-      </div>
-      <div class="footer__meta">
-        <p>© 2026 Youth Foundation Haiti. Tous droits réservés.</p>
-      </div>
+    <div class="container">
+      <span>Youth Foundation Haiti</span>
+      <span>&copy; 2026 Tous droits reserves.</span>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var nodes = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        nodes.forEach(function (n) { n.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      nodes.forEach(function (node) {
+        observer.observe(node);
+      });
+    })();
+  </script>
 </body>
 </html>

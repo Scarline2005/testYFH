@@ -3,16 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmes | Youth Foundation Haiti</title>
+  <meta name="description" content="Qui sommes-nous - Youth Foundation Haiti" />
+  <title>Qui nous sommes | Youth Foundation Haiti</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    body {
+      background: #ffffff;
+    }
+    .hero {
+      background: #ffffff;
+      color: var(--color-ink);
+    }
+    .hero .eyebrow {
+      color: var(--color-primary);
+    }
+    .hero h1,
+    .hero p,
+    .hero .lead {
+      color: var(--color-ink);
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="container header__content">
       <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
         <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
@@ -23,6 +41,7 @@
           <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
           <span class="sr-only">Basculer la navigation</span>
         </button>
+
         <ul id="nav-menu" class="nav__list">
           <li class="nav__item">
             <a class="nav__link" href="qui-sommes-nous.html">Qui nous sommes</a>
@@ -48,9 +67,6 @@
               <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
             </button>
             <ul class="nav__submenu">
-              <li><a class="nav__sublink" href="index.html#temps-forts">Temps forts annuels</a></li>
-              <li><a class="nav__sublink" href="index.html#fondateur">Mot du fondateur</a></li>
-              <li><a class="nav__sublink" href="index.html#communaute">Actualités communautaires</a></li>
               <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
             </ul>
           </li>
@@ -64,65 +80,62 @@
   </header>
 
   <main>
-    <section class="section hero" aria-labelledby="programs-hero-title">
+    <section class="section hero" aria-labelledby="about-title">
       <div class="container hero__grid">
+        <div class="hero__media">
+          <div class="hero__image" style="--hero-image-url:url('assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%282%29.jpeg');" role="img" aria-label="Equipe Youth Foundation Haiti sur le terrain"></div>
+        </div>
         <div class="hero__content">
-          <p class="eyebrow">Ce que nous faisons</p>
-          <h1 id="programs-hero-title">Programmes concrets pour les orphelins et enfants vulnérables</h1>
-          <p class="lead">Nos interventions sont construites avec les communautés pour apporter éducation, alimentation, protection et accompagnement durable.</p>
+          <p class="eyebrow">Qui nous sommes</p>
+          <h1 id="about-title">Une fondation portée par l'empathie, l'action et la constance</h1>
+          <p class="lead">Youth Foundation Haiti accompagne les enfants vulnérables et les orphelins avec des interventions éducatives, sociales et communautaires construites sur le terrain.</p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#programme-detail">Voir les activités</a>
-            <a class="btn btn--ghost" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Soutenir un programme</a>
+            <a class="btn btn--primary" href="#histoire">Notre histoire</a>
+            <a class="btn btn--ghost" href="index.html#contact">Parler avec nous</a>
           </div>
         </div>
-        <div class="hero__media">
-          <div class="hero__image" role="presentation"></div>
-        </div>
       </div>
     </section>
 
-    <section class="section" id="programme-detail">
+    <section class="section" id="histoire">
       <div class="container section__header">
-        <p class="eyebrow">Programmes phares</p>
+        <p class="eyebrow">Notre histoire</p>
         <div class="section__title-group">
-          <h2>Des actions régulières dans les orphelinats et communautés</h2>
-          <p>Chaque programme répond à des besoins essentiels avec des résultats mesurables.</p>
+          <h2>Une trajectoire née de réalités vécues</h2>
+          <p>Youth Foundation Haiti est née pour répondre aux besoins urgents des enfants exposés à la vulnérabilité et à l'exclusion sociale.</p>
         </div>
       </div>
-
       <div class="container cards cards--three">
         <article class="card">
-          <h3>Orphans Back to School</h3>
-          <p>Distribution de sacs scolaires complets, fournitures et matériels éducatifs.</p>
-          <p><strong>Impact:</strong> plus de 650 enfants bénéficiaires.</p>
+          <h3>Origine</h3>
+          <p>Une initiative locale lancée par des jeunes engagés qui connaissent les défis des communautés haïtiennes.</p>
         </article>
         <article class="card">
-          <h3>Orphans Easter Lunch</h3>
-          <p>Repas de Pâques, activités récréatives et animations éducatives.</p>
-          <p><strong>Impact:</strong> environ 400 enfants bénéficiaires.</p>
+          <h3>Approche</h3>
+          <p>Proximité, écoute et intervention concrète avec les familles, les orphelinats et les partenaires de terrain.</p>
         </article>
         <article class="card">
-          <h3>Christmas Orphans</h3>
-          <p>Célébrations de Noël, distribution de repas, jouets et cadeaux.</p>
-          <p><strong>Impact:</strong> entre 250 et 300 enfants par édition.</p>
+          <h3>Vision humaine</h3>
+          <p>Créer des espaces où chaque enfant peut apprendre, se sentir protégé et se projeter vers l'avenir.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="festikids-program">
-      <div class="container cards cards--three">
-        <article class="card">
-          <h3>FestiKids Haiti (depuis 2025)</h3>
-          <p>Événement public de collecte de fonds, activités culturelles, musicales et éducatives.</p>
-        </article>
-        <article class="card" id="assistance">
-          <h3>Assistance sociale et humanitaire</h3>
-          <p>Visites régulières dans les orphelinats, soutien moral et psychosocial, activités sportives et culturelles.</p>
-        </article>
-        <article class="card" id="volunteer-network">
-          <h3>Mobilisation et gestion des volontaires</h3>
-          <p>Recrutement, formation et encadrement des équipes terrain dans plusieurs communautés.</p>
-        </article>
+    <section class="section">
+      <div class="container about__grid">
+        <div class="about__media">
+          <img src="assets/images/youth-engagement.jpg" alt="Jeunes engagés avec Youth Foundation Haiti" />
+        </div>
+        <div class="about__content">
+          <p class="eyebrow">Nos valeurs</p>
+          <h2>Solidarité, dignité, responsabilité</h2>
+          <p>Nous croyons qu'un impact durable se construit avec la communauté, dans le respect et la transparence.</p>
+          <ul class="list list--checks">
+            <li>Accompagnement des enfants vulnérables</li>
+            <li>Protection de l'enfance et inclusion sociale</li>
+            <li>Collaboration active avec volontaires et partenaires</li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
@@ -131,15 +144,15 @@
     <div class="container footer__content">
       <div class="footer__brand">
         <span class="brand__name">Youth Foundation Haiti</span>
-        <p>Actions éducatives, alimentaires, sociales et culturelles pour les enfants d'Haiti.</p>
+        <p>Organisation haïtienne dédiée à la protection de l'enfance.</p>
       </div>
       <div class="footer__links">
         <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Soutenir</a>
+        <a href="ce-que-nous-faisons.html">Programmes</a>
+        <a href="index.html#contact">Contact</a>
       </div>
       <div class="footer__meta">
-        <p>© 2026 Youth Foundation Haiti. Tous droits réservés.</p>
+        <p>&copy; <span data-current-year>2026</span> Youth Foundation Haiti. Tous droits réservés.</p>
       </div>
     </div>
   </footer>

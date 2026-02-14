@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ce que nous faisons - Youth Foundation Haiti" />
+  <title>Ce que nous faisons | Youth Foundation Haiti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    body {
+      background: #ffffff;
+    }
+
+    .impact-wrap {
+      padding: 0.8rem 0 2.2rem;
+      background: #eef1f6;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .impact-copy {
+      padding: 1.2rem 0.2rem 0;
+    }
+
+    .impact-copy .eyebrow {
+      margin-bottom: 1rem;
+    }
+
+    .impact-copy h1 {
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      line-height: 1.15;
+      margin: 0 0 0.8rem;
+      color: #0f2b57;
+    }
+
+    .impact-copy p {
+      font-size: 0.95rem;
+      color: #526b90;
+      margin: 0;
+      max-width: 30ch;
+    }
+
+    .impact-stats {
+      margin-top: 1.3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+
+    .impact-stat {
+      background: #0f2e5d;
+      border-radius: 16px;
+      padding: 0.95rem;
+      color: #fff;
+    }
+
+    .impact-stat strong {
+      display: block;
+      font-size: 1.95rem;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .impact-stat span {
+      color: #d9e7ff;
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .impact-media {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .impact-media .media-carousel {
+      min-height: 470px;
+      border-radius: 18px;
+    }
+
+    .impact-media .media-carousel__viewport,
+    .impact-media .media-carousel__track,
+    .impact-media .media-carousel__slide,
+    .impact-media .media-carousel__slide img {
+      min-height: 470px;
+    }
+
+    .impact-note {
+      background: #fff;
+      border: 1px solid #d8e1ef;
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+    }
+
+    .impact-note h3 {
+      margin: 0 0 0.35rem;
+      color: #0f2b57;
+      font-size: 1.45rem;
+    }
+
+    .impact-note p {
+      margin: 0;
+      color: #5a6f8e;
+      font-size: 0.92rem;
+    }
+
+
+    @media (max-width: 1040px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-copy {
+        padding-top: 0.7rem;
+      }
+
+      .impact-copy p {
+        max-width: none;
+      }
+
+      .impact-media .media-carousel,
+      .impact-media .media-carousel__viewport,
+      .impact-media .media-carousel__track,
+      .impact-media .media-carousel__slide,
+      .impact-media .media-carousel__slide img {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .impact-stats {
+        grid-template-columns: 1fr;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header__content">
+      <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="qui-sommes-nous.html">Qui nous sommes</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="ce-que-nous-faisons.html">Ce que nous faisons</a>
+          </li>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Récits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--donate" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Faire un don</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="impact-wrap">
+    <section class="section" aria-labelledby="activities-main-title">
+      <div class="container impact-grid">
+        <div class="impact-copy">
+          <p class="eyebrow">Ce que nous faisons</p>
+          <h1 id="activities-main-title">Activités réalisées par Youth Foundation Haiti</h1>
+          <p>Des programmes concrets, répétés chaque année, pour soutenir l'éducation, le bien-être et la protection des enfants.</p>
+
+          <div class="impact-stats" aria-label="Statistiques clés">
+            <article class="impact-stat">
+              <strong>2019</strong>
+              <span>Annee de lancement</span>
+            </article>
+            <article class="impact-stat">
+              <strong>4</strong>
+              <span>Programmes phares</span>
+            </article>
+            <article class="impact-stat">
+              <strong>1000+</strong>
+              <span>Enfants accompagnés chaque annee</span>
+            </article>
+            <article class="impact-stat">
+              <strong>7</strong>
+              <span>Initiatives terrain récurrentes</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="impact-media">
+          <div class="media-carousel" data-media-carousel>
+            <button class="media-carousel__control media-carousel__control--prev" type="button" data-carousel-prev aria-label="Image précédente">
+              <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+            </button>
+            <div class="media-carousel__viewport">
+              <div class="media-carousel__track" data-carousel-track></div>
+            </div>
+            <button class="media-carousel__control media-carousel__control--next" type="button" data-carousel-next aria-label="Image suivante">
+              <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <article class="impact-note">
+            <h3>Approche communautaire</h3>
+            <p>Nos équipes travaillent avec les communautés locales pour construire des actions durables, adaptées aux réalités du terrain et centrées sur la protection des enfants.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <span class="brand__name">Youth Foundation Haiti</span>
+        <p>Actions éducatives, sociales et humanitaires pour l'enfance en Haïti.</p>
+      </div>
+      <div class="footer__links">
+        <a href="index.html">Accueil</a>
+        <a href="qui-sommes-nous.html">Qui nous sommes</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="footer__meta">
+        <p>&copy; <span data-current-year>2026</span> Youth Foundation Haiti. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

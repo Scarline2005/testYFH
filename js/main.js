@@ -204,10 +204,6 @@ ready(() => {
       alt: 'Volontaires Youth Foundation Haiti en activite communautaire',
     },
     {
-      src: '../assets/images/youth-engagement.jpg',
-      alt: 'Jeunes engages dans une activite de groupe',
-    },
-    {
       src: '../assets/images/hero-community.jpg',
       alt: 'Communaute mobilisee autour des actions de la fondation',
     },
@@ -259,6 +255,89 @@ ready(() => {
     }
 
     startHeroAutoplay();
+  });
+
+  // Horizontal carousel for autres_images
+  const autresSlides = [
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM.jpeg', alt: 'Activite terrain Youth Foundation Haiti' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM%20%281%29.jpeg', alt: 'Moment de partage communautaire' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM%20%282%29.jpeg', alt: 'Mobilisation de volontaires' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.53%20PM%20%281%29.jpeg', alt: 'Jeunes engages dans une activite' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%281%29.jpeg', alt: 'Intervention communautaire Youth Foundation Haiti' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%282%29.jpeg', alt: 'Accompagnement des enfants sur le terrain' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%283%29.jpeg', alt: 'Action collective et entraide locale' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.55%20PM%20%281%29.jpeg', alt: 'Equipe Youth Foundation Haiti en mission' },
+  ];
+
+  const carousels = Array.from(document.querySelectorAll('[data-media-carousel]'));
+  const carouselAutoplayDelay = 4200;
+
+  const mountCarouselSlides = (track) => {
+    if (!track) return;
+    track.innerHTML = autresSlides.map((slide) => (
+      `<div class="media-carousel__slide"><img src="${slide.src}" alt="${slide.alt}" loading="lazy" /></div>`
+    )).join('');
+  };
+
+  const initCarousel = (carousel) => {
+    const track = carousel.querySelector('[data-carousel-track]');
+    const prevBtn = carousel.querySelector('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector('[data-carousel-next]');
+    if (!track || !prevBtn || !nextBtn || !autresSlides.length) return null;
+
+    mountCarouselSlides(track);
+
+    let index = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const render = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+    const goNext = () => {
+      index = (index + 1) % autresSlides.length;
+      render();
+    };
+
+    const goPrev = () => {
+      index = (index - 1 + autresSlides.length) % autresSlides.length;
+      render();
+    };
+
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
+
+    track.addEventListener('touchstart', (event) => {
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (event) => {
+      touchEndX = event.changedTouches[0].clientX;
+      const delta = touchEndX - touchStartX;
+      if (Math.abs(delta) < 40) return;
+      if (delta < 0) goNext();
+      if (delta > 0) goPrev();
+    }, { passive: true });
+
+    track.addEventListener('pointerdown', (event) => {
+      touchStartX = event.clientX;
+    });
+
+    track.addEventListener('pointerup', (event) => {
+      touchEndX = event.clientX;
+      const delta = touchEndX - touchStartX;
+      if (Math.abs(delta) < 40) return;
+      if (delta < 0) goNext();
+      if (delta > 0) goPrev();
+    });
+
+    render();
+    setInterval(goNext, carouselAutoplayDelay);
+  };
+
+  carousels.forEach((carousel) => {
+    initCarousel(carousel);
   });
 
   // Contact form handling
