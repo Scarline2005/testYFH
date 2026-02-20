@@ -200,16 +200,40 @@ ready(() => {
   const heroImage = document.querySelector('[data-hero-image]');
   const heroSlides = [
     {
-      src: '../assets/images/community-health.jpg',
-      alt: 'Volontaires Youth Foundation Haiti en activite communautaire',
+      src: '../assets/images/autres_images/YTH/6.jpeg',
+      alt: 'Photo YTH 6',
     },
     {
-      src: '../assets/images/hero-community.jpg',
-      alt: 'Communaute mobilisee autour des actions de la fondation',
+      src: '../assets/images/autres_images/YTH/46.jpeg',
+      alt: 'Photo YTH 46',
     },
     {
-      src: '../assets/images/program-education.jpg',
-      alt: 'Distribution de soutien educatif aux enfants',
+      src: '../assets/images/autres_images/YTH/83.jpeg',
+      alt: 'Photo YTH 83',
+    },
+    {
+      src: '../assets/images/autres_images/YTH/94.jpeg',
+      alt: 'Photo YTH 94',
+    },
+    {
+      src: '../assets/images/autres_images/YTH/114.jpeg',
+      alt: 'Photo YTH 114',
+    },
+    {
+      src: '../assets/images/autres_images/YTH/188.jpeg',
+      alt: 'Photo YTH 188',
+    },
+    {
+      src: '../assets/images/gallery/11.jpeg',
+      alt: 'Photo gallery 11',
+    },
+    {
+      src: '../assets/images/autres_images/enfant.jpeg',
+      alt: 'Photo enfant',
+    },
+    {
+      src: '../assets/images/autres_images/enfant3.jpeg',
+      alt: 'Photo enfant 3',
     },
   ];
 
@@ -255,6 +279,75 @@ ready(() => {
     }
 
     startHeroAutoplay();
+  });
+
+  // Volunteer hero image autoplay (nos-volontaires page)
+  const volunteerHeroImage = document.querySelector('[data-volunteer-hero-image]');
+  const volunteerSlides = [
+    {
+      src: '../assets/images/volontaires/Temoignage/239.jpeg',
+      alt: 'Volontaires Youth Foundation Haiti en action communautaire',
+    },
+    {
+      src: '../assets/images/volontaires/Temoignage/244.jpeg',
+      alt: 'Equipe de volontaires Youth Foundation Haiti',
+    },
+    {
+      src: '../assets/images/volontaires/Temoignage/250.jpeg',
+      alt: 'Volontaires engages pendant une activite de terrain',
+    },
+    {
+      src: '../assets/images/volontaires/Temoignage/258.jpeg',
+      alt: 'Mobilisation des volontaires avec les jeunes',
+    },
+    {
+      src: '../assets/images/volontaires/Temoignage/270.jpeg',
+      alt: 'Volontaires en accompagnement communautaire',
+    },
+  ];
+
+  let volunteerSlideIndex = 0;
+  let volunteerAutoplayTimer = null;
+  const volunteerAutoplayDelay = 3600;
+
+  const renderVolunteerSlide = () => {
+    if (!volunteerHeroImage || !volunteerSlides.length) return;
+    const currentSlide = volunteerSlides[volunteerSlideIndex];
+    volunteerHeroImage.style.setProperty('--hero-image-url', `url('${currentSlide.src}')`);
+    volunteerHeroImage.setAttribute('aria-label', currentSlide.alt);
+  };
+
+  const showNextVolunteerSlide = () => {
+    if (!volunteerSlides.length) return;
+    volunteerSlideIndex = (volunteerSlideIndex + 1) % volunteerSlides.length;
+    renderVolunteerSlide();
+  };
+
+  const stopVolunteerAutoplay = () => {
+    if (volunteerAutoplayTimer) {
+      clearInterval(volunteerAutoplayTimer);
+      volunteerAutoplayTimer = null;
+    }
+  };
+
+  const startVolunteerAutoplay = () => {
+    if (!volunteerHeroImage || volunteerSlides.length < 2) return;
+    if (volunteerAutoplayTimer) return;
+    volunteerAutoplayTimer = setInterval(showNextVolunteerSlide, volunteerAutoplayDelay);
+  };
+
+  if (volunteerHeroImage && volunteerSlides.length) {
+    renderVolunteerSlide();
+    startVolunteerAutoplay();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopVolunteerAutoplay();
+      return;
+    }
+
+    startVolunteerAutoplay();
   });
 
   // Horizontal carousel for autres_images
@@ -343,33 +436,194 @@ ready(() => {
   // Contact form handling
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
+  const submitBtn = document.getElementById('contact-submit-btn');
+  const openContactFormBtn = document.querySelector('[data-open-contact-form]');
+  const contactModal = document.getElementById('contact-form-modal');
+  const closeContactFormBtns = Array.from(document.querySelectorAll('[data-close-contact-form]'));
+  const stepPanels = form ? Array.from(form.querySelectorAll('.form-step-panel')) : [];
+  const stepIndicators = form ? Array.from(form.querySelectorAll('[data-step-indicator]')) : [];
+  const stepButtonsNext = form ? Array.from(form.querySelectorAll('[data-next-step]')) : [];
+  const stepButtonsPrev = form ? Array.from(form.querySelectorAll('[data-prev-step]')) : [];
+  let lastFocusedElement = null;
 
-  form?.addEventListener('submit', (event) => {
+  const setActiveStep = (stepNumber) => {
+    stepPanels.forEach((panel) => {
+      panel.classList.toggle('is-active', panel.dataset.stepPanel === String(stepNumber));
+    });
+    stepIndicators.forEach((indicator) => {
+      indicator.classList.toggle('is-active', indicator.dataset.stepIndicator === String(stepNumber));
+    });
+  };
+
+  const validateStep = (stepNumber) => {
+    const panel = form?.querySelector(`.form-step-panel[data-step-panel="${stepNumber}"]`);
+    if (!panel) return true;
+    const candidates = Array.from(panel.querySelectorAll('input, select, textarea'));
+    for (const field of candidates) {
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const openContactModal = () => {
+    if (!contactModal) return;
+    lastFocusedElement = document.activeElement;
+    contactModal.classList.add('is-open');
+    contactModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    const firstInput = form?.querySelector('input, select, textarea');
+    firstInput?.focus();
+  };
+
+  const closeContactModal = () => {
+    if (!contactModal) return;
+    contactModal.classList.remove('is-open');
+    contactModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
+    }
+  };
+
+  openContactFormBtn?.addEventListener('click', openContactModal);
+  closeContactFormBtns.forEach((btn) => btn.addEventListener('click', closeContactModal));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && contactModal?.classList.contains('is-open')) {
+      closeContactModal();
+    }
+  });
+
+  stepButtonsNext.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const current = Number(btn.closest('.form-step-panel')?.dataset.stepPanel || 1);
+      if (!validateStep(current)) return;
+      setActiveStep(btn.dataset.nextStep);
+    });
+  });
+
+  stepButtonsPrev.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      setActiveStep(btn.dataset.prevStep);
+    });
+  });
+
+  const getSelectedValue = (fieldName) => {
+    if (!form) return '';
+    const checked = form.querySelector(`input[name="${fieldName}"]:checked`);
+    if (checked) return String(checked.value || '').trim();
+    const select = form.querySelector(`select[name="${fieldName}"]`);
+    if (select) return String(select.value || '').trim();
+    const input = form.querySelector(`[name="${fieldName}"]`);
+    return input ? String(input.value || '').trim() : '';
+  };
+
+  const bindOtherToggle = (select) => {
+    if (!(select instanceof HTMLSelectElement)) return;
+    const targetId = select.dataset.toggleOther;
+    if (!targetId) return;
+    const wrap = form?.querySelector(`#${targetId}`);
+    const input = wrap?.querySelector('input');
+    if (!wrap || !input) return;
+
+    const refresh = () => {
+      const isOther = select.value === 'Autre';
+      wrap.classList.toggle('is-hidden', !isOther);
+      input.toggleAttribute('required', isOther);
+      if (!isOther) input.value = '';
+    };
+
+    select.addEventListener('change', refresh);
+    refresh();
+  };
+
+  form?.querySelectorAll('select[data-toggle-other]').forEach((select) => bindOtherToggle(select));
+
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form || !feedback) return;
 
-    const requiredFields = ['name', 'email', 'topic', 'message'];
-    let hasError = false;
+    // Custom conditional required fields
+    const genderOther = form.querySelector('#gender_other');
+    const educationOther = form.querySelector('#education_other');
+    const selectedGender = getSelectedValue('gender');
+    const selectedEducation = getSelectedValue('education_level');
 
-    requiredFields.forEach((fieldName) => {
-      const field = form.elements[fieldName];
-      if (field && !String(field.value).trim()) {
-        field.classList.add('has-error');
-        hasError = true;
-      } else {
-        field?.classList.remove('has-error');
-      }
-    });
+    if (genderOther) {
+      const mustFill = selectedGender === 'Autre';
+      genderOther.toggleAttribute('required', Boolean(mustFill));
+    }
 
-    if (hasError) {
+    if (educationOther) {
+      const mustFill = selectedEducation === 'Autre';
+      educationOther.toggleAttribute('required', Boolean(mustFill));
+    }
+
+    const firstInvalid = form.querySelector(':invalid');
+    if (firstInvalid) {
+      const invalidStep = firstInvalid.closest('.form-step-panel')?.dataset.stepPanel;
+      if (invalidStep) setActiveStep(invalidStep);
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
       feedback.textContent = 'Veuillez remplir tous les champs obligatoires.';
       feedback.className = 'form__feedback form__feedback--error';
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       return;
     }
 
-    feedback.textContent = 'Merci. Votre message a bien ete enregistre. Notre equipe vous recontactera rapidement.';
+    const formAction = form.dataset.endpoint || form.getAttribute('action') || '/api/contact';
+    const isRunningFromNodeOrigin = window.location.origin.includes('localhost:3000') || window.location.origin.includes('127.0.0.1:3000');
+    const endpoint = isRunningFromNodeOrigin
+      ? new URL(formAction, window.location.origin).toString()
+      : 'http://localhost:3000/api/contact';
+
+    feedback.textContent = 'Envoi en cours...';
     feedback.className = 'form__feedback form__feedback--success';
-    form.reset();
+    submitBtn?.setAttribute('disabled', 'true');
+    if (submitBtn) submitBtn.textContent = 'Envoi...';
+
+    const formData = new FormData(form);
+    const payload = new URLSearchParams();
+    formData.forEach((value, key) => {
+      payload.append(key, String(value));
+    });
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: payload.toString(),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        },
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Echec de l'envoi.");
+      }
+
+      feedback.textContent = 'Merci. Votre inscription a ete envoyee.';
+      feedback.className = 'form__feedback form__feedback--success';
+      form.reset();
+      window.alert('Formulaire envoye avec succes.');
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setActiveStep(1);
+      closeContactModal();
+    } catch (error) {
+      feedback.textContent = error.message || "Echec d'envoi. Veuillez reessayer.";
+      feedback.className = 'form__feedback form__feedback--error';
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } finally {
+      submitBtn?.removeAttribute('disabled');
+      if (submitBtn) submitBtn.textContent = "Envoyer l'inscription";
+    }
   });
 
   closeAllSubmenus();

@@ -46,3 +46,26 @@ C:\Users\kensl\Projet_Youth_Haiti
 
 ## Notes
 This project is intentionally framework-free for portability. Add analytics, newsletter integrations, or a backend contact endpoint as needed.
+
+## Backend SMTP (Node)
+Le formulaire d'inscription de `index.html` envoie maintenant vers `POST /api/contact`.
+
+### Installation
+1. Installer les dependances:
+   - `npm install`
+2. Creer `.env` a partir de `.env.example`.
+3. Renseigner les variables SMTP:
+   - `SMTP_HOST`
+   - `SMTP_PORT`
+   - `SMTP_SECURE`
+   - `SMTP_USER`
+   - `SMTP_PASS`
+   - `MAIL_TO=Youthfoundationhaiti43@gmail.com`
+4. Lancer le serveur:
+   - `npm start`
+5. Ouvrir le site:
+   - `http://localhost:3000`
+
+### Gmail (recommande)
+- Activez la validation en 2 etapes.
+- Generez un mot de passe d'application pour `SMTP_PASS`.

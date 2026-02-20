@@ -233,4 +233,8 @@
   .cta__card {
     padding: 1.2rem;
   }
+
+  .form__compact-grid {
+    grid-template-columns: 1fr;
+  }
 }

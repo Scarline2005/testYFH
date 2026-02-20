@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Galerie complete des temoignages en images de Youth Foundation Haiti." />
+  <title>Temoignages | Youth Foundation Haiti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    .gallery-page {
+      background: linear-gradient(180deg, #f3f8ff 0%, #ffffff 45%);
+    }
+
+    .gallery-page__hero {
+      padding: 3.8rem 0 2.4rem;
+    }
+
+    .gallery-page__top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gallery-page__title {
+      max-width: 720px;
+    }
+
+    .gallery-page__title h1 {
+      margin: 0.4rem 0 0;
+      line-height: 1.12;
+    }
+
+    .gallery-page__meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-left: auto;
+    }
+
+    .gallery-page__back {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary-strong);
+      background: #eaf3ff;
+      border: 1px solid #cfe2ff;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .gallery-page__back:hover {
+      background: #dcecff;
+      color: var(--color-primary-strong);
+      transform: translateX(-2px);
+    }
+
+    .gallery-page__count {
+      background: #eaf3ff;
+      border: 1px solid #cfe2ff;
+      color: var(--color-primary-strong);
+      padding: 0.35rem 0.66rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 760px) {
+      .gallery-page__hero {
+        padding: 2.4rem 0 1.6rem;
+      }
+
+      .gallery-page__top {
+        align-items: flex-start;
+      }
+
+      .gallery-page__title {
+        max-width: 100%;
+      }
+
+      .gallery-page__title h1 {
+        font-size: clamp(2rem, 9vw, 2.5rem);
+      }
+
+      .gallery-page__meta {
+        margin-left: 0;
+      }
+    }
+
+    .photo-wall {
+      column-count: 3;
+      column-gap: 1.25rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .photo-wall__item {
+      margin: 0 0 1rem 0;
+      break-inside: avoid;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #dce8fa;
+      box-shadow: 0 12px 28px rgba(15, 39, 72, 0.1);
+      background: #fff;
+    }
+
+    .photo-wall__item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .photo-wall {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .photo-wall {
+        column-count: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .photo-wall {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body class="gallery-page">
+  <header class="site-header" id="top">
+    <div class="container header__content">
+      <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="qui-sommes-nous.html">Qui nous sommes</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="ce-que-nous-faisons.html">Ce que nous faisons</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="nos-volontaires.html">Nos volontaires</a>
+          </li>
+
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="nos-volontaires.html#temoignages">Temoignages</a></li>
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--donate" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Faire un don</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="gallery-page__hero">
+      <div class="container gallery-page__top">
+        <div class="gallery-page__title">
+          <p class="eyebrow">Temoignages</p>
+          <h1>Galerie complete des temoignages</h1>
+        </div>
+        <div class="gallery-page__meta">
+          <a class="gallery-page__back" href="nos-volontaires.html#temoignages" aria-label="Retour a la page volontaires">
+            <i class="ri-arrow-left-line" aria-hidden="true"></i>
+          </a>
+          <span id="gallery-count" class="gallery-page__count">0 photo</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="photo-wall" id="photo-wall" aria-label="Tous les temoignages en images"></div>
+    </section>
+  </main>
+
+  <script>
+    (function renderTestimonialsWall() {
+      var wall = document.getElementById('photo-wall');
+      var countTag = document.getElementById('gallery-count');
+      if (!wall) return;
+
+      var images = [];
+      for (var i = 198; i <= 218; i += 1) {
+        images.push('assets/images/volontaires/Temoignage/' + i + '.jpeg');
+      }
+
+      var html = images.map(function (src, index) {
+        var safeSrc = encodeURI(src);
+        return (
+          '<figure class="photo-wall__item">' +
+            '<img src="' + safeSrc + '" alt="Temoignage image ' + (index + 1) + '" loading="lazy" />' +
+          '</figure>'
+        );
+      }).join('');
+
+      wall.innerHTML = html;
+
+      if (countTag) {
+        countTag.textContent = images.length + (images.length > 1 ? ' photos' : ' photo');
+      }
+    }());
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+

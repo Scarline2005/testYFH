@@ -7,7 +7,10 @@
   <title>Qui sommes-nous | Youth Foundation Haiti</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2family=Manrope:wght@400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <style>
     :root {
       --blue-900: #0f2b5b;
@@ -575,18 +578,60 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+    <header class="site-header" id="top">
+    <div class="container header__content">
       <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
-        <img src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
-        <span>Youth Foundation Haiti</span>
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
       </a>
+
       <nav class="nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="programs.html">Programmes</a>
-        <a href="#galerie">Galerie</a>
-        <a class="btn btn-primary" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Soutenir</a>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="qui-sommes-nous.html">Qui nous sommes</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="ce-que-nous-faisons.html">Ce que nous faisons</a>
+          </li>
+
+          
+          <li class="nav__item">
+            <a class="nav__link" href="nos-volontaires.html">Nos volontaires</a>
+          </li>
+<li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="temoignages.html#temoignages">Temoignages</a></li>
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
       </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--donate" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Faire un don</a>
+      </div>
     </div>
   </header>
 
@@ -792,5 +837,14 @@
       });
     })();
   </script>
+  
+    <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

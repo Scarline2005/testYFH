@@ -34,26 +34,31 @@
             <a class="nav__link" href="ce-que-nous-faisons.html">Ce que nous faisons</a>
           </li>
 
-          <li class="nav__item nav__item--has-submenu">
+          
+          <li class="nav__item">
+            <a class="nav__link" href="nos-volontaires.html">Nos volontaires</a>
+          </li>
+<li class="nav__item nav__item--has-submenu">
             <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
               Recherche et rapports
               <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
             </button>
             <ul class="nav__submenu">
-              <li><a class="nav__sublink" href="#impact">Impact global</a></li>
-              <li><a class="nav__sublink" href="#rapports">Recherche et transparence</a></li>
-              <li><a class="nav__sublink" href="#partenaires">Partenaires</a></li>
-              <li><a class="nav__sublink" href="#documents">Documents PDF</a></li>
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
             </ul>
           </li>
 
           <li class="nav__item nav__item--has-submenu">
             <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
-              Récits et temps forts
+              Recits et temps forts
               <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
             </button>
             <ul class="nav__submenu">
-              <li><a class="nav__sublink" href="#contact">Contact</a></li>
+              <li><a class="nav__sublink" href="temoignages.html#temoignages">Temoignages</a></li>
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
             </ul>
           </li>
         </ul>
@@ -164,7 +169,12 @@
 
     <section class="section programs" id="activites">
       <div class="container section__header">
-        <p class="eyebrow">Ce que nous faisons</p>
+        <div class="section__title-row">
+          <p class="eyebrow">Ce que nous faisons</p>
+          <a class="section__arrow-link" href="ce-que-nous-faisons.html" aria-label="Aller à la page Ce que nous faisons">
+            <i class="ri-arrow-right-line" aria-hidden="true"></i>
+          </a>
+        </div>
         <div class="section__title-group">
           <h2>Activités réalisées par Youth Foundation Haiti</h2>
           <p>Des programmes concrets, répétés chaque année, pour soutenir l'éducation, le bien-être et la protection des enfants.</p>
@@ -174,7 +184,7 @@
       <div class="container cards cards--three">
         <article class="card program-card">
           <figure class="program-card__media">
-            <img src="assets/images/gallery/1.jpeg" alt="Enfants recevant des kits scolaires" loading="lazy" />
+            <img src="assets/images/autres_images/YTH/76.jpeg" alt="Enfants recevant des kits scolaires" loading="lazy" />
           </figure>
           <div class="program-card__body">
             <h3>Orphans Back to School</h3>
@@ -204,7 +214,7 @@
 
         <article class="card program-card">
           <figure class="program-card__media">
-            <img src="assets/images/gallery/3.jpeg" alt="Animation de Noël avec des enfants en orphelinat" loading="lazy" />
+            <img src="assets/images/volontaires/Temoignage/240.jpeg" alt="Animation de Noël avec des enfants en orphelinat" loading="lazy" />
           </figure>
           <div class="program-card__body">
             <h3>Christmas Orphans</h3>
@@ -461,29 +471,63 @@
 
         <div class="contact__form-card">
           <form id="contact-form" novalidate>
-            <div class="form__group">
-              <label for="name">Nom complet</label>
-              <input type="text" id="name" name="name" autocomplete="name" required />
+            <h3 class="form__section-title">Youth Foundation Haiti - Formulaire d'inscription</h3>
+            <p class="form__required-note">* Indique une question obligatoire</p>
+            <div class="form__compact-grid">
+              <div class="form__group">
+                <label for="full_name">Nom complet *</label>
+                <input type="text" id="full_name" name="full_name" autocomplete="name" required />
+              </div>
+              <div class="form__group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+              <div class="form__group">
+                <label for="birth_date">Date de naissance *</label>
+                <input type="date" id="birth_date" name="birth_date" required />
+              </div>
+              <div class="form__group">
+                <label for="whatsapp_phone">Telephone (WhatsApp si possible) *</label>
+                <input type="tel" id="whatsapp_phone" name="whatsapp_phone" autocomplete="tel" required />
+              </div>
+              <div class="form__group form__group--full">
+                <label for="full_address">Adresse complete *</label>
+                <input type="text" id="full_address" name="full_address" autocomplete="street-address" required />
+              </div>
+              <div class="form__group">
+                <label for="gender">Sexe *</label>
+                <select id="gender" name="gender" required data-toggle-other="gender_other_wrap">
+                  <option value="">Selectionnez</option>
+                  <option value="Feminin">Feminin</option>
+                  <option value="Masculin">Masculin</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+              <div class="form__group is-hidden" id="gender_other_wrap">
+                <label for="gender_other">Autre sexe (preciser) *</label>
+                <input type="text" id="gender_other" name="gender_other" />
+              </div>
+              <div class="form__group">
+                <label for="education_level">Niveau d'etudes *</label>
+                <select id="education_level" name="education_level" required data-toggle-other="education_other_wrap">
+                  <option value="">Selectionnez</option>
+                  <option value="Etudes professionnelles / techniques">Etudes professionnelles / techniques</option>
+                  <option value="Universite - Licence (Bachelor)">Universite - Licence (Bachelor)</option>
+                  <option value="Universite - Master">Universite - Master</option>
+                  <option value="Universite - Doctorat">Universite - Doctorat</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+              <div class="form__group is-hidden" id="education_other_wrap">
+                <label for="education_other">Autre niveau (preciser) *</label>
+                <input type="text" id="education_other" name="education_other" />
+              </div>
+              <div class="form__group form__group--full">
+                <label for="profession_status">Profession / Statut actuel *</label>
+                <input type="text" id="profession_status" name="profession_status" required />
+              </div>
             </div>
-            <div class="form__group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" autocomplete="email" required />
-            </div>
-            <div class="form__group">
-              <label for="topic">Objet</label>
-              <select id="topic" name="topic" required>
-                <option value="">Sélectionnez un sujet</option>
-                <option value="partenariat">Partenariat</option>
-                <option value="don">Don</option>
-                <option value="volontariat">Volontariat</option>
-                <option value="média">Demande média</option>
-              </select>
-            </div>
-            <div class="form__group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary">Envoyer</button>
+            <button type="submit" class="btn btn--primary" id="contact-submit-btn">Envoyer l'inscription</button>
             <p class="form__feedback" id="form-feedback" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -544,5 +588,6 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
 
 

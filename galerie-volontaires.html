@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Galerie complete de toutes les images du projet (hors dossier image_tem)." />
+  <title>Galerie des volontaires | Youth Foundation Haiti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    .gallery-page {
+      background: linear-gradient(180deg, #f3f8ff 0%, #ffffff 45%);
+    }
+
+    .gallery-page__hero {
+      padding: 3.8rem 0 2.4rem;
+    }
+
+    .gallery-page__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gallery-page__back {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary-strong);
+      background: #eaf3ff;
+      border: 1px solid #cfe2ff;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .gallery-page__back:hover {
+      background: #dcecff;
+      color: var(--color-primary-strong);
+      transform: translateX(-2px);
+    }
+
+    .gallery-page__count {
+      background: #eaf3ff;
+      border: 1px solid #cfe2ff;
+      color: var(--color-primary-strong);
+      padding: 0.35rem 0.66rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    
+
+    .photo-wall {
+      column-count: 3;
+      column-gap: 1.25rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .photo-wall__item {
+      margin: 0 0 1rem 0;
+      break-inside: avoid;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #dce8fa;
+      box-shadow: 0 12px 28px rgba(15, 39, 72, 0.1);
+      background: #fff;
+    }
+
+    .photo-wall__item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .photo-wall {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .photo-wall {
+        column-count: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .photo-wall {
+        column-count: 1;
+      }
+    }
+    /* Retour au style galerie original: flux continu et hauteurs naturelles */
+    .gallery-featured {
+      display: none;
+    }
+
+    .photo-wall {
+      column-count: 4;
+      column-gap: 1rem;
+    }
+
+    .photo-wall__item {
+      margin: 0 0 1rem 0;
+    }
+
+    .photo-wall__item img {
+      aspect-ratio: auto;
+      object-fit: initial;
+      height: auto;
+    }
+
+    @media (max-width: 1200px) {
+      .photo-wall {
+        column-count: 3;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .photo-wall {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .photo-wall {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body class="gallery-page">
+    <header class="site-header" id="top">
+    <div class="container header__content">
+      <a class="brand" href="index.html" aria-label="Accueil Youth Foundation Haiti">
+        <img class="brand__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" />
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu principal">
+          <i class="ri-menu-line nav__toggle-icon" aria-hidden="true"></i>
+          <span class="sr-only">Basculer la navigation</span>
+        </button>
+
+        <ul id="nav-menu" class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="qui-sommes-nous.html">Qui nous sommes</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="ce-que-nous-faisons.html">Ce que nous faisons</a>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="nos-volontaires.html">Nos volontaires</a>
+          </li>
+
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recherche et rapports
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
+              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--has-submenu">
+            <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
+              Recits et temps forts
+              <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
+            </button>
+            <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="temoignages.html#temoignages">Temoignages</a></li>
+              <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--donate" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Faire un don</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="gallery-page__hero">
+      <div class="container gallery-page__top">
+        <div>
+          <p class="eyebrow">Toutes les photos</p>
+          <h1>Galerie complete de Youth Foundation Haiti</h1>
+          <a class="gallery-page__back" href="nos-volontaires.html" aria-label="Retour a la page volontaires">
+            <i class="ri-arrow-left-line" aria-hidden="true"></i>
+          </a>
+        </div>
+        <span id="gallery-count" class="gallery-page__count">0 photo</span>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="photo-wall" id="photo-wall" aria-label="Toutes les photos des volontaires"></div>
+    </section>
+  </main>
+
+  <script>
+    (function renderVolunteerWall() {
+      var wall = document.getElementById('photo-wall');
+      var countTag = document.getElementById('gallery-count');
+      if (!wall) return;
+
+      var images = [];
+
+      // Premieres images affichees (comme avant)
+      images.push(
+        'assets/images/volontaires/Temoignage/239.jpeg',
+        'assets/images/volontaires/Temoignage/240.jpeg',
+        'assets/images/volontaires/Temoignage/241.jpeg',
+        'assets/images/volontaires/Temoignage/242.jpeg',
+        'assets/images/volontaires/Temoignage/245.jpeg',
+        'assets/images/volontaires/Temoignage/247.jpeg',
+        'assets/images/volontaires/Temoignage/250.jpeg',
+        'assets/images/volontaires/Temoignage/252.jpeg'
+      );
+
+      // Root images
+      images.push(
+        'assets/images/community-health.jpg',
+        'assets/images/hero-community.jpg',
+        'assets/images/program-education.jpg',
+        'assets/images/youth-engagement.jpg'
+      );
+
+      // Autres images (fichiers nommes)
+      images.push(
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 1.08.47 PM.jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.16.11 PM (2).jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.52 PM (1).jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.52 PM (2).jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.52 PM.jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.53 PM (1).jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.54 PM (1).jpeg',
+        'assets/images/autres_images/enfant.jpeg',
+        'assets/images/autres_images/enfant2.jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.54 PM (4).jpeg',
+        'assets/images/autres_images/enfant3.jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.55 PM (2).jpeg',
+        'assets/images/autres_images/WhatsApp Image 2026-01-31 at 2.33.55 PM.jpeg'
+      );
+
+      // YTH images (exclude video ids: 28, 153)
+      for (var y = 1; y <= 197; y += 1) {
+        if (y === 28 || y === 153) continue;
+        images.push('assets/images/autres_images/YTH/' + y + '.jpeg');
+      }
+
+      // Gallery images
+      for (var g = 1; g <= 15; g += 1) {
+        images.push('assets/images/gallery/' + g + '.jpeg');
+      }
+
+      // Sponsors images
+      //images.push(
+      
+      //);
+
+      // Volontaires temoignages
+      for (var t = 219; t <= 284; t += 1) {
+        if (t === 239 || t === 240 || t === 241 || t === 242 || t === 245 || t === 247 || t === 250 || t === 252) continue;
+        images.push('assets/images/volontaires/Temoignage/' + t + '.jpeg');
+      }
+
+      var html = images.map(function (src, index) {
+        var safeSrc = encodeURI(src);
+        return (
+          '<figure class="photo-wall__item">' +
+            '<img src="' + safeSrc + '" alt="Image galerie ' + (index + 1) + '" loading="lazy" />' +
+          '</figure>'
+        );
+      }).join('');
+
+      wall.innerHTML = html;
+
+      if (countTag) {
+        countTag.textContent = images.length + (images.length > 1 ? ' photos' : ' photo');
+      }
+    }());
+  </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
