@@ -290,11 +290,11 @@ ready(() => {
     },
     {
       src: '../assets/images/volontaires/Temoignage/244.jpeg',
-      alt: 'Equipe de volontaires Youth Foundation Haiti',
+      alt: '\u00c9quipe de volontaires Youth Foundation Haiti',
     },
     {
       src: '../assets/images/volontaires/Temoignage/250.jpeg',
-      alt: 'Volontaires engages pendant une activite de terrain',
+      alt: 'Volontaires engag\u00e9s pendant une activit\u00e9 de terrain',
     },
     {
       src: '../assets/images/volontaires/Temoignage/258.jpeg',
@@ -352,14 +352,14 @@ ready(() => {
 
   // Horizontal carousel for autres_images
   const autresSlides = [
-    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM.jpeg', alt: 'Activite terrain Youth Foundation Haiti' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM.jpeg', alt: 'Activit\u00e9 terrain Youth Foundation Haiti' },
     { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM%20%281%29.jpeg', alt: 'Moment de partage communautaire' },
     { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.52%20PM%20%282%29.jpeg', alt: 'Mobilisation de volontaires' },
-    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.53%20PM%20%281%29.jpeg', alt: 'Jeunes engages dans une activite' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.53%20PM%20%281%29.jpeg', alt: 'Jeunes engag\u00e9s dans une activit\u00e9' },
     { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%281%29.jpeg', alt: 'Intervention communautaire Youth Foundation Haiti' },
     { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%282%29.jpeg', alt: 'Accompagnement des enfants sur le terrain' },
     { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.54%20PM%20%283%29.jpeg', alt: 'Action collective et entraide locale' },
-    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.55%20PM%20%281%29.jpeg', alt: 'Equipe Youth Foundation Haiti en mission' },
+    { src: 'assets/images/autres_images/WhatsApp%20Image%202026-01-31%20at%202.33.55%20PM%20%281%29.jpeg', alt: '\u00c9quipe Youth Foundation Haiti en mission' },
   ];
 
   const carousels = Array.from(document.querySelectorAll('[data-media-carousel]'));
@@ -606,18 +606,18 @@ ready(() => {
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok || !result.ok) {
-        throw new Error(result.message || "Echec de l'envoi.");
+        throw new Error(result.message || "\u00c9chec de l'envoi.");
       }
 
-      feedback.textContent = 'Merci. Votre inscription a ete envoyee.';
+      feedback.textContent = 'Merci. Votre inscription a \u00e9t\u00e9 envoy\u00e9e.';
       feedback.className = 'form__feedback form__feedback--success';
       form.reset();
-      window.alert('Formulaire envoye avec succes.');
+      window.alert('Formulaire envoy\u00e9 avec succ\u00e8s.');
       feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       setActiveStep(1);
       closeContactModal();
     } catch (error) {
-      feedback.textContent = error.message || "Echec d'envoi. Veuillez reessayer.";
+      feedback.textContent = error.message || "\u00c9chec d'envoi. Veuillez r\u00e9essayer.";
       feedback.className = 'form__feedback form__feedback--error';
       feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } finally {

@@ -47,10 +47,10 @@ const buildEmailHtml = (data) => `
     <tr><th align="left">Nom complet</th><td>${data.full_name}</td></tr>
     <tr><th align="left">Email</th><td>${data.email}</td></tr>
     <tr><th align="left">Date de naissance</th><td>${data.birth_date}</td></tr>
-    <tr><th align="left">Adresse complete</th><td>${data.full_address}</td></tr>
-    <tr><th align="left">Telephone / WhatsApp</th><td>${data.whatsapp_phone}</td></tr>
+    <tr><th align="left">Adresse compl\u00e8te</th><td>${data.full_address}</td></tr>
+    <tr><th align="left">T\u00e9l\u00e9phone / WhatsApp</th><td>${data.whatsapp_phone}</td></tr>
     <tr><th align="left">Sexe</th><td>${data.gender}</td></tr>
-    <tr><th align="left">Niveau d'etudes</th><td>${data.education_level}</td></tr>
+    <tr><th align="left">Niveau d'\u00e9tudes</th><td>${data.education_level}</td></tr>
     <tr><th align="left">Profession / Statut</th><td>${data.profession_status}</td></tr>
   </table>
 `;
@@ -105,10 +105,10 @@ app.post('/api/contact', async (req, res) => {
         `Nom complet: ${fullName}`,
         `Email: ${email}`,
         `Date de naissance: ${birthDate}`,
-        `Adresse complete: ${fullAddress}`,
-        `Telephone / WhatsApp: ${whatsappPhone}`,
+        `Adresse compl\u00e8te: ${fullAddress}`,
+        `T\u00e9l\u00e9phone / WhatsApp: ${whatsappPhone}`,
         `Sexe: ${finalGender}`,
-        `Niveau d'etudes: ${finalEducation}`,
+        `Niveau d'\u00e9tudes: ${finalEducation}`,
         `Profession / Statut: ${profession}`,
       ].join('\n'),
       html: buildEmailHtml({
@@ -125,12 +125,12 @@ app.post('/api/contact', async (req, res) => {
 
     return res.json({
       ok: true,
-      message: 'Votre inscription a ete envoyee avec succes.',
+      message: 'Votre inscription a \u00e9t\u00e9 envoy\u00e9e avec succ\u00e8s.',
     });
   } catch (error) {
     return res.status(500).json({
       ok: false,
-      message: "Echec d'envoi de l'email. Verifiez la configuration SMTP.",
+      message: "\u00c9chec d'envoi de l'email. V\u00e9rifiez la configuration SMTP.",
       error: error.message,
     });
   }
