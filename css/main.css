@@ -1886,7 +1886,7 @@ textarea:focus {
   margin-left: 0.35rem;
   vertical-align: middle;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -1894,6 +1894,7 @@ textarea:focus {
   display: block;
   height: 24px;
   width: auto;
+  border-radius: 0;
 }
 
 .footer-pro__credit-logo::after {
