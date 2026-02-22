@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -160,20 +160,15 @@
           <li class="nav__item">
             <a class="nav__link" href="ce-que-nous-faisons.html">Ce que nous faisons</a>
           </li>
-
-          <li class="nav__item">
-            <a class="nav__link" href="nos-volontaires.html">Nos volontaires</a>
-          </li>
-
-          <li class="nav__item nav__item--has-submenu">
+<li class="nav__item nav__item--has-submenu">
             <button class="nav__link nav__link--parent" type="button" aria-expanded="false">
               Recherche et rapports
               <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
             </button>
             <ul class="nav__submenu">
               <li><a class="nav__sublink" href="index.html#impact">Impact global</a></li>
-              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>
-              <li><a class="nav__sublink" href="index.html#partenaires">Partenaires</a></li>
+              <li><a class="nav__sublink" href="index.html#rapports">Recherche et transparence</a></li>              <li><a class="nav__sublink" href="nos-volontaires.html">Nos volontaires</a></li>
+              <li><a class="nav__sublink" href="partenaires.html">Partenaires</a></li>
               <li><a class="nav__sublink" href="index.html#documents">Documents PDF</a></li>
             </ul>
           </li>
@@ -184,6 +179,7 @@
               <i class="ri-arrow-down-s-line nav__chevron" aria-hidden="true"></i>
             </button>
             <ul class="nav__submenu">
+              <li><a class="nav__sublink" href="galerie-volontaires.html">Galerie</a></li>
               <li><a class="nav__sublink" href="temoignages.html#temoignages">Temoignages</a></li>
               <li><a class="nav__sublink" href="index.html#contact">Contact</a></li>
             </ul>
@@ -215,6 +211,57 @@
       <div class="photo-wall" id="photo-wall" aria-label="Toutes les photos des volontaires"></div>
     </section>
   </main>
+
+  <footer class="footer footer--pro">
+    <div class="container footer-pro__main">
+      <div class="footer-pro__brand-col">
+        <a class="footer-pro__brand" href="#top" aria-label="Retour en haut">
+          <img class="footer__logo" src="assets/images/logo-yfh.png" alt="Logo Youth Foundation Haiti" loading="lazy" />
+          <span class="footer-pro__brand-text">
+            <strong class="footer-pro__name">Youth Foundation Haiti</strong>
+            <span class="footer-pro__subtitle">Organisation &agrave; but non lucratif</span>
+          </span>
+        </a>
+        <p class="footer-pro__mission">Nous accompagnons les enfants vuln&eacute;rables d'Ha&iuml;ti &agrave; travers l'&eacute;ducation, la protection, l'alimentation et des programmes communautaires durables.</p>
+        <a class="btn btn--footer-pro" href="https://gofund.me/872320537" target="_blank" rel="noopener noreferrer">Soutenir nos actions</a>
+      </div>
+
+      <nav class="footer-pro__col" aria-label="Navigation du footer">
+        <h3>Navigation</h3>
+        <a href="qui-sommes-nous.html">Qui nous sommes</a>
+        <a href="ce-que-nous-faisons.html">Activit&eacute;s</a>
+        <a href="index.html#impact">Impact</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="footer-pro__col">
+        <h3>Programmes</h3>
+        <a href="ce-que-nous-faisons.html">FestiKids Haiti</a>
+        <a href="ce-que-nous-faisons.html">Assistance humanitaire</a>
+        <a href="nos-volontaires.html">R&eacute;seau de volontaires</a>
+        <a href="partenaires.html">Partenaires</a>
+      </div>
+
+      <div class="footer-pro__col">
+        <h3>Coordonn&eacute;es</h3>
+        <ul class="footer-pro__contact">
+          <li><i class="ri-mail-line" aria-hidden="true"></i><a href="mailto:Youthfoundationhaiti43@gmail.com">Youthfoundationhaiti43@gmail.com</a></li>
+          <li><i class="ri-phone-line" aria-hidden="true"></i><a href="tel:47057657">47057657</a></li>
+          <li><i class="ri-map-pin-2-line" aria-hidden="true"></i><span>Haiti</span></li>
+        </ul>
+        <div class="social social--footer-pro">
+          <a href="https://www.instagram.com/youth_foundation_haiti?igsh=NWlrYjgzenR0d2gw" target="_blank" rel="noopener noreferrer" aria-label="Instagram officiel"><i class="ri-instagram-line" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/p/14S2yQSVKZX/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook officiel"><i class="ri-facebook-circle-line" aria-hidden="true"></i></a>
+          <a href="https://whatsapp.com/channel/0029Vb7UY8WJuyAFtt5CdY01" target="_blank" rel="noopener noreferrer" aria-label="Canal WhatsApp"><i class="ri-whatsapp-line" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-pro__bottom">
+      <p>&copy; <span data-current-year>2026</span> Youth Foundation Haiti. Tous droits r&eacute;serv&eacute;s.</p>
+      <p class="footer-pro__credit">Site cree par <a class="footer-pro__credit-logo" href="https://octacore-ht.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Site Octacore"><img src="assets/images/image_tem/octacore.jpeg" alt="Octacore" loading="lazy" /></a>.</p>
+    </div>
+  </footer>
 
   <script>
     (function renderVolunteerWall() {
