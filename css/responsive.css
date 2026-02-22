@@ -144,6 +144,38 @@
     padding: 4.2rem 0;
   }
 
+  .section__header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .section__title-group {
+    text-align: center;
+  }
+
+  .section__title-group p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section__title-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section__arrow-link {
+    margin-top: 0.35rem;
+  }
+
+  .cta__actions {
+    justify-content: center;
+  }
+
+  .contact__details {
+    justify-items: center;
+    text-align: center;
+  }
+
   .partners__track {
     gap: 1.6rem;
     animation-duration: 24s;
@@ -173,9 +205,62 @@
     gap: 0.26rem;
   }
 
+  .footer-pro__main {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-pro__brand {
+    justify-content: center;
+  }
+
+  .footer-pro__brand-text {
+    justify-items: center;
+  }
+
+  .footer-pro__mission {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-pro__col {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-pro__col h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-pro__contact {
+    justify-items: center;
+  }
+
+  .footer-pro__contact li {
+    justify-content: center;
+  }
+
+  .social--footer-pro {
+    justify-content: center;
+  }
+
+  .footer-pro__bottom {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-pro__credit {
+    text-align: center;
+  }
+
   .brand__logo {
     width: 60px;
     height: 60px;
+  }
+
+  .brand {
+    padding-left: 0.35rem;
   }
 }
 
@@ -196,6 +281,11 @@
   .partner img {
     max-height: 56px;
     max-width: 130px;
+  }
+
+  .partners-logo--octacore {
+    transform: none !important;
+    grid-column: auto !important;
   }
 
   .hero__grid,
