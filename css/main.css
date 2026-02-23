@@ -1952,8 +1952,15 @@ textarea:focus {
     rgba(255, 255, 255, 0.78) 50%,
     rgba(255, 255, 255, 0) 66%
   );
-  transform: translateX(-140%) skewX(-18deg);
-  animation: octacoreShimmer 2.2s linear infinite;
+  transform: translate3d(-110%, 0, 0) skewX(-18deg);
+  -webkit-transform: translate3d(-110%, 0, 0) skewX(-18deg);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-animation: octacoreShimmer 1.25s linear infinite;
+  animation: octacoreShimmer 1.25s linear infinite;
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
   pointer-events: none;
 }
 
@@ -1961,17 +1968,31 @@ textarea:focus {
   filter: brightness(1.08);
 }
 
-@keyframes octacoreShimmer {
+@-webkit-keyframes octacoreShimmer {
   from {
-    transform: translateX(-140%) skewX(-18deg);
+    -webkit-transform: translate3d(-110%, 0, 0) skewX(-18deg);
+    transform: translate3d(-110%, 0, 0) skewX(-18deg);
   }
   to {
-    transform: translateX(140%) skewX(-18deg);
+    -webkit-transform: translate3d(110%, 0, 0) skewX(-18deg);
+    transform: translate3d(110%, 0, 0) skewX(-18deg);
+  }
+}
+
+@keyframes octacoreShimmer {
+  from {
+    -webkit-transform: translate3d(-110%, 0, 0) skewX(-18deg);
+    transform: translate3d(-110%, 0, 0) skewX(-18deg);
+  }
+  to {
+    -webkit-transform: translate3d(110%, 0, 0) skewX(-18deg);
+    transform: translate3d(110%, 0, 0) skewX(-18deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .footer-pro__credit-logo::after {
+    -webkit-animation: none;
     animation: none;
   }
 }
