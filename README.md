@@ -10,62 +10,74 @@ C:\Users\kensl\Projet_Youth_Haiti
 +-- programs.html            # Programs overview placeholder
 +-- donate.html              # Donation entry page
 +-- assets
-¦   +-- docs/              # PDFs and reference docs
-¦   +-- fonts/             # (empty placeholder for self-hosted fonts)
-¦   +-- icons/             # (empty placeholder for icons)
-¦   +-- images/            # Optimized, well-named imagery and logos
+|   +-- docs/                # PDFs and reference docs
+|   +-- fonts/               # (empty placeholder for self-hosted fonts)
+|   +-- icons/               # (empty placeholder for icons)
+|   +-- images/              # Optimized, well-named imagery and logos
 +-- css
-¦   +-- main.css           # Base styles, layout, components, variables
-¦   +-- responsive.css     # Breakpoints and mobile navigation
+|   +-- main.css             # Base styles, layout, components, variables
+|   +-- responsive.css       # Breakpoints and mobile navigation
 +-- js
-¦   +-- main.js            # Navigation toggle, smooth scroll, counters, form handling
+|   +-- main.js              # Navigation toggle, smooth scroll, counters, form handling
++-- server.js                # Express API + SMTP mail sender
 +-- README.md
 ```
 
 ## Getting Started
-1. Open `index.html` in a modern browser (Chrome, Edge, Firefox, Safari).
-2. No build tools are required; all assets are local and loaded via CDN for Google Fonts.
-
-## Design Choices
-- **Color palette:** Neutral institutional navy with a bright primary blue and a warm donate accent; soft gray background for contrast.
-- **Typography:** Google Font **Poppins** for a professional, modern voice across UI and body text.
-- **Layout:** 1160px content width, generous white space, consistent grid for cards and stats, sticky header with clear navigation.
-- **Components:** Reusable buttons, cards, chips, and stat blocks using CSS variables and BEM-inspired naming.
-- **Responsiveness:** Dedicated `responsive.css` handles breakpoints; mobile nav toggle with accessible ARIA states.
-- **Motion:** Animated counters for impact stats and smooth scrolling for anchor navigation.
-- **Accessibility:** Semantic HTML5, focus states, readable color contrast, form validation feedback, `sr-only` utility.
-
-## Assets
-- Images and logos are renamed and organized under `assets/images/` (e.g., `logo-yfh.png`, `hero-community.jpg`, `sponsor-01.jpg`).
-- PDFs previously provided are stored in `assets/docs/` for reference.
-
-## Customization
-- Update palette or spacing in `:root` of `css/main.css`.
-- Replace images in `assets/images/` with organization-approved assets, keeping descriptive file names.
-- Extend navigation links or sections in `index.html`; reuse component classes to maintain consistency.
-
-## Notes
-This project is intentionally framework-free for portability. Add analytics, newsletter integrations, or a backend contact endpoint as needed.
-
-## Backend SMTP (Node)
-Le formulaire d'inscription de `index.html` envoie maintenant vers `POST /api/contact`.
-
-### Installation
-1. Installer les dependances:
+1. Install dependencies:
    - `npm install`
-2. Creer `.env` a partir de `.env.example`.
-3. Renseigner les variables SMTP:
-   - `SMTP_HOST`
-   - `SMTP_PORT`
-   - `SMTP_SECURE`
-   - `SMTP_USER`
-   - `SMTP_PASS`
-   - `MAIL_TO=Youthfoundationhaiti43@gmail.com`
-4. Lancer le serveur:
+2. Create `.env` from `.env.example`.
+3. Start the app:
    - `npm start`
-5. Ouvrir le site:
+4. Open:
    - `http://localhost:3000`
 
-### Gmail (recommande)
-- Activez la validation en 2 etapes.
-- Generez un mot de passe d'application pour `SMTP_PASS`.
+## Backend SMTP (Node)
+The registration form sends to `POST /api/contact`.
+
+### Required environment variables
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_REQUIRE_TLS`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_FROM`
+- `MAIL_TO`
+
+### Optional environment variables
+- `CLIENT_ORIGINS` (comma-separated CORS allowlist)
+- `SMTP_TLS_REJECT_UNAUTHORIZED`
+- `SMTP_CONNECTION_TIMEOUT_MS`
+- `SMTP_GREETING_TIMEOUT_MS`
+- `SMTP_SOCKET_TIMEOUT_MS`
+
+### Health endpoints
+- `GET /api/healthz`
+  - App status and SMTP env completeness.
+- `GET /api/health/email`
+  - Live SMTP verification (`transporter.verify()`).
+
+## Production Checklist
+1. Deploy this Node backend (not static-only hosting).
+2. Configure all SMTP env vars on the production host.
+3. Ensure frontend points to backend:
+   - Same domain: `data-endpoint="/api/contact"`
+   - Separate API domain: set `<html data-api-base-url="https://api.your-domain.org">`
+4. Confirm outbound SMTP is allowed by host (ports 587/465).
+5. Use HTTPS for frontend and backend.
+6. Configure DNS for sending domain:
+   - SPF
+   - DKIM
+   - DMARC
+
+## Reliability and Security Recommendations
+- Prefer transactional email providers for production (Mailgun, SendGrid, Brevo, Postmark, SES, Resend).
+- Use domain sender address like `no-reply@your-domain.org`.
+- Keep secrets only in host environment variables.
+- Use the `request_id` returned by API responses to trace errors in host logs.
+
+## Gmail (temporary option)
+- Enable 2-step verification.
+- Use App Password as `SMTP_PASS`.
+- Review blocked sign-in alerts in Google account security.

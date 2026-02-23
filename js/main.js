@@ -620,31 +620,6 @@ ready(() => {
 
   form?.querySelectorAll('select[data-toggle-other]').forEach((select) => bindOtherToggle(select));
 
-  const FOUNDATION_FORM_EMAIL = 'Youthfoundationhaiti43@gmail.com';
-  const FORMSUBMIT_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${encodeURIComponent(FOUNDATION_FORM_EMAIL)}`;
-
-  const sendViaFormSubmit = async (data) => {
-    const response = await fetch(FORMSUBMIT_AJAX_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...data,
-        _subject: 'Nouvelle inscription - Youth Foundation Haiti',
-        _template: 'table',
-        _captcha: 'false',
-      }),
-    });
-
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || result.success === 'false') {
-      throw new Error(result.message || "\u00c9chec d'envoi vers l'email de la fondation.");
-    }
-    return result;
-  };
-
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form || !feedback) return;
@@ -679,12 +654,17 @@ ready(() => {
       return;
     }
 
-    const formAction = form.dataset.endpoint || form.getAttribute('action') || '/api/contact';
-    const isRunningFromNodeOrigin = window.location.origin.includes('localhost:3000') || window.location.origin.includes('127.0.0.1:3000');
-    const endpoint = isRunningFromNodeOrigin
-      ? 'http://localhost:3000/api/contact'
-      : new URL(formAction, window.location.origin).toString();
-    const isRelativeApiInProduction = !isRunningFromNodeOrigin && /^\/api\//.test(formAction);
+    const formAction = (form.dataset.endpoint || form.getAttribute('action') || '/api/contact').trim();
+    const explicitApiBase = (document.documentElement.dataset.apiBaseUrl || '').trim();
+    const endpoint = /^https?:\/\//i.test(formAction)
+      ? formAction
+      : (explicitApiBase
+        ? new URL(formAction, explicitApiBase).toString()
+        : new URL(formAction, window.location.origin).toString());
+
+    if (window.location.protocol === 'https:' && endpoint.startsWith('http://')) {
+      throw new Error("Configuration invalide: l'API est en HTTP alors que le site est en HTTPS.");
+    }
 
     feedback.textContent = 'Envoi en cours...';
     feedback.className = 'form__feedback form__feedback--success';
@@ -693,43 +673,26 @@ ready(() => {
 
     const formData = new FormData(form);
     const payload = new URLSearchParams();
-    const payloadObject = {};
     formData.forEach((value, key) => {
       const normalized = String(value);
       payload.append(key, normalized);
-      payloadObject[key] = normalized;
     });
 
     try {
-      let requestError = null;
-      let delivered = false;
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: payload.toString(),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        },
+      });
 
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          body: payload.toString(),
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-          },
-        });
+      const result = await response.json().catch(() => ({}));
 
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok || !result.ok) {
-          throw new Error(result.message || "\u00c9chec de l'envoi.");
-        }
-        delivered = true;
-      } catch (error) {
-        requestError = error;
-      }
-
-      if (!delivered && isRelativeApiInProduction) {
-        await sendViaFormSubmit(payloadObject);
-        delivered = true;
-      }
-
-      if (!delivered) {
-        throw requestError || new Error("\u00c9chec d'envoi. Veuillez r\u00e9essayer.");
+      if (!response.ok || !result.ok) {
+        const requestId = result.request_id ? ` (ref: ${result.request_id})` : '';
+        throw new Error((result.message || "\u00c9chec de l'envoi.") + requestId);
       }
 
       feedback.textContent = 'Merci. Votre inscription a \u00e9t\u00e9 envoy\u00e9e.';
@@ -740,7 +703,10 @@ ready(() => {
       setActiveStep(1);
       closeContactModal();
     } catch (error) {
-      feedback.textContent = error.message || "\u00c9chec d'envoi. Veuillez r\u00e9essayer.";
+      const isNetworkError = error?.message === 'Failed to fetch' || error instanceof TypeError;
+      feedback.textContent = isNetworkError
+        ? "Connexion au serveur impossible. Verifiez l'API /api/contact, HTTPS et CORS."
+        : (error.message || "\u00c9chec d'envoi. Veuillez r\u00e9essayer.");
       feedback.className = 'form__feedback form__feedback--error';
       feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     } finally {
