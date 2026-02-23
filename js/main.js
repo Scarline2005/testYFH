@@ -7,6 +7,17 @@ ready(() => {
   const mobileQuery = window.matchMedia('(max-width: 1024px)');
   const submenuItems = Array.from(document.querySelectorAll('.nav__item--has-submenu'));
 
+  const setHeaderOffset = () => {
+    if (!header) return;
+
+    if (mobileQuery.matches) {
+      const headerHeight = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--mobile-header-offset', `${headerHeight}px`);
+    } else {
+      document.documentElement.style.setProperty('--mobile-header-offset', '0px');
+    }
+  };
+
   const closeAllSubmenus = () => {
     submenuItems.forEach((item) => {
       item.classList.remove('nav__item--open');
@@ -95,6 +106,7 @@ ready(() => {
       setNavState(false);
       closeAllSubmenus();
     }
+    setHeaderOffset();
   };
 
   if (typeof mobileQuery.addEventListener === 'function') {
@@ -111,6 +123,9 @@ ready(() => {
 
   window.addEventListener('scroll', setHeaderState);
   setHeaderState();
+  setHeaderOffset();
+  window.addEventListener('resize', setHeaderOffset, { passive: true });
+  window.addEventListener('orientationchange', setHeaderOffset, { passive: true });
 
   // Smooth in-page navigation
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
