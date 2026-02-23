@@ -10,12 +10,8 @@ ready(() => {
   const setHeaderOffset = () => {
     if (!header) return;
 
-    if (mobileQuery.matches) {
-      const headerHeight = Math.ceil(header.getBoundingClientRect().height);
-      document.documentElement.style.setProperty('--mobile-header-offset', `${headerHeight}px`);
-    } else {
-      document.documentElement.style.setProperty('--mobile-header-offset', '0px');
-    }
+    const headerHeight = Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--header-offset', `${headerHeight}px`);
   };
 
   const closeAllSubmenus = () => {

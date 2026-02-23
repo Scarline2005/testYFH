@@ -26,21 +26,6 @@
 }
 
 @media (max-width: 1024px) {
-  .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 260;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-  }
-
-  body {
-    padding-top: var(--mobile-header-offset, 84px);
-  }
-
   .container {
     width: min(100% - 1.5rem, var(--max-width));
   }

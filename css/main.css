@@ -14,7 +14,7 @@
   --radius-md: 12px;
   --radius-sm: 8px;
   --max-width: 1160px;
-  --mobile-header-offset: 84px;
+  --header-offset: 84px;
 }
 
 * {
@@ -32,12 +32,17 @@ body {
   margin: 0;
   width: 100%;
   max-width: 100%;
+  padding-top: var(--header-offset, 84px);
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--color-ink);
   background: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-offset, 84px) + 0.75rem);
 }
 
 a {
@@ -293,9 +298,14 @@ body {
 
 /* Header */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 200;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 260;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   background: #ffffffd9;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
