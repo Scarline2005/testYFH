@@ -657,8 +657,8 @@ ready(() => {
     const formAction = form.dataset.endpoint || form.getAttribute('action') || '/api/contact';
     const isRunningFromNodeOrigin = window.location.origin.includes('localhost:3000') || window.location.origin.includes('127.0.0.1:3000');
     const endpoint = isRunningFromNodeOrigin
-      ? new URL(formAction, window.location.origin).toString()
-      : 'http://localhost:3000/api/contact';
+      ? 'http://localhost:3000/api/contact'
+      : new URL(formAction, window.location.origin).toString();
 
     feedback.textContent = 'Envoi en cours...';
     feedback.className = 'form__feedback form__feedback--success';
