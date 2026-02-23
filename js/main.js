@@ -1,4 +1,4 @@
-﻿const ready = (cb) => (document.readyState !== 'loading' ? cb() : document.addEventListener('DOMContentLoaded', cb));
+const ready = (cb) => (document.readyState !== 'loading' ? cb() : document.addEventListener('DOMContentLoaded', cb));
 
 ready(() => {
   const navToggle = document.querySelector('.nav__toggle');
@@ -175,64 +175,123 @@ ready(() => {
     element.textContent = currentYear;
   });
 
-  // Seamless partners marquee
+  // Load lazy images earlier for smoother rendering (especially iOS)
+  const lazyImages = Array.from(document.querySelectorAll('img[loading="lazy"]'));
+  if ('IntersectionObserver' in window && lazyImages.length) {
+    const lazyObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        if (img instanceof HTMLImageElement) {
+          img.loading = 'eager';
+          img.decoding = 'async';
+        }
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: '700px 0px' });
+
+    lazyImages.forEach((img) => lazyObserver.observe(img));
+  }
+
+  // Seamless partners marquee (stabilized for iOS/Safari)
   const partnersTrack = document.querySelector('.partners__track');
-  if (partnersTrack && partnersTrack.dataset.cloned !== 'true') {
-    const partnerItems = Array.from(partnersTrack.querySelectorAll('.partner'));
+  if (partnersTrack) {
+    if (partnersTrack.dataset.cloned !== 'true') {
+      const partnerItems = Array.from(partnersTrack.querySelectorAll('.partner'));
 
-    partnerItems.forEach((item) => {
-      const clone = item.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      clone.removeAttribute('role');
+      partnerItems.forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.removeAttribute('role');
 
-      const cloneImg = clone.querySelector('img');
-      if (cloneImg) {
-        cloneImg.alt = '';
-      }
+        const cloneImg = clone.querySelector('img');
+        if (cloneImg) {
+          cloneImg.alt = '';
+        }
 
-      partnersTrack.appendChild(clone);
+        partnersTrack.appendChild(clone);
+      });
+
+      partnersTrack.dataset.cloned = 'true';
+    }
+
+    const originalPartnerImages = Array.from(partnersTrack.querySelectorAll('.partner[role="listitem"] img'));
+    let resizeRaf = 0;
+
+    const updatePartnersMarquee = () => {
+      const fullWidth = partnersTrack.scrollWidth;
+      const distance = Math.round(fullWidth / 2);
+      if (distance <= 0) return;
+      partnersTrack.style.setProperty('--partners-distance', `${distance}px`);
+    };
+
+    const schedulePartnersUpdate = () => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        updatePartnersMarquee();
+      });
+    };
+
+    const activatePartnersMarquee = () => {
+      partnersTrack.classList.add('is-ready');
+      schedulePartnersUpdate();
+    };
+
+    originalPartnerImages.forEach((img) => {
+      if (img.complete) return;
+      img.addEventListener('load', schedulePartnersUpdate, { once: true });
+      img.addEventListener('error', schedulePartnersUpdate, { once: true });
     });
 
-    partnersTrack.dataset.cloned = 'true';
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(schedulePartnersUpdate).catch(() => {});
+    }
+
+    window.addEventListener('resize', schedulePartnersUpdate, { passive: true });
+    window.addEventListener('orientationchange', schedulePartnersUpdate, { passive: true });
+
+    requestAnimationFrame(activatePartnersMarquee);
+    setTimeout(activatePartnersMarquee, 260);
   }
 
   // Hero image autoplay
   const heroImage = document.querySelector('[data-hero-image]');
   const heroSlides = [
     {
-      src: '../assets/images/autres_images/YTH/6.jpeg',
+      src: 'assets/images/autres_images/YTH/6.jpeg',
       alt: 'Photo YTH 6',
     },
     {
-      src: '../assets/images/autres_images/YTH/46.jpeg',
+      src: 'assets/images/autres_images/YTH/46.jpeg',
       alt: 'Photo YTH 46',
     },
     {
-      src: '../assets/images/autres_images/YTH/83.jpeg',
+      src: 'assets/images/autres_images/YTH/83.jpeg',
       alt: 'Photo YTH 83',
     },
     {
-      src: '../assets/images/autres_images/YTH/94.jpeg',
+      src: 'assets/images/autres_images/YTH/94.jpeg',
       alt: 'Photo YTH 94',
     },
     {
-      src: '../assets/images/autres_images/YTH/114.jpeg',
+      src: 'assets/images/autres_images/YTH/114.jpeg',
       alt: 'Photo YTH 114',
     },
     {
-      src: '../assets/images/autres_images/YTH/188.jpeg',
+      src: 'assets/images/autres_images/YTH/188.jpeg',
       alt: 'Photo YTH 188',
     },
     {
-      src: '../assets/images/gallery/11.jpeg',
+      src: 'assets/images/gallery/11.jpeg',
       alt: 'Photo gallery 11',
     },
     {
-      src: '../assets/images/autres_images/enfant.jpeg',
+      src: 'assets/images/autres_images/enfant.jpeg',
       alt: 'Photo enfant',
     },
     {
-      src: '../assets/images/autres_images/enfant3.jpeg',
+      src: 'assets/images/autres_images/enfant3.jpeg',
       alt: 'Photo enfant 3',
     },
   ];
@@ -244,6 +303,10 @@ ready(() => {
   const renderHeroSlide = () => {
     if (!heroImage || !heroSlides.length) return;
     const currentSlide = heroSlides[heroSlideIndex];
+    const heroOverlay = "linear-gradient(180deg, rgba(15, 39, 72, 0.35), rgba(15, 39, 72, 0.6))";
+    heroImage.style.backgroundImage = `${heroOverlay}, url('${currentSlide.src}')`;
+    heroImage.style.backgroundPosition = 'center';
+    heroImage.style.backgroundSize = 'cover';
     heroImage.style.setProperty('--hero-image-url', `url('${currentSlide.src}')`);
     heroImage.setAttribute('aria-label', currentSlide.alt);
   };
@@ -285,23 +348,23 @@ ready(() => {
   const volunteerHeroImage = document.querySelector('[data-volunteer-hero-image]');
   const volunteerSlides = [
     {
-      src: '../assets/images/volontaires/Temoignage/239.jpeg',
+      src: 'assets/images/volontaires/Temoignage/239.jpeg',
       alt: 'Volontaires Youth Foundation Haiti en action communautaire',
     },
     {
-      src: '../assets/images/volontaires/Temoignage/244.jpeg',
+      src: 'assets/images/volontaires/Temoignage/244.jpeg',
       alt: '\u00c9quipe de volontaires Youth Foundation Haiti',
     },
     {
-      src: '../assets/images/volontaires/Temoignage/250.jpeg',
+      src: 'assets/images/volontaires/Temoignage/250.jpeg',
       alt: 'Volontaires engag\u00e9s pendant une activit\u00e9 de terrain',
     },
     {
-      src: '../assets/images/volontaires/Temoignage/258.jpeg',
+      src: 'assets/images/volontaires/Temoignage/258.jpeg',
       alt: 'Mobilisation des volontaires avec les jeunes',
     },
     {
-      src: '../assets/images/volontaires/Temoignage/270.jpeg',
+      src: 'assets/images/volontaires/Temoignage/270.jpeg',
       alt: 'Volontaires en accompagnement communautaire',
     },
   ];
@@ -313,6 +376,10 @@ ready(() => {
   const renderVolunteerSlide = () => {
     if (!volunteerHeroImage || !volunteerSlides.length) return;
     const currentSlide = volunteerSlides[volunteerSlideIndex];
+    const heroOverlay = "linear-gradient(180deg, rgba(15, 39, 72, 0.35), rgba(15, 39, 72, 0.6))";
+    volunteerHeroImage.style.backgroundImage = `${heroOverlay}, url('${currentSlide.src}')`;
+    volunteerHeroImage.style.backgroundPosition = 'center';
+    volunteerHeroImage.style.backgroundSize = 'cover';
     volunteerHeroImage.style.setProperty('--hero-image-url', `url('${currentSlide.src}')`);
     volunteerHeroImage.setAttribute('aria-label', currentSlide.alt);
   };

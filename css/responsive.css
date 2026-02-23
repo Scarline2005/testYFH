@@ -1,4 +1,4 @@
-﻿@media (max-width: 1200px) {
+@media (max-width: 1200px) {
   .nav__link {
     font-size: 0.84rem;
     padding: 0.62rem 0.56rem;
@@ -36,6 +36,12 @@
 
   .nav__toggle {
     display: inline-flex;
+  }
+
+  .btn--donate-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav__list {
@@ -172,8 +178,12 @@
   }
 
   .contact__details {
-    justify-items: center;
-    text-align: center;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .contact__details li {
+    width: 100%;
   }
 
   .partners__track {
@@ -312,6 +322,68 @@
     gap: 0.35rem;
   }
 
+  .footer-pro__main {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0 0 1.1rem;
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .footer-pro__brand-col {
+    display: grid;
+    gap: 0.72rem;
+  }
+
+  .footer-pro__brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .footer-pro__brand-text {
+    justify-items: start;
+  }
+
+  .footer-pro__mission {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .footer-pro__col {
+    width: 100%;
+    justify-items: start;
+    text-align: left;
+    gap: 0.48rem;
+  }
+
+  .footer-pro__col h3::after {
+    left: 0;
+    transform: none;
+  }
+
+  .footer-pro__contact {
+    justify-items: start;
+  }
+
+  .footer-pro__contact li {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .social--footer-pro {
+    justify-content: flex-start;
+  }
+
+  .footer-pro__bottom {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-pro__credit {
+    text-align: center;
+  }
+
   .btn {
     width: 100%;
     justify-content: center;
@@ -319,6 +391,13 @@
 
   .btn--footer-pro {
     width: fit-content;
+  }
+
+  .btn--donate-mobile {
+    width: auto;
+    min-height: 40px;
+    padding: 0.44rem 0.72rem;
+    font-size: 0.8rem;
   }
 
   .card,

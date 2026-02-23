@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --color-ink: #0f2748;
   --color-ink-soft: #1c3557;
   --color-primary: #2f7bec;
@@ -327,7 +327,15 @@ body {
 .nav {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   position: relative;
+}
+
+.btn--donate-mobile {
+  display: none;
+  white-space: nowrap;
+  padding: 0.5rem 0.82rem;
+  font-size: 0.84rem;
 }
 
 .nav__list {
@@ -1221,10 +1229,26 @@ body {
   gap: 0.6rem;
 }
 
+.contact__details li {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
 .contact__label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
   font-weight: 700;
   color: var(--color-ink);
+}
+
+.contact__icon {
+  display: inline-flex;
+  color: var(--color-primary);
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
 .contact__pill {
