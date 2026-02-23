@@ -1444,6 +1444,18 @@ body.modal-open {
   margin-bottom: 0;
 }
 
+/* Keep two-column field inputs aligned even when one label wraps to 2 lines. */
+.form__compact-grid .form__group > label {
+  min-height: 2.7rem;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.25;
+}
+
+.form__compact-grid .form__group--full > label {
+  min-height: 0;
+}
+
 .form__group--full {
   grid-column: 1 / -1;
 }

@@ -450,4 +450,8 @@
   .form__compact-grid {
     grid-template-columns: 1fr;
   }
+
+  .form__compact-grid .form__group > label {
+    min-height: 0;
+  }
 }

@@ -620,6 +620,31 @@ ready(() => {
 
   form?.querySelectorAll('select[data-toggle-other]').forEach((select) => bindOtherToggle(select));
 
+  const FOUNDATION_FORM_EMAIL = 'Youthfoundationhaiti43@gmail.com';
+  const FORMSUBMIT_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${encodeURIComponent(FOUNDATION_FORM_EMAIL)}`;
+
+  const sendViaFormSubmit = async (data) => {
+    const response = await fetch(FORMSUBMIT_AJAX_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...data,
+        _subject: 'Nouvelle inscription - Youth Foundation Haiti',
+        _template: 'table',
+        _captcha: 'false',
+      }),
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === 'false') {
+      throw new Error(result.message || "\u00c9chec d'envoi vers l'email de la fondation.");
+    }
+    return result;
+  };
+
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form || !feedback) return;
@@ -659,6 +684,7 @@ ready(() => {
     const endpoint = isRunningFromNodeOrigin
       ? 'http://localhost:3000/api/contact'
       : new URL(formAction, window.location.origin).toString();
+    const isRelativeApiInProduction = !isRunningFromNodeOrigin && /^\/api\//.test(formAction);
 
     feedback.textContent = 'Envoi en cours...';
     feedback.className = 'form__feedback form__feedback--success';
@@ -667,24 +693,43 @@ ready(() => {
 
     const formData = new FormData(form);
     const payload = new URLSearchParams();
+    const payloadObject = {};
     formData.forEach((value, key) => {
-      payload.append(key, String(value));
+      const normalized = String(value);
+      payload.append(key, normalized);
+      payloadObject[key] = normalized;
     });
 
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        body: payload.toString(),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-        },
-      });
+      let requestError = null;
+      let delivered = false;
 
-      const result = await response.json().catch(() => ({}));
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: payload.toString(),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          },
+        });
 
-      if (!response.ok || !result.ok) {
-        throw new Error(result.message || "\u00c9chec de l'envoi.");
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) {
+          throw new Error(result.message || "\u00c9chec de l'envoi.");
+        }
+        delivered = true;
+      } catch (error) {
+        requestError = error;
+      }
+
+      if (!delivered && isRelativeApiInProduction) {
+        await sendViaFormSubmit(payloadObject);
+        delivered = true;
+      }
+
+      if (!delivered) {
+        throw requestError || new Error("\u00c9chec d'envoi. Veuillez r\u00e9essayer.");
       }
 
       feedback.textContent = 'Merci. Votre inscription a \u00e9t\u00e9 envoy\u00e9e.';
