@@ -216,63 +216,52 @@
   }
 
   .footer-pro__main {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 0.95rem;
     padding: 0 0 1.1rem;
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .footer-pro__col {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .footer-pro__col h3::after {
+    left: 0;
+    transform: none;
+  }
+
+  .footer-pro__contact {
+    justify-items: start;
+  }
+
+  .footer-pro__contact li {
+    justify-content: flex-start;
+  }
+
+  .social--footer-pro {
+    justify-content: flex-start;
   }
 
   .footer-pro__bottom {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.26rem;
-  }
-
-  .footer-pro__main {
-    justify-items: center;
-    text-align: center;
-  }
-
-  .footer-pro__brand {
-    justify-content: center;
-  }
-
-  .footer-pro__brand-text {
-    justify-items: center;
-  }
-
-  .footer-pro__mission {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footer-pro__col {
-    justify-items: center;
-    text-align: center;
-  }
-
-  .footer-pro__col h3::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .footer-pro__contact {
-    justify-items: center;
-  }
-
-  .footer-pro__contact li {
-    justify-content: center;
-  }
-
-  .social--footer-pro {
-    justify-content: center;
-  }
-
-  .footer-pro__bottom {
     align-items: center;
     text-align: center;
+    gap: 0.26rem;
   }
 
   .footer-pro__credit {
     text-align: center;
+  }
+
+  .footer-pro__main > .footer-pro__brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .footer-pro__main > .footer-pro__col:last-child {
+    grid-column: 1 / -1;
   }
 
   .brand__logo {
@@ -343,8 +332,8 @@
   }
 
   .footer-pro__main {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.7rem;
     padding: 0 0 1.1rem;
     justify-items: stretch;
     text-align: left;
@@ -374,7 +363,7 @@
     width: 100%;
     justify-items: start;
     text-align: left;
-    gap: 0.48rem;
+    gap: 0.42rem;
   }
 
   .footer-pro__col h3::after {
@@ -393,6 +382,14 @@
 
   .social--footer-pro {
     justify-content: flex-start;
+  }
+
+  .footer-pro__main > .footer-pro__brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .footer-pro__main > .footer-pro__col:last-child {
+    grid-column: 1 / -1;
   }
 
   .footer-pro__bottom {
