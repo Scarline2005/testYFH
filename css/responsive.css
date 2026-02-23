@@ -50,7 +50,9 @@
     right: 0;
     z-index: 230;
     width: min(360px, calc(100vw - 1.5rem));
+    width: min(360px, calc(100dvw - 1.5rem));
     max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px);
     overflow-y: auto;
     background: #fff;
     border: 1px solid var(--color-border);
@@ -187,13 +189,22 @@
   }
 
   .partners__track {
-    gap: 1.6rem;
-    animation-duration: 24s;
+    gap: 0.26rem;
+    --partners-duration: 22s;
+  }
+
+  .partner {
+    flex-basis: auto;
+    width: auto;
+    min-width: 64px;
+    height: 66px;
   }
 
   .partner img {
-    max-height: 70px;
-    max-width: 170px;
+    width: auto;
+    height: auto;
+    max-width: 150px;
+    max-height: 54px;
   }
 
   .hero__stats {
@@ -280,17 +291,26 @@
   }
 
   .partners__logos {
-    mask-image: none;
+    margin-bottom: 1rem;
   }
 
   .partners__track {
-    gap: 1.1rem;
-    animation-duration: 20s;
+    gap: 0.22rem;
+    --partners-duration: 18s;
+  }
+
+  .partner {
+    flex-basis: auto;
+    width: auto;
+    min-width: 54px;
+    height: 56px;
   }
 
   .partner img {
-    max-height: 56px;
-    max-width: 130px;
+    width: auto;
+    height: auto;
+    max-width: 124px;
+    max-height: 44px;
   }
 
   .partners-logo--octacore {
