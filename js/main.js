@@ -655,6 +655,7 @@ ready(() => {
     }
 
     const formAction = (form.dataset.endpoint || form.getAttribute('action') || '/api/contact').trim();
+    const isNetlifyForm = form.getAttribute('data-netlify') === 'true';
     const explicitApiBase = (document.documentElement.dataset.apiBaseUrl || '').trim();
     const endpoint = /^https?:\/\//i.test(formAction)
       ? formAction
@@ -683,14 +684,19 @@ ready(() => {
         method: 'POST',
         body: payload.toString(),
         headers: {
-          Accept: 'application/json',
+          Accept: isNetlifyForm ? 'text/html,application/xhtml+xml' : 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
       });
 
-      const result = await response.json().catch(() => ({}));
+      let result = {};
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        result = await response.json().catch(() => ({}));
+      }
 
-      if (!response.ok || !result.ok) {
+      const hasApiOkFlag = typeof result.ok === 'boolean';
+      if (!response.ok || (hasApiOkFlag && !result.ok)) {
         const requestId = result.request_id ? ` (ref: ${result.request_id})` : '';
         throw new Error((result.message || "\u00c9chec de l'envoi.") + requestId);
       }
@@ -705,7 +711,7 @@ ready(() => {
     } catch (error) {
       const isNetworkError = error?.message === 'Failed to fetch' || error instanceof TypeError;
       feedback.textContent = isNetworkError
-        ? "Connexion au serveur impossible. Verifiez l'API /api/contact, HTTPS et CORS."
+        ? "Connexion impossible. Verifiez la configuration d'envoi (Netlify ou API), HTTPS et CORS."
         : (error.message || "\u00c9chec d'envoi. Veuillez r\u00e9essayer.");
       feedback.className = 'form__feedback form__feedback--error';
       feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
