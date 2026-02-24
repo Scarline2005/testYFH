@@ -655,7 +655,6 @@ ready(() => {
     }
 
     const formAction = (form.dataset.endpoint || form.getAttribute('action') || '/api/contact').trim();
-    const isNetlifyForm = form.getAttribute('data-netlify') === 'true';
     const explicitApiBase = (document.documentElement.dataset.apiBaseUrl || '').trim();
     const endpoint = /^https?:\/\//i.test(formAction)
       ? formAction
@@ -684,7 +683,7 @@ ready(() => {
         method: 'POST',
         body: payload.toString(),
         headers: {
-          Accept: isNetlifyForm ? 'text/html,application/xhtml+xml' : 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
       });
