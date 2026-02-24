@@ -515,89 +515,6 @@ ready(() => {
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
   const submitBtn = document.getElementById('contact-submit-btn');
-  const openContactFormBtn = document.querySelector('[data-open-contact-form]');
-  const contactModal = document.getElementById('contact-form-modal');
-  const closeContactFormBtns = Array.from(document.querySelectorAll('[data-close-contact-form]'));
-  const stepPanels = form ? Array.from(form.querySelectorAll('.form-step-panel')) : [];
-  const stepIndicators = form ? Array.from(form.querySelectorAll('[data-step-indicator]')) : [];
-  const stepButtonsNext = form ? Array.from(form.querySelectorAll('[data-next-step]')) : [];
-  const stepButtonsPrev = form ? Array.from(form.querySelectorAll('[data-prev-step]')) : [];
-  let lastFocusedElement = null;
-
-  const setActiveStep = (stepNumber) => {
-    stepPanels.forEach((panel) => {
-      panel.classList.toggle('is-active', panel.dataset.stepPanel === String(stepNumber));
-    });
-    stepIndicators.forEach((indicator) => {
-      indicator.classList.toggle('is-active', indicator.dataset.stepIndicator === String(stepNumber));
-    });
-  };
-
-  const validateStep = (stepNumber) => {
-    const panel = form?.querySelector(`.form-step-panel[data-step-panel="${stepNumber}"]`);
-    if (!panel) return true;
-    const candidates = Array.from(panel.querySelectorAll('input, select, textarea'));
-    for (const field of candidates) {
-      if (!field.checkValidity()) {
-        field.reportValidity();
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const openContactModal = () => {
-    if (!contactModal) return;
-    lastFocusedElement = document.activeElement;
-    contactModal.classList.add('is-open');
-    contactModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    const firstInput = form?.querySelector('input, select, textarea');
-    firstInput?.focus();
-  };
-
-  const closeContactModal = () => {
-    if (!contactModal) return;
-    contactModal.classList.remove('is-open');
-    contactModal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
-    if (lastFocusedElement instanceof HTMLElement) {
-      lastFocusedElement.focus();
-    }
-  };
-
-  openContactFormBtn?.addEventListener('click', openContactModal);
-  closeContactFormBtns.forEach((btn) => btn.addEventListener('click', closeContactModal));
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && contactModal?.classList.contains('is-open')) {
-      closeContactModal();
-    }
-  });
-
-  stepButtonsNext.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const current = Number(btn.closest('.form-step-panel')?.dataset.stepPanel || 1);
-      if (!validateStep(current)) return;
-      setActiveStep(btn.dataset.nextStep);
-    });
-  });
-
-  stepButtonsPrev.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      setActiveStep(btn.dataset.prevStep);
-    });
-  });
-
-  const getSelectedValue = (fieldName) => {
-    if (!form) return '';
-    const checked = form.querySelector(`input[name="${fieldName}"]:checked`);
-    if (checked) return String(checked.value || '').trim();
-    const select = form.querySelector(`select[name="${fieldName}"]`);
-    if (select) return String(select.value || '').trim();
-    const input = form.querySelector(`[name="${fieldName}"]`);
-    return input ? String(input.value || '').trim() : '';
-  };
 
   const bindOtherToggle = (select) => {
     if (!(select instanceof HTMLSelectElement)) return;
@@ -624,26 +541,15 @@ ready(() => {
     event.preventDefault();
     if (!form || !feedback) return;
 
-    // Custom conditional required fields
+    const gender = form.querySelector('#gender');
     const genderOther = form.querySelector('#gender_other');
+    const education = form.querySelector('#education_level');
     const educationOther = form.querySelector('#education_other');
-    const selectedGender = getSelectedValue('gender');
-    const selectedEducation = getSelectedValue('education_level');
-
-    if (genderOther) {
-      const mustFill = selectedGender === 'Autre';
-      genderOther.toggleAttribute('required', Boolean(mustFill));
+    if (genderOther && gender instanceof HTMLSelectElement) {
+      genderOther.toggleAttribute('required', gender.value === 'Autre');
     }
-
-    if (educationOther) {
-      const mustFill = selectedEducation === 'Autre';
-      educationOther.toggleAttribute('required', Boolean(mustFill));
-    }
-
-    const firstInvalid = form.querySelector(':invalid');
-    if (firstInvalid) {
-      const invalidStep = firstInvalid.closest('.form-step-panel')?.dataset.stepPanel;
-      if (invalidStep) setActiveStep(invalidStep);
+    if (educationOther && education instanceof HTMLSelectElement) {
+      educationOther.toggleAttribute('required', education.value === 'Autre');
     }
 
     if (!form.checkValidity()) {
@@ -703,10 +609,18 @@ ready(() => {
       feedback.textContent = 'Merci. Votre inscription a \u00e9t\u00e9 envoy\u00e9e.';
       feedback.className = 'form__feedback form__feedback--success';
       form.reset();
-      window.alert('Formulaire envoy\u00e9 avec succ\u00e8s.');
       feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      setActiveStep(1);
-      closeContactModal();
+      form.querySelectorAll('.is-hidden input').forEach((input) => {
+        if (input instanceof HTMLInputElement) {
+          input.value = '';
+          input.removeAttribute('required');
+        }
+      });
+      form.querySelectorAll('select[data-toggle-other]').forEach((select) => {
+        if (select instanceof HTMLSelectElement) {
+          select.dispatchEvent(new Event('change'));
+        }
+      });
     } catch (error) {
       const isNetworkError = error?.message === 'Failed to fetch' || error instanceof TypeError;
       feedback.textContent = isNetworkError

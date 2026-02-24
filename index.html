@@ -471,46 +471,54 @@
         </div>
 
         <div class="contact__form-card">
-          <form id="contact-form" novalidate data-endpoint="/api/contact">
-            <h3 class="form__section-title">Youth Foundation Haiti - Formulaire d'inscription</h3>
-            <p class="form__required-note">* Indique une question obligatoire</p>
+          <form id="contact-form" data-endpoint="/api/contact" novalidate>
+            <h3 class="form__section-title">Formulaire d'inscription</h3>
+            <p class="form__required-note">Tous les champs marqu&eacute;s * sont obligatoires.</p>
+
             <div class="form__compact-grid">
               <div class="form__group">
                 <label for="full_name">Nom complet *</label>
                 <input type="text" id="full_name" name="full_name" autocomplete="name" required />
               </div>
+
               <div class="form__group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" autocomplete="email" required />
               </div>
+
               <div class="form__group">
                 <label for="birth_date">Date de naissance *</label>
                 <input type="date" id="birth_date" name="birth_date" required />
               </div>
+
               <div class="form__group">
-                <label for="whatsapp_phone">T&eacute;l&eacute;phone (WhatsApp si possible) *</label>
+                <label for="whatsapp_phone">T&eacute;l&eacute;phone / WhatsApp *</label>
                 <input type="tel" id="whatsapp_phone" name="whatsapp_phone" autocomplete="tel" required />
               </div>
+
               <div class="form__group form__group--full">
                 <label for="full_address">Adresse compl&egrave;te *</label>
                 <input type="text" id="full_address" name="full_address" autocomplete="street-address" required />
               </div>
+
               <div class="form__group">
                 <label for="gender">Sexe *</label>
-                <select id="gender" name="gender" required data-toggle-other="gender_other_wrap">
+                <select id="gender" name="gender" data-toggle-other="gender_other_wrap" required>
                   <option value="">S&eacute;lectionnez</option>
                   <option value="Feminin">F&eacute;minin</option>
                   <option value="Masculin">Masculin</option>
                   <option value="Autre">Autre</option>
                 </select>
               </div>
+
               <div class="form__group is-hidden" id="gender_other_wrap">
-                <label for="gender_other">Autre sexe (pr&eacute;ciser) *</label>
+                <label for="gender_other">Pr&eacute;cisez le sexe *</label>
                 <input type="text" id="gender_other" name="gender_other" />
               </div>
+
               <div class="form__group">
                 <label for="education_level">Niveau d'&eacute;tudes *</label>
-                <select id="education_level" name="education_level" required data-toggle-other="education_other_wrap">
+                <select id="education_level" name="education_level" data-toggle-other="education_other_wrap" required>
                   <option value="">S&eacute;lectionnez</option>
                   <option value="Etudes professionnelles / techniques">&Eacute;tudes professionnelles / techniques</option>
                   <option value="Universite - Licence (Bachelor)">Universit&eacute; - Licence (Bachelor)</option>
@@ -519,15 +527,18 @@
                   <option value="Autre">Autre</option>
                 </select>
               </div>
+
               <div class="form__group is-hidden" id="education_other_wrap">
-                <label for="education_other">Autre niveau (pr&eacute;ciser) *</label>
+                <label for="education_other">Pr&eacute;cisez le niveau *</label>
                 <input type="text" id="education_other" name="education_other" />
               </div>
+
               <div class="form__group form__group--full">
                 <label for="profession_status">Profession / Statut actuel *</label>
                 <input type="text" id="profession_status" name="profession_status" required />
               </div>
             </div>
+
             <button type="submit" class="btn btn--primary" id="contact-submit-btn">Envoyer l'inscription</button>
             <p class="form__feedback" id="form-feedback" role="status" aria-live="polite"></p>
           </form>
