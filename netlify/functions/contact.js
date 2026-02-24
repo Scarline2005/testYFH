@@ -2,10 +2,9 @@ const {
   generateRequestId,
   jsonResponse,
   log,
-  smtpConfig,
-  createTransporter,
+  mailConfig,
+  createSendGridClient,
   missingEnv,
-  diagnoseSmtpError,
   assertSenderDomain,
 } = require('./_shared/mail');
 
@@ -51,11 +50,11 @@ exports.handler = async (event) => {
   }
 
   if (missingEnv.length) {
-    log('error', requestId, 'SMTP missing env for contact submission', { missingEnv });
+    log('error', requestId, 'Email config missing for contact submission', { missingEnv });
     return jsonResponse(500, {
       ok: false,
-      code: 'SMTP_NOT_CONFIGURED',
-      message: `Configuration SMTP manquante: ${missingEnv.join(', ')}`,
+      code: 'SENDGRID_NOT_CONFIGURED',
+      message: `Configuration email manquante: ${missingEnv.join(', ')}`,
       request_id: requestId,
     });
   }
@@ -105,11 +104,14 @@ exports.handler = async (event) => {
     });
   }
 
-  const transporter = createTransporter();
+  const sendGridClient = createSendGridClient();
   try {
-    const info = await transporter.sendMail({
-      from: `"YFH Formulaire" <${smtpConfig.mailFrom}>`,
-      to: smtpConfig.mailTo,
+    const [response] = await sendGridClient.send({
+      from: {
+        email: mailConfig.mailFrom,
+        name: 'YFH Formulaire',
+      },
+      to: [{ email: mailConfig.mailTo }],
       replyTo: email,
       subject: 'Nouvelle inscription - Youth Foundation Haiti',
       text: [
@@ -135,14 +137,11 @@ exports.handler = async (event) => {
     });
 
     log('info', requestId, 'Contact form email sent', {
-      messageId: info?.messageId || null,
-      smtpResponse: info?.response || null,
-      envelope: info?.envelope || null,
-      accepted: info?.accepted || [],
-      rejected: info?.rejected || [],
-      pending: info?.pending || [],
-      to: smtpConfig.mailTo,
-      from: smtpConfig.mailFrom,
+      provider: 'sendgrid',
+      statusCode: response?.statusCode || null,
+      headers: response?.headers || null,
+      to: mailConfig.mailTo,
+      from: mailConfig.mailFrom,
     });
 
     return jsonResponse(200, {
@@ -150,33 +149,30 @@ exports.handler = async (event) => {
       code: 'EMAIL_SENT',
       message: 'Votre inscription a ete envoyee avec succes.',
       request_id: requestId,
-      smtp: {
-        messageId: info?.messageId || null,
-        accepted: info?.accepted || [],
-        rejected: info?.rejected || [],
-        response: info?.response || null,
+      provider: {
+        name: 'sendgrid',
+        status_code: response?.statusCode || null,
       },
     });
   } catch (error) {
-    const diagnostic = diagnoseSmtpError(error);
-    const smtpError = {
-      code: diagnostic.code,
+    const providerError = {
+      code: 'SENDGRID_SEND_FAILED',
       errorCode: error?.code || null,
-      responseCode: error?.responseCode || null,
-      command: error?.command || null,
-      response: error?.response || null,
+      statusCode: error?.response?.statusCode || null,
+      responseHeaders: error?.response?.headers || null,
+      responseBody: error?.response?.body || null,
       message: error?.message || null,
       stack: error?.stack || null,
     };
 
-    log('error', requestId, 'SMTP send failed', smtpError);
+    log('error', requestId, 'SendGrid send failed', providerError);
 
     return jsonResponse(500, {
       ok: false,
-      code: diagnostic.code,
-      message: diagnostic.message,
+      code: 'SENDGRID_SEND_FAILED',
+      message: "Echec d'envoi via SendGrid. Consultez les logs pour le detail.",
       request_id: requestId,
-      smtp_error: smtpError,
+      provider_error: providerError,
     });
   }
 };

@@ -12,13 +12,10 @@ exports.handler = async () => {
   const envSummary = getEnvSummary();
 
   if (!status.ok) {
-    log('error', requestId, 'SMTP health check failed', {
+    log('error', requestId, 'SendGrid health check failed', {
       code: status.code,
       details: status.details || null,
-      smtp_host: envSummary.smtp_host,
-      smtp_port: envSummary.smtp_port,
-      smtp_secure: envSummary.smtp_secure,
-      smtp_require_tls: envSummary.smtp_require_tls,
+      provider: envSummary.provider,
     });
     return jsonResponse(500, {
       ok: false,
@@ -28,11 +25,8 @@ exports.handler = async () => {
     });
   }
 
-  log('info', requestId, 'SMTP health check passed', {
-    smtp_host: envSummary.smtp_host,
-    smtp_port: envSummary.smtp_port,
-    smtp_secure: envSummary.smtp_secure,
-    smtp_require_tls: envSummary.smtp_require_tls,
+  log('info', requestId, 'SendGrid health check passed', {
+    provider: envSummary.provider,
   });
 
   return jsonResponse(200, {

@@ -20,8 +20,8 @@
   force = true
 
 [[redirects]]
-  from = "/api/diagnostics/smtp"
-  to = "/.netlify/functions/smtp-diagnose"
+  from = "/api/diagnostics/email"
+  to = "/.netlify/functions/health-email"
   status = 200
   force = true
 
