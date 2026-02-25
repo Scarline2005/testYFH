@@ -25,24 +25,26 @@ C:\Users\kensl\Projet_Youth_Haiti
 
 ## Getting Started
 1. Install dependencies:
-   - `npm install`
+   - `npm install express dotenv @sendgrid/mail`
 2. Create `.env` from `.env.example`.
+   - Remplir `SENDGRID_API_KEY` et `MAIL_FROM`.
 3. Start the app:
    - `npm start`
 4. Open:
    - `http://localhost:3000`
 
-## Backend Email (SendGrid) en production
+## Backend Email (SendGrid)
 Le formulaire envoie vers `POST /api/contact`.
-Netlify redirige vers `/.netlify/functions/contact` via `netlify.toml`.
+En production, Netlify redirige vers `/.netlify/functions/contact`.
+En local, `server.js` utilise la même logique via l'API SendGrid.
 
 ### Variables d'environnement requises
 - `SENDGRID_API_KEY`
 - `MAIL_FROM` (ex: `contact@youthfoundationhaiti.org`)
 - `MAIL_TO`
-- `EXPECTED_SENDER_DOMAIN` (ex: `youthfoundationhaiti.org`)
 
 ### Variables optionnelles
+- `EXPECTED_SENDER_DOMAIN` (ex: `youthfoundationhaiti.org`)
 - `DIAGNOSTIC_TOKEN` (prot&egrave;ge les endpoints diagnostics)
 - `MAIL_DOMAIN` (fallback domaine pour diagnostics DNS)
 - `DKIM_SELECTORS` (ex: `default,mail,google`)
@@ -61,7 +63,7 @@ Si `DIAGNOSTIC_TOKEN` est d&eacute;fini, ajouter le header:
 ## Production Checklist
 1. Cr&eacute;er la cl&eacute; API SendGrid (permission `Mail Send`).
 2. Netlify: Site settings -> Environment variables -> renseigner les variables requises.
-3. `MAIL_FROM` doit utiliser le domaine officiel (ex: `contact@youthfoundationhaiti.org`).
+3. `MAIL_FROM` doit être un expéditeur vérifié dans SendGrid (Single Sender Verification ou Domain Auth).
 4. Configurer l'authentification domaine dans SendGrid:
    - SPF
    - DKIM
@@ -84,4 +86,5 @@ Si `DIAGNOSTIC_TOKEN` est d&eacute;fini, ajouter le header:
   - `v=DMARC1; p=quarantine; rua=mailto:dmarc@youthfoundationhaiti.org; adkim=s; aspf=s`
 
 ## Scripts de test local
-- `npm run email:test` : envoie un email de test simple via SendGrid API.
+- `node test-email.js` : Teste l'envoi d'email via SendGrid sans lancer le serveur complet.
+- `npm start` : Lance le serveur local sur http://localhost:3000.
